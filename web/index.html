@@ -3,23 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Egyházatyák az Ószövetségről</title>
-<meta name="description" content="Keresés az egyházatyák ószövetségi kommentárjaiban: ki és hol idéz egy bibliai helyet, szöveges keresés latin és görög eredetiben.">
+<title>__CIM__</title>
+<meta name="description" content="__LEIRAS__">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=__VERZIO__">
 </head>
-<body>
+<body data-mod="__MOD__">
 <div class="lap">
   <header class="fej">
-    <h1><a href="#">Kommentár-kereső</a></h1>
-    <p>Az egyházatyák bibliamagyarázatai eredeti nyelven: ki és hol idéz egy bibliai helyet, és mit írtak róla.</p>
+    <h1><a href="#">__H1__</a></h1>
+    <p>__ALCIM__</p>
   </header>
 
   <nav class="mod" role="tablist" aria-label="Keresés módja">
     <button role="tab" id="tab-vers" aria-controls="panel-vers" aria-selected="true">Bibliai hely</button>
     <button role="tab" id="tab-szoveg" aria-controls="panel-szoveg" aria-selected="false">Szöveg</button>
+    <button role="tab" id="tab-bongesz" aria-controls="panel-bongesz" aria-selected="false">Szerző és mű</button>
   </nav>
 
   <section id="panel-vers" role="tabpanel" aria-labelledby="tab-vers">
@@ -52,6 +53,23 @@
       <button type="submit">Keresés</button>
     </form>
     <p class="tipp">Több szó esetén mindegyiknek szerepelnie kell; idézőjelek között pontos kifejezést keres. A görög ékezetek és a latin u/v, i/j írásmód nem számít.</p>
+  </section>
+
+  <section id="panel-bongesz" role="tabpanel" aria-labelledby="tab-bongesz" hidden>
+    <form id="urlap-bongesz" class="urlap">
+      <label>Szerző
+        <select id="bszerzo"><option value="">válasszon</option></select>
+      </label>
+      <label class="szeles">Mű
+        <select id="bmu" disabled><option value="">előbb a szerzőt</option></select>
+      </label>
+      <label>Hely
+        <input id="bhely" placeholder="pl. 1.2 vagy 279A" autocomplete="off" list="bhelyek" disabled>
+        <datalist id="bhelyek"></datalist>
+      </label>
+      <button type="submit">Megnyitás</button>
+    </form>
+    <p class="tipp">Válasszon szerzőt és művet: megjelenik a mű tagolása, és bármelyik részét megnyithatja. A „Hely” mezőbe a kiadás számozása szerinti hivatkozást írja (könyv.fejezet.szakasz, a Patrologia Latina szövegeinél hasáb és betű).</p>
   </section>
 
   <main id="eredmeny" aria-live="polite"></main>

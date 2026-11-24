@@ -48,14 +48,75 @@ const jelezMagassag = () => parent !== window &&
 new ResizeObserver(jelezMagassag).observe(document.body);
 
 // ---- Módváltás ----
+const MOD = document.body.dataset.mod || "kommentar";
 function mod(nev) {
-  for (const m of ["vers", "szoveg"]) {
+  for (const m of ["vers", "szoveg", "bongesz"]) {
     $(`#tab-${m}`).setAttribute("aria-selected", m === nev);
     $(`#panel-${m}`).hidden = m !== nev;
   }
 }
 $("#tab-vers").onclick = () => { mod("vers"); $("#konyv").focus(); };
 $("#tab-szoveg").onclick = () => { mod("szoveg"); $("#kerdes").focus(); };
+$("#tab-bongesz").onclick = () => { mod("bongesz"); $("#bszerzo").focus(); };
+if (MOD === "forras") { $("#tab-vers").hidden = true; $("#tab-szoveg").before($("#tab-bongesz")); }
+
+// ---- Szerző és mű: böngészés, helyre ugrás ----
+const refCache = new Map();
+async function refek(m) {
+  if (!refCache.has(m)) refCache.set(m, json(`data/refs/${m}.json`));
+  return refCache.get(m);
+}
+const szerzoMuvei = (sz) => KAT.map((mu, i) => [i, mu]).filter(([, mu]) => mu.szerzo === sz)
+  .sort((a, b) => a[1].mu.localeCompare(b[1].mu, "hu"));
+function muOpciok(sz) {
+  const lista = szerzoMuvei(sz);
+  $("#bmu").innerHTML = `<option value="">${lista.length ? "válasszon művet" : "nincs mű"}</option>` +
+    lista.map(([i, mu]) => `<option value="${i}">${esc(mu.mu)}${mu.tipus === "translation" ? ` (${NYELVNEV[mu.nyelv] || mu.nyelv} fordítás)` : ""}</option>`).join("");
+  $("#bmu").disabled = !lista.length;
+  return lista;
+}
+function szerzoLap(sz) {
+  mod("bongesz"); $("#bszerzo").value = sz;
+  const lista = muOpciok(sz);
+  $("#bhely").disabled = true; $("#bhely").value = "";
+  $("#eredmeny").innerHTML = `<section class="glossza"><h3>${esc(sz)}</h3><div>${lista.map(([i, mu]) =>
+    `<div class="tetel"><h4><a href="#m/${i}">${esc(mu.mu)}</a></h4><p class="egyezes">${esc(NYELVNEV[mu.nyelv] || mu.nyelv)}${mu.tipus === "translation" ? " fordítás" : ""} · ${esc(mu.kiadas)}</p></div>`).join("")}</div></section>`;
+}
+async function muLap(m, nyitRef) {
+  const mu = KAT[m];
+  if (!mu) { $("#eredmeny").innerHTML = `<p class="uzenet">Nincs ilyen mű.</p>`; return; }
+  mod("bongesz");
+  if ($("#bszerzo").value !== mu.szerzo) { $("#bszerzo").value = mu.szerzo; muOpciok(mu.szerzo); }
+  $("#bmu").value = String(m);
+  const r = await refek(m);
+  $("#bhely").disabled = false;
+  $("#bhelyek").innerHTML = r.slice(0, 3000).map(([ref]) => `<option value="${esc(ref)}">`).join("");
+  const MAX = 600;
+  $("#eredmeny").innerHTML = `<section class="glossza"><h3>${esc(mu.szerzo)}</h3><div class="tetel">
+      <h4>${esc(mu.mu)}</h4>
+      <p class="egyezes">${esc(mu.kiadas)} · ${r.length} szakasz · <a href="${esc(link(mu, r[0] ? r[0][0] : ""))}" target="_blank" rel="noopener">a forrásnál</a></p>
+      <div class="tartalom">${r.slice(0, MAX).map(([ref, d]) => `<a href="#m/${m}/${encodeURIComponent(ref)}" data-d="${d}">${esc(ref)}</a>`).join("")}</div>
+      ${r.length > MAX ? `<p class="tipp">Az első ${MAX} hely látszik; a többit a „Hely” mezővel nyithatja meg.</p>` : ""}
+    </div></section>`;
+  if (nyitRef) await helyNyit(m, nyitRef);
+}
+async function helyNyit(m, keres) {
+  const r = await refek(m);
+  const k = keres.trim();
+  const talalat = r.find(([ref]) => ref === k) || r.find(([ref]) => ref.endsWith("/" + k)) ||
+    r.find(([ref]) => ref.startsWith(k + ".")) || r.find(([ref]) => ref.startsWith(k));
+  if (!talalat) { $("#eredmeny").insertAdjacentHTML("afterbegin", `<p class="uzenet">A „${esc(k)}” hely nincs ebben a műben.</p>`); return; }
+  olvaso(m, talalat[1], talalat[0]);
+}
+$("#bszerzo").onchange = () => { if ($("#bszerzo").value) location.hash = `a/${$("#bszerzo").value}`; };
+$("#bmu").onchange = () => { if ($("#bmu").value) location.hash = `m/${$("#bmu").value}`; };
+$("#urlap-bongesz").onsubmit = (e) => {
+  e.preventDefault();
+  const m = $("#bmu").value;
+  if (m && $("#bhely").value.trim()) ugrik(`m/${m}/${$("#bhely").value.trim()}`);
+  else if (m) ugrik(`m/${m}`);
+  else if ($("#bszerzo").value) ugrik(`a/${$("#bszerzo").value}`);
+};
 
 // ---- Bibliai hely ----
 function bontHely(s) {
@@ -263,8 +324,13 @@ function utvonal() {
     const q = resz.join("/");
     mod("szoveg"); $("#kerdes").value = q; $("#sszerzo").value = p.get("szerzo") || ""; $("#snyelv").value = p.get("nyelv") || "";
     szovegKereses(q, p.get("szerzo") || "", p.get("nyelv") || "");
+  } else if (tipus === "a" && resz.length) {
+    szerzoLap(resz.join("/"));
+  } else if (tipus === "m" && resz.length) {
+    muLap(+resz[0], resz.length > 1 ? resz.slice(1).join("/") : "");
   } else if (!h) {
     $("#eredmeny").innerHTML = "";
+    if (MOD === "forras") mod("bongesz");
   }
 }
 const ugrik = (h) => { if (location.hash === "#" + h) utvonal(); else location.hash = h; };
@@ -288,6 +354,7 @@ $("#konyv").innerHTML = KONYVEK.filter((k) => k.idezet).map((k) => `<option valu
 const szerzoOpc = SZERZOK.map((s) => `<option>${esc(s)}</option>`).join("");
 $("#vszerzo").insertAdjacentHTML("beforeend", szerzoOpc);
 $("#sszerzo").insertAdjacentHTML("beforeend", szerzoOpc);
+$("#bszerzo").insertAdjacentHTML("beforeend", szerzoOpc);
 const nyelvek = [...new Set(KAT.map((m) => NYELVNEV[m.nyelv] || m.nyelv))];
 $("#snyelv").insertAdjacentHTML("beforeend", nyelvek.map((n) => `<option>${esc(n)}</option>`).join(""));
 utvonal();

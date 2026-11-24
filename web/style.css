@@ -95,6 +95,13 @@ button { font: 600 .95rem/1 var(--sans); cursor: pointer; }
 .uzenet { font-style: italic; color: var(--halvany); }
 .toltes { font: 400 .9rem/1.4 var(--sans); color: var(--halvany); }
 
+/* Mű tartalma: a helyek listája */
+.tartalom { display: flex; flex-wrap: wrap; gap: .35rem .6rem; margin-top: .6rem; font: 400 .9rem/1.4 var(--sans); }
+.tartalom a { text-decoration: none; padding: .15rem .35rem; border: 1px solid var(--vonal); border-radius: 3px; }
+.tartalom a:hover { border-color: var(--lazur); }
+.tetel h4 a { color: var(--tinta); }
+[hidden] { display: none !important; }
+
 /* Olvasó */
 dialog#olvaso {
   width: min(46rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0;

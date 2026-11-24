@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """A patcatena webes keresőjének (statikus oldal) felépítése.
 
-Használat:  python3 eszkozok/web.py [kimeneti_mappa]        (alapértelmezés: _site)
-            eszkozok/web_pagefind.sh _site   (szöveges keresőindex, részindexenként)
+Két kereső készül ugyanabból a kódból (a művek besorolása: eszkozok/kategoria.py):
+  Kommentár-kereső            a kifejezetten szentírás-magyarázó művek; bibliai hely, szöveg, szerző és mű szerint
+  Patrisztikus források       az összes többi patrisztikus mű; szerző és mű szerint, illetve szöveg szerint
+
+Használat:  python3 eszkozok/web.py _site                      (Kommentár-kereső)
+            python3 eszkozok/web.py _site/forrasok --kor forras (Patrisztikus források keresője)
+            eszkozok/web_pagefind.sh _site ; eszkozok/web_pagefind.sh _site/forrasok   (szöveges keresőindexek)
 
 Kimenet:
   index.html, app.js, style.css           a kereső felülete (a web/ mappából)
@@ -10,6 +15,7 @@ Kimenet:
   data/konyvek.json                       a bibliai könyvek listája
   data/biblia/<könyv>.json                Vulgata- és LXX-szöveg + idéző szakaszok versenként
   data/sz/<mű>/<darab>.json               a szakaszok szövege, kb. 60 KB-os darabokban
+  data/refs/<mű>.json                     a mű helyei sorrendben, darabszámmal (böngészéshez, helyre ugráshoz)
   <kimenet>_pagefind/<n>/                 szakaszonként egy HTML-lap a Pagefind-indexeléshez, részindexenként
                                           (utána törölhető); a részindexek száma: data/web.json
 
@@ -17,6 +23,8 @@ Csak nyílt licencű (Creative Commons) szövegek kerülnek a kimenetbe; a felha
 (oszovetsegi_kommentarok.xlsx) nem.
 """
 import csv, html, json, os, shutil, sys, time
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from kategoria import kategoria
 from collections import defaultdict
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -47,13 +55,28 @@ def nyilt(k):
     return 'creativecommons.org' in k['licenc'] and k['szerzo'] not in KIZART_SZERZOK
 
 
+MODOK = {
+    'kommentar': {
+        'CIM': 'Egyházatyák az Ószövetségről', 'H1': 'Kommentár-kereső',
+        'ALCIM': 'Az egyházatyák bibliamagyarázatai eredeti nyelven: ki és hol idéz egy bibliai helyet, és mit írtak róla.',
+        'LEIRAS': 'Keresés az egyházatyák szentírás-magyarázó műveiben: ki és hol idéz egy bibliai helyet, '
+                  'szöveges keresés latin és görög eredetiben.'},
+    'forras': {
+        'CIM': 'Patrisztikus források', 'H1': 'Patrisztikus források keresője',
+        'ALCIM': 'Az egyházatyák és az ókeresztény írók további művei eredeti nyelven: levelek, értekezések, '
+                 'prédikációk, történeti művek, zsinati iratok – szerző, mű és hely szerint vagy szavakra keresve.',
+        'LEIRAS': 'Az egyházatyák és az ókeresztény írók műveinek keresője: szerző, mű, hely és szöveg szerint, '
+                  'latin és görög eredetiben.'},
+}
+
+
 def jdump(obj, utvonal):
     os.makedirs(os.path.dirname(utvonal), exist_ok=True)
     with open(utvonal, 'w', encoding='utf-8') as o:
         json.dump(obj, o, ensure_ascii=False, separators=(',', ':'))
 
 
-def main(ki):
+def main(ki, kor='kommentar'):
     if os.path.exists(ki):
         shutil.rmtree(ki)
     os.makedirs(ki)
@@ -64,11 +87,13 @@ def main(ki):
     verzio = time.strftime('%Y%m%d%H%M%S', time.gmtime())
     index_html = os.path.join(ki, 'index.html')
     with open(index_html, encoding='utf-8') as f:
-        tartalom = f.read().replace('__VERZIO__', verzio)
+        tartalom = f.read().replace('__VERZIO__', verzio).replace('__MOD__', kor)
+        for kulcs, ertek in MODOK[kor].items():
+            tartalom = tartalom.replace(f'__{kulcs}__', html.escape(ertek))
     with open(index_html, 'w', encoding='utf-8') as f:
         f.write(tartalom)
 
-    kat = [k for k in csv.DictReader(open(os.path.join(GYOKER, 'katalogus', 'korpusz.csv'), encoding='utf-8')) if nyilt(k)]
+    kat = [k for k in csv.DictReader(open(os.path.join(GYOKER, 'katalogus', 'korpusz.csv'), encoding='utf-8')) if nyilt(k) and kategoria(k) == kor]
     muvek, urn2id = [], {}
     hely = {}  # (urn, ref) -> darab
     os.makedirs(os.path.join(ki, 'data'), exist_ok=True)
@@ -91,6 +116,7 @@ def main(ki):
                 akt.append([ref, t]); meret += len(t.encode())
         if akt:
             darabok.append(akt)
+        jdump([[ref, d] for d, resz in enumerate(darabok) for ref, _ in resz], os.path.join(ki, 'data', 'refs', f'{i}.json'))
         for d, resz in enumerate(darabok):
             jdump(resz, os.path.join(ki, 'data', 'sz', str(i), f'{d}.json'))
             os.makedirs(os.path.join(pf_forras, str(resz_db), str(i), str(d)), exist_ok=True)
@@ -110,6 +136,11 @@ def main(ki):
     sorrend = [r['szerzo'] for r in csv.DictReader(open(os.path.join(GYOKER, 'katalogus', 'lefedettseg.csv'), encoding='utf-8'))]
     jdump([s for s in sorrend if s in meglevo] + sorted(meglevo - set(sorrend)), os.path.join(ki, 'data', 'szerzok.json'))
 
+    if kor != 'kommentar':  # a forráskeresőben nincs bibliai helyes keresés
+        jdump([], os.path.join(ki, 'data', 'konyvek.json'))
+        jdump({'reszindexek': resz_db + 1, 'mod': kor}, os.path.join(ki, 'data', 'web.json'))
+        print(f'{len(muvek)} mű, {len(hely)} szakasz -> {ki}')
+        return
     # Biblia + idézet-index könyvenként
     biblia = defaultdict(lambda: {'v': {}, 'l': {}, 'i': defaultdict(list)})
     for b, kulcs in (('vulgata', 'v'), ('lxx', 'l')):
@@ -133,9 +164,12 @@ def main(ki):
         konyvek.append({'k': konyv, 'fej': len(fejezetek) and max(fejezetek), 'idezet': sum(map(len, adat['i'].values()))})
         jdump({'v': adat['v'], 'l': adat['l'], 'i': adat['i']}, os.path.join(ki, 'data', 'biblia', f'{konyv}.json'))
     jdump(konyvek, os.path.join(ki, 'data', 'konyvek.json'))
-    jdump({'reszindexek': resz_db + 1}, os.path.join(ki, 'data', 'web.json'))
+    jdump({'reszindexek': resz_db + 1, 'mod': kor}, os.path.join(ki, 'data', 'web.json'))
     print(f'{len(muvek)} mű, {len(hely)} szakasz, {len(konyvek)} bibliai könyv -> {ki}')
 
 
 if __name__ == '__main__':
-    main(sys.argv[1] if len(sys.argv) > 1 else os.path.join(GYOKER, '_site'))
+    arg = [a for a in sys.argv[1:] if not a.startswith('--')]
+    kor = sys.argv[sys.argv.index('--kor') + 1] if '--kor' in sys.argv else 'kommentar'
+    arg = [a for a in arg if a != kor]
+    main(arg[0] if arg else os.path.join(GYOKER, '_site'), kor)
