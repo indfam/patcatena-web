@@ -334,8 +334,11 @@ $("#masol").onclick = async () => {
 // ---- Útvonal (#v/Ter/3,15 · #q/szavak) – a keresés linkelhető ----
 function utvonal() {
   const h = decodeURIComponent(location.hash.slice(1));
-  const p = new URLSearchParams(h.includes("?") ? h.split("?")[1] : "");
-  const [tipus, ...resz] = h.split("?")[0].split("/");
+  // A „?” csak akkor vezet be paramétereket, ha név=érték követi: a PL-hivatkozások maguk is kezdődhetnek
+  // „?”-lel (ismeretlen textpart, pl. „?/15D”).
+  const parameteres = h.match(/^(.*?)\?([a-z]+=.*)$/);
+  const p = new URLSearchParams(parameteres ? parameteres[2] : "");
+  const [tipus, ...resz] = (parameteres ? parameteres[1] : h).split("/");
   if (tipus === "v" && resz.length >= 2) {
     mod("vers"); $("#konyv").value = resz[0]; $("#hely").value = resz[1]; $("#vszerzo").value = p.get("szerzo") || "";
     versKereses(resz[0], resz[1], p.get("szerzo") || "");
