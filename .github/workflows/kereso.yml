@@ -1,0 +1,44 @@
+# A patcatena webes keresőjének építése és közzététele GitHub Pages-en.
+# Helye: a NYILVÁNOS indfam/patcatena-web tároló .github/workflows/kereso.yml fájlja.
+# A szükséges (nyílt licencű) adatokat az eszkozok/web_szinkron.sh másolja át a privát patcatenából, így
+# a munkafolyamatnak nem kell hozzáférés a privát tárolóhoz. Feltétel: Settings > Pages > Source = „GitHub Actions”.
+name: Kereső építése és közzététele
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  epit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Adatok és felület
+        run: python3 eszkozok/web.py _site
+      - name: Szöveges keresőindex (Pagefind)
+        run: bash eszkozok/web_pagefind.sh _site
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  kozzetesz:
+    needs: epit
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - id: deploy
+        uses: actions/deploy-pages@v4

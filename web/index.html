@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>patcatena – egyházatyák bibliamagyarázatai</title>
+<meta name="description" content="Keresés az egyházatyák ószövetségi kommentárjaiban: ki és hol idéz egy bibliai helyet, szöveges keresés latin és görög eredetiben.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="lap">
+  <header class="fej">
+    <h1><a href="#">patcatena</a></h1>
+    <p>Az egyházatyák bibliamagyarázatai eredeti nyelven: ki és hol idéz egy bibliai helyet, és mit írtak róla.</p>
+  </header>
+
+  <nav class="mod" role="tablist" aria-label="Keresés módja">
+    <button role="tab" id="tab-vers" aria-controls="panel-vers" aria-selected="true">Bibliai hely</button>
+    <button role="tab" id="tab-szoveg" aria-controls="panel-szoveg" aria-selected="false">Szöveg</button>
+  </nav>
+
+  <section id="panel-vers" role="tabpanel" aria-labelledby="tab-vers">
+    <form id="urlap-vers" class="urlap">
+      <label>Könyv
+        <select id="konyv" required></select>
+      </label>
+      <label>Fejezet, vers
+        <input id="hely" required placeholder="3,15 vagy 3,15-16" autocomplete="off" inputmode="text">
+      </label>
+      <label>Szerző
+        <select id="vszerzo"><option value="">mind</option></select>
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">Az index a szó szerinti idézeteket találja meg (latinban a Vulgata, görögben a Szeptuaginta szövege alapján). Utalásokhoz és szabad parafrázishoz használja a szöveges keresést. A zsoltárok a Vulgata és a Szeptuaginta számozását követik (a héber 23. zsoltár itt a 22.).</p>
+  </section>
+
+  <section id="panel-szoveg" role="tabpanel" aria-labelledby="tab-szoveg" hidden>
+    <form id="urlap-szoveg" class="urlap">
+      <label class="szeles">Keresett szavak
+        <input id="kerdes" required placeholder="catulus leonis, „ostium in latere”, σκύμνος" autocomplete="off">
+      </label>
+      <label>Szerző
+        <select id="sszerzo"><option value="">mind</option></select>
+      </label>
+      <label>Nyelv
+        <select id="snyelv"><option value="">mind</option></select>
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">Több szó esetén mindegyiknek szerepelnie kell; idézőjelek között pontos kifejezést keres. A görög ékezetek és a latin u/v, i/j írásmód nem számít.</p>
+  </section>
+
+  <main id="eredmeny" aria-live="polite"></main>
+
+  <footer class="lab">
+    <p>A szövegek forrásai: Open Greek and Latin (First1KGreek, CSEL, Patrologia Latina), Perseus Digital Library,
+    Patristic Text Archive (BBAW); Vulgata Clementina, Szeptuaginta (Swete). Licenc: CC BY-SA 4.0 – a szövegek
+    és a belőlük készült keresőadatok a forrás megjelölésével szabadon felhasználhatók.
+    A Patrologia Latina szövegei gépi javítású OCR-ből származnak; idézés előtt érdemes a nyomtatott kiadással egyeztetni.</p>
+  </footer>
+</div>
+
+<dialog id="olvaso" aria-labelledby="olvaso-cim">
+  <div class="olvaso-fej">
+    <h2 id="olvaso-cim"></h2>
+    <button class="bezar" data-bezar aria-label="Bezárás">×</button>
+  </div>
+  <div id="olvaso-adat" class="adat"></div>
+  <div id="olvaso-szoveg" class="szakasz-szoveg"></div>
+  <div class="olvaso-lab">
+    <button id="elozo">Előző szakasz</button>
+    <button id="masol">Hivatkozás másolása</button>
+    <button id="kovetkezo">Következő szakasz</button>
+  </div>
+</dialog>
+<script src="app.js" type="module"></script>
+</body>
+</html>

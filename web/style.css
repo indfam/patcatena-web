@@ -1,0 +1,126 @@
+:root {
+  --lap: #ffffff;
+  --tinta: #221c18;
+  --halvany: #6b625b;
+  --vonal: #ddd6cf;
+  --rubrika: #a3201b;
+  --lazur: #24406b;
+  --jelolo: #f3e3a6;
+  --mezo: #faf9f8;
+  --serif: "Cardo", "Gentium Plus", "Times New Roman", serif;
+  --sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --lap: #1b1917; --tinta: #ece6df; --halvany: #a89e95; --vonal: #3a3532;
+    --rubrika: #e0685d; --lazur: #9db8e3; --jelolo: #5c4b16; --mezo: #232120; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --lap: #1b1917; --tinta: #ece6df; --halvany: #a89e95; --vonal: #3a3532;
+  --rubrika: #e0685d; --lazur: #9db8e3; --jelolo: #5c4b16; --mezo: #232120; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--lap); color: var(--tinta); font: 400 1.0625rem/1.6 var(--serif); }
+.lap { max-width: 62rem; margin: 0 auto; padding: 2rem 1rem 3rem; }
+a { color: var(--lazur); }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid var(--lazur); outline-offset: 2px;
+}
+
+/* Fejléc */
+.fej h1 { font-size: 2.6rem; font-weight: 400; line-height: 1.1; margin: 0 0 .35rem; letter-spacing: .01em; }
+.fej h1 a { color: var(--tinta); text-decoration: none; }
+.fej h1 a::first-letter { color: var(--rubrika); font-weight: 700; }
+.fej p { margin: 0 0 1.5rem; color: var(--halvany); max-width: 38rem; font-style: italic; }
+
+/* Módváltó */
+.mod { display: flex; gap: 1.5rem; border-bottom: 1px solid var(--vonal); margin-bottom: 1.25rem; }
+.mod button {
+  font: 600 1rem/1 var(--sans); color: var(--halvany); background: none; border: 0;
+  padding: .7rem 0; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer;
+}
+.mod button[aria-selected="true"] { color: var(--tinta); border-bottom-color: var(--rubrika); }
+
+/* Űrlapok */
+.urlap { display: flex; flex-wrap: wrap; gap: .75rem 1rem; align-items: flex-end; }
+.urlap label { display: flex; flex-direction: column; gap: .3rem; font: 600 .85rem/1.2 var(--sans); color: var(--halvany); }
+.urlap .szeles { flex: 1 1 20rem; }
+.urlap input, .urlap select {
+  font: 400 1rem/1.3 var(--sans); color: var(--tinta); background: var(--mezo);
+  border: 1px solid var(--vonal); border-radius: 3px; padding: .55rem .65rem; min-width: 8rem; max-width: 100%;
+}
+.urlap #hely { width: 10rem; }
+button { font: 600 .95rem/1 var(--sans); cursor: pointer; }
+.urlap button[type="submit"] {
+  background: var(--rubrika); color: #fff; border: 0; border-radius: 3px; padding: .7rem 1.2rem;
+}
+.tipp { font: 400 .875rem/1.5 var(--sans); color: var(--halvany); margin: .75rem 0 0; max-width: 46rem; }
+
+/* Eredmény: a bibliai szöveg mint a lap „textusa” */
+#eredmeny { margin-top: 2rem; }
+.textus { border-top: 1px solid var(--vonal); border-bottom: 1px solid var(--vonal); padding: 1.25rem 0; margin-bottom: 2rem; }
+.textus h2 { font-size: 1.5rem; font-weight: 400; margin: 0 0 .75rem; }
+.textus h2 b { color: var(--rubrika); font-weight: 700; }
+.forditasok { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.forditasok h3 { font: 600 .85rem/1.2 var(--sans); color: var(--halvany); margin: 0 0 .3rem; }
+.forditasok p { margin: 0 0 .35rem; font-size: 1.15rem; line-height: 1.55; }
+.forditasok sup { color: var(--rubrika); font-size: .7em; margin-right: .2em; }
+.osszegzes { font: 400 .9rem/1.4 var(--sans); color: var(--halvany); margin: 1rem 0 0; }
+
+/* Glosszák: szerző a margón, magyarázatok mellette */
+.glossza { display: grid; grid-template-columns: 11rem 1fr; gap: 0 1.75rem; padding: 1rem 0; border-bottom: 1px solid var(--vonal); }
+.glossza > h3 {
+  font-size: 1.05rem; font-weight: 400; font-variant: small-caps; letter-spacing: .03em;
+  color: var(--rubrika); margin: .15rem 0 0; line-height: 1.3;
+}
+.tetel { margin: 0 0 1.25rem; }
+.tetel:last-child { margin-bottom: 0; }
+.tetel h4 { font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.35; }
+.tetel h4 .hely { font-weight: 400; color: var(--halvany); }
+.tetel .egyezes { font: 400 .8rem/1.3 var(--sans); color: var(--halvany); margin: .15rem 0 .35rem; }
+.tetel blockquote { margin: 0; font-size: 1rem; line-height: 1.65; max-width: 40rem; }
+.tetel blockquote[lang="grc"] { font-size: 1.05rem; }
+.tetel mark, .szakasz-szoveg mark { background: var(--jelolo); color: inherit; padding: 0 .1em; }
+.tetel .tovabb { font: 600 .85rem/1 var(--sans); background: none; border: 0; padding: .5rem 0 0; color: var(--lazur); }
+.gyenge { margin: 1rem 0 0; }
+.gyenge button, .tobb {
+  font: 600 .9rem/1 var(--sans); background: none; color: var(--lazur);
+  border: 1px solid var(--vonal); border-radius: 3px; padding: .6rem .9rem;
+}
+.tobb { margin-top: 1.25rem; }
+.uzenet { font-style: italic; color: var(--halvany); }
+.toltes { font: 400 .9rem/1.4 var(--sans); color: var(--halvany); }
+
+/* Olvasó */
+dialog#olvaso {
+  width: min(46rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0;
+  border: 1px solid var(--vonal); border-radius: 4px; background: var(--lap); color: var(--tinta);
+}
+dialog#olvaso::backdrop { background: rgba(20, 16, 12, .45); }
+.olvaso-fej { display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem .5rem; }
+.olvaso-fej h2 { font-size: 1.3rem; font-weight: 400; margin: 0; line-height: 1.3; }
+.olvaso-fej h2 b { color: var(--rubrika); font-weight: 400; font-variant: small-caps; letter-spacing: .03em; }
+.bezar { background: none; border: 0; font-size: 1.6rem; line-height: 1; color: var(--halvany); padding: 0 .25rem; }
+.adat { font: 400 .85rem/1.5 var(--sans); color: var(--halvany); padding: 0 1.5rem; }
+.adat p { margin: .15rem 0; }
+.szakasz-szoveg { padding: 1rem 1.5rem; font-size: 1.1rem; line-height: 1.7; }
+.olvaso-lab { display: flex; justify-content: space-between; gap: .5rem; padding: .75rem 1.5rem 1.25rem; border-top: 1px solid var(--vonal); }
+.olvaso-lab button { background: none; border: 1px solid var(--vonal); border-radius: 3px; padding: .55rem .8rem; color: var(--tinta); }
+.olvaso-lab button:disabled { opacity: .4; cursor: default; }
+
+.lab { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--vonal); font: 400 .8rem/1.5 var(--sans); color: var(--halvany); }
+
+@media (max-width: 640px) {
+  .fej h1 { font-size: 2.1rem; }
+  .forditasok { grid-template-columns: 1fr; }
+  .glossza { grid-template-columns: 1fr; }
+  .glossza > h3 { margin-bottom: .5rem; }
+  .urlap label, .urlap #hely, .urlap select, .urlap input { width: 100%; }
+  .urlap label { flex: 1 1 100%; }
+  .olvaso-lab { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
