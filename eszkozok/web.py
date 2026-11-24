@@ -58,7 +58,8 @@ def nyilt(k):
 MODOK = {
     'kommentar': {
         'CIM': 'Egyházatyák az Ószövetségről', 'H1': 'Kommentár-kereső',
-        'ALCIM': 'Az egyházatyák bibliamagyarázatai eredeti nyelven: ki és hol idéz egy bibliai helyet, és mit írtak róla.',
+        'ALCIM': 'Keresés patrisztikus bibliamagyarázatokban, eredeti latin és görög nyelven. Adjon meg egy bibliai '
+                 'helyet, és a kereső megmutatja, ki idézi és magyarázza; vagy keressen szavakra, kifejezésekre a szövegekben.',
         'LEIRAS': 'Keresés az egyházatyák szentírás-magyarázó műveiben: ki és hol idéz egy bibliai helyet, '
                   'szöveges keresés latin és görög eredetiben.'},
     'forras': {
