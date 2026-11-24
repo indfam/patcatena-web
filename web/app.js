@@ -41,6 +41,9 @@ function link(mu, ref) {
 function hivatkozas(mu, ref) {
   return `${mu.szerzo}: ${mu.mu} ${ref}. ${mu.kiadas}. ${link(mu, ref)}`;
 }
+// A másolt szöveg és a Google AI mód kérdése: fordítási kérés a hivatkozott helyre.
+const forditasKeres = (mu, ref) => `fordítsd: "${hivatkozas(mu, ref)}"`;
+const aiModLink = (mu, ref) => `https://www.google.com/search?udm=50&hl=hu&q=${encodeURIComponent(forditasKeres(mu, ref))}`;
 
 // ---- Magasság jelzése a beágyazó oldalnak (WordPress-iframe) ----
 const jelezMagassag = () => parent !== window &&
@@ -286,6 +289,7 @@ async function olvaso(m, d, ref, kiemel) {
   const sz = $("#olvaso-szoveg");
   sz.innerHTML = html;
   sz.lang = mu.nyelv === "lat" ? "la" : mu.nyelv;
+  $("#forditas").href = aiModLink(mu, ref);
   $("#elozo").disabled = s.i === 0 && d === 0;
   $("#kovetkezo").disabled = s.i === s.sorok.length - 1 && d === mu.darabok - 1;
   const dlg = $("#olvaso");
@@ -317,7 +321,7 @@ function regiMasolas(szoveg) {
   return ok;
 }
 $("#masol").onclick = async () => {
-  const szoveg = hivatkozas(KAT[OLV.m], OLV.ref);
+  const szoveg = forditasKeres(KAT[OLV.m], OLV.ref);
   let ok = false;
   try { await navigator.clipboard.writeText(szoveg); ok = true; } catch { ok = regiMasolas(szoveg); }
   $("#olvaso-masolat")?.remove();

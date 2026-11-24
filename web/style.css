@@ -117,6 +117,7 @@ dialog#olvaso::backdrop { background: rgba(20, 16, 12, .45); }
 .adat p { margin: .15rem 0; }
 .szakasz-szoveg { padding: 1rem 1.5rem; font-size: 1.1rem; line-height: 1.7; }
 .olvaso-lab { display: flex; justify-content: space-between; gap: .5rem; padding: .75rem 1.5rem 1.25rem; border-top: 1px solid var(--vonal); }
+.olvaso-lab .gomb { font: 600 .95rem/1 var(--sans); text-decoration: none; background: var(--rubrika); color: #fff; border-radius: 3px; padding: .55rem .8rem; }
 .olvaso-lab button { background: none; border: 1px solid var(--vonal); border-radius: 3px; padding: .55rem .8rem; color: var(--tinta); }
 .olvaso-lab button:disabled { opacity: .4; cursor: default; }
 
