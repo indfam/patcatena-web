@@ -305,11 +305,30 @@ $("#elozo").onclick = () => lapoz(-1);
 $("#kovetkezo").onclick = () => lapoz(1);
 $("[data-bezar]").onclick = () => $("#olvaso").close();
 $("#olvaso").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
+// Hivatkozás másolása: a vágólap-API (beágyazott keretben csak engedéllyel működik), tartalékként a régi
+// kijelöléses másolás; ha egyik sem megy, a hivatkozás kijelölt szövegként jelenik meg, és Ctrl+C-vel másolható.
+function regiMasolas(szoveg) {
+  const ta = document.createElement("textarea");
+  ta.value = szoveg; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+  $("#olvaso").append(ta); ta.select();
+  let ok = false;
+  try { ok = document.execCommand("copy"); } catch { ok = false; }
+  ta.remove();
+  return ok;
+}
 $("#masol").onclick = async () => {
-  const mu = KAT[OLV.m];
-  try { await navigator.clipboard.writeText(hivatkozas(mu, OLV.ref)); $("#masol").textContent = "Hivatkozás másolva"; }
-  catch { $("#masol").textContent = "A másolás nem sikerült"; }
-  setTimeout(() => ($("#masol").textContent = "Hivatkozás másolása"), 2000);
+  const szoveg = hivatkozas(KAT[OLV.m], OLV.ref);
+  let ok = false;
+  try { await navigator.clipboard.writeText(szoveg); ok = true; } catch { ok = regiMasolas(szoveg); }
+  $("#olvaso-masolat")?.remove();
+  if (ok) {
+    $("#masol").textContent = "Hivatkozás másolva";
+  } else {
+    $("#masol").textContent = "Jelölje ki és másolja (Ctrl+C)";
+    $("#olvaso-adat").insertAdjacentHTML("beforeend", `<textarea id="olvaso-masolat" class="masolat" readonly rows="3">${esc(szoveg)}</textarea>`);
+    const t = $("#olvaso-masolat"); t.focus(); t.select();
+  }
+  setTimeout(() => ($("#masol").textContent = "Hivatkozás másolása"), 3000);
 };
 
 // ---- Útvonal (#v/Ter/3,15 · #q/szavak) – a keresés linkelhető ----

@@ -103,6 +103,7 @@ button { font: 600 .95rem/1 var(--sans); cursor: pointer; }
 [hidden] { display: none !important; }
 
 /* Olvasó */
+.masolat { width: 100%; margin-top: .5rem; font: 400 .85rem/1.4 var(--sans); color: var(--tinta); background: var(--mezo); border: 1px solid var(--vonal); border-radius: 3px; padding: .4rem; }
 dialog#olvaso {
   width: min(46rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0;
   border: 1px solid var(--vonal); border-radius: 4px; background: var(--lap); color: var(--tinta);
