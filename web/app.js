@@ -1,4 +1,4 @@
-// patcatena – webes kereső. Statikus adatokból dolgozik (data/), a szöveges kereséshez Pagefindet használ.
+// Egyházatyák az Ószövetségről – webes kereső. Statikus adatokból dolgozik (data/), a szöveges kereséshez Pagefindet használ.
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const NYELVNEV = { lat: "latin", grc: "görög", eng: "angol", deu: "német", syc: "szír" };
@@ -21,7 +21,9 @@ let KAT = [], SZERZOK = [], KONYVEK = [], WEB = { reszindexek: 1 };
 const darabCache = new Map(), bibliaCache = new Map();
 let pagefind = null;
 
-const json = async (u) => { const r = await fetch(u); if (!r.ok) throw new Error(u); return r.json(); };
+// Verziójelzés (az építés ideje): minden új közzététel után friss adatot tölt be, nem a gyorsítótárból
+const V = new URL(import.meta.url).searchParams.get("v") || "";
+const json = async (u) => { const r = await fetch(V ? `${u}?v=${V}` : u); if (!r.ok) throw new Error(u); return r.json(); };
 
 async function darab(m, d) {
   const k = `${m}/${d}`;
@@ -166,7 +168,7 @@ async function szovegKereses(q, szerzo, nyelv) {
   const ki = $("#eredmeny");
   ki.innerHTML = `<p class="toltes">Keresés…</p>`;
   if (!pagefind) {
-    pagefind = await import("./pagefind/pagefind.js");
+    pagefind = await import(`./pagefind/pagefind.js${V ? "?v=" + V : ""}`);
     await pagefind.options({ excerptLength: 40 });
     // A keresőindex részekben készül (memóriaigény miatt); a böngészőben egyesítjük őket
     for (let n = 1; n < WEB.reszindexek; n++) await pagefind.mergeIndex(new URL(`pagefind${n}/`, location.href).href);

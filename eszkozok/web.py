@@ -16,7 +16,7 @@ Kimenet:
 Csak nyílt licencű (Creative Commons) szövegek kerülnek a kimenetbe; a felhasználó saját katalógusa
 (oszovetsegi_kommentarok.xlsx) nem.
 """
-import csv, html, json, os, shutil, sys
+import csv, html, json, os, shutil, sys, time
 from collections import defaultdict
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -60,6 +60,13 @@ def main(ki):
     for f in os.listdir(os.path.join(GYOKER, 'web')):
         if f.endswith(('.html', '.js', '.css', '.svg')) and True:
             shutil.copy(os.path.join(GYOKER, 'web', f), ki)
+    # Verziójelzés a fájlhivatkozásokban: a böngésző minden építés után az új változatot tölti be
+    verzio = time.strftime('%Y%m%d%H%M%S', time.gmtime())
+    index_html = os.path.join(ki, 'index.html')
+    with open(index_html, encoding='utf-8') as f:
+        tartalom = f.read().replace('__VERZIO__', verzio)
+    with open(index_html, 'w', encoding='utf-8') as f:
+        f.write(tartalom)
 
     kat = [k for k in csv.DictReader(open(os.path.join(GYOKER, 'katalogus', 'korpusz.csv'), encoding='utf-8')) if nyilt(k)]
     muvek, urn2id = [], {}
