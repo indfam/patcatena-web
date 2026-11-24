@@ -38,8 +38,13 @@ LAP = ('<!doctype html><html lang="la"><head><meta charset="utf-8"><title>{m}/{d
 NYELV = {'lat': 'latin', 'grc': 'görög', 'eng': 'angol', 'deu': 'német', 'syc': 'szír'}
 
 
+# A webes keresőből kihagyott szerzők (a könyvtárban megmaradnak). Philón zsidó szerző, nem egyházatya.
+KIZART_SZERZOK = {'Alexandriai Philón'}
+
+
 def nyilt(k):
-    return 'creativecommons.org' in k['licenc']
+    """A nyilvános keresőbe kerülhet-e: nyílt licencű, és nem kihagyott szerző."""
+    return 'creativecommons.org' in k['licenc'] and k['szerzo'] not in KIZART_SZERZOK
 
 
 def jdump(obj, utvonal):
