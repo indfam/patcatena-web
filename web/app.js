@@ -74,6 +74,20 @@ $("#tab-szoveg").onclick = () => { mod("szoveg"); $("#kerdes").focus(); };
 $("#tab-bongesz").onclick = () => { mod("bongesz"); $("#bszerzo").focus(); };
 if (MOD === "forras") { $("#tab-vers").hidden = true; $("#tab-szoveg").before($("#tab-bongesz")); }
 
+// ---- Jobb szöveg: a PL-szakasz gondosabb kiadásban (CSEL stb.), akár a másik keresőben ----
+const jobbCache = new Map();
+async function jobbHelyek(m) {
+  if (!KAT[m].jobb) return {};
+  if (!jobbCache.has(m)) jobbCache.set(m, json(`data/jobb/${m}.json`).catch(() => ({})));
+  return jobbCache.get(m);
+}
+const MASIK = MOD === "forras" ? "../" : "forrasok/";
+function jobbLink(c, ref, szoveg) {
+  const h = `#u/${c.urn}${ref ? "/" + encodeURIComponent(ref) : ""}`;
+  return c.oldal === MOD ? `<a href="${esc(h)}">${szoveg}</a>`
+    : `<a href="${esc(MASIK + h)}" target="_blank" rel="noopener">${szoveg}</a> (a ${c.oldal === "forras" ? "Patrisztikus források keresőjében" : "Kommentár-keresőben"})`;
+}
+
 // ---- Szerző és mű: böngészés, helyre ugrás ----
 const refCache = new Map();
 async function refek(m) {
@@ -109,6 +123,8 @@ async function muLap(m, nyitRef) {
   $("#eredmeny").innerHTML = `<section class="glossza"><h3>${esc(mu.szerzo)}</h3><div class="tetel">
       <h4>${esc(mu.mu)}</h4>
       <p class="egyezes">${esc(mu.kiadas)} · ${r.length} szakasz · <a href="${esc(link(mu, r[0] ? r[0][0] : ""))}" target="_blank" rel="noopener">a forrásnál</a></p>
+      ${mu.jobb ? `<p class="tipp jobb">Egyes részei gondosabb kiadásban is megvannak: ${mu.jobb.map((c) =>
+        jobbLink(c, "", `${esc(c.szerzo)}: ${esc(c.mu)}`) + ` – ${c.db} szakasz`).join("; ")}. Ezeknél a szakaszoknál az olvasó a párhuzamos helyre is mutat.</p>` : ""}
       <div class="tartalom">${r.slice(0, MAX).map(([ref, d]) => `<a href="#m/${m}/${encodeURIComponent(ref)}" data-d="${d}">${esc(ref)}</a>`).join("")}</div>
       ${r.length > MAX ? `<p class="tipp">Az első ${MAX} hely látszik; a többit a „Hely” mezővel nyithatja meg.</p>` : ""}
     </div></section>`;
@@ -293,6 +309,12 @@ async function olvaso(m, d, ref, kiemel) {
   $("#olvaso-adat").innerHTML = `<p>Kiadás: ${esc(mu.kiadas)}</p>
     <p><a href="${esc(link(mu, ref))}" target="_blank" rel="noopener">Megnyitás a forrásnál</a>${mu.online.includes("{ref}") ? "" : ` (hely: ${esc(ref)})`} · ${esc(mu.urn)}</p>
     ${mu.forras === "patrologia_latina-dev" ? "<p>Gépi javítású OCR (Migne, PL); a hasábszámot és a szöveget a nyomtatott kiadásban érdemes ellenőrizni.</p>" : ""}`;
+  const jh = (await jobbHelyek(m))[ref];
+  if (jh) {
+    const c = mu.jobb[jh[0]];
+    $("#olvaso-adat").insertAdjacentHTML("beforeend", `<p class="jobb">Ugyanez a szöveg gondosabb kiadásban: ${jobbLink(c, jh[1],
+      `${esc(c.szerzo)}: ${esc(c.mu)} ${esc(jh[1])}`)}. ${esc(c.kiadas)}</p>`);
+  }
   let html = esc(s.szoveg);
   if (kiemel) for (const w of valtozatok(kiemel).join(" ").replace(/["„”]/g, "").split(/\s+/).filter((w) => w.length > 2)) {
     html = html.replace(new RegExp(`(${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "gi"), "<mark>$1</mark>");
@@ -363,6 +385,10 @@ function utvonal() {
     szovegKereses(q, p.get("szerzo") || "", p.get("nyelv") || "");
   } else if (tipus === "a" && resz.length) {
     szerzoLap(resz.join("/"));
+  } else if (tipus === "u" && resz.length) {
+    const m = KAT.findIndex((k) => k.urn === resz[0]);
+    if (m < 0) $("#eredmeny").innerHTML = `<p class="uzenet">Ez a mű nincs ebben a keresőben.</p>`;
+    else muLap(m, resz.slice(1).join("/"));
   } else if (tipus === "m" && resz.length) {
     muLap(+resz[0], resz.length > 1 ? resz.slice(1).join("/") : "");
   } else if (!h) {

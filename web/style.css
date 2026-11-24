@@ -115,6 +115,7 @@ dialog#olvaso::backdrop { background: rgba(20, 16, 12, .45); }
 .bezar { background: none; border: 0; font-size: 1.6rem; line-height: 1; color: var(--halvany); padding: 0 .25rem; }
 .adat { font: 400 .85rem/1.5 var(--sans); color: var(--halvany); padding: 0 1.5rem; }
 .adat p { margin: .15rem 0; }
+.adat .jobb, .tipp.jobb { color: var(--tinta); border-left: 3px solid var(--rubrika); padding-left: .5rem; }
 .szakasz-szoveg { padding: 1rem 1.5rem; font-size: 1.1rem; line-height: 1.7; }
 .olvaso-lab { display: flex; justify-content: space-between; gap: .5rem; padding: .75rem 1.5rem 1.25rem; border-top: 1px solid var(--vonal); }
 .olvaso-lab .gomb { font: 600 .95rem/1 var(--sans); text-decoration: none; background: var(--rubrika); color: #fff; border-radius: 3px; padding: .55rem .8rem; }

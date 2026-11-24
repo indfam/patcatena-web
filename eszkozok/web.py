@@ -77,6 +77,35 @@ def jdump(obj, utvonal):
         json.dump(obj, o, ensure_ascii=False, separators=(',', ':'))
 
 
+def jobb_szoveg(ki, kat, muvek):
+    """A PL-szövegek összekötése ugyanazon szöveg gondosabb kiadásával (eszkozok/jobb_szoveg.py eredménye).
+    A katalógusban: muvek[i]['jobb'] = a célművek listája; data/jobb/<i>.json = {PL-hely: [célmű sorszáma, célhely]}.
+    A célmű lehet a másik keresőben is ('oldal'); csak nyílt licencű célmű kerül bele."""
+    f = os.path.join(GYOKER, 'katalogus', 'jobb_szoveg.tsv')
+    if not os.path.exists(f):
+        return
+    osszes = {k['urn']: k for k in csv.DictReader(open(os.path.join(GYOKER, 'katalogus', 'korpusz.csv'), encoding='utf-8'))}
+    sorszam = {k['urn']: i for i, k in enumerate(kat)}
+    parok = {}
+    for r in csv.DictReader(open(f, encoding='utf-8'), delimiter='\t'):
+        c = osszes.get(r['urn'])
+        if r['pl_urn'] in sorszam and c and nyilt(c):
+            parok.setdefault(r['pl_urn'], []).append((r['pl_ref'], c, r['ref'], int(r['kozos'])))
+    for pl_urn, lista in parok.items():
+        i = sorszam[pl_urn]
+        celok, cel_i, helyek = [], {}, {}
+        for pl_ref, c, ref, kozos in lista:
+            if c['urn'] not in cel_i:
+                cel_i[c['urn']] = len(celok)
+                celok.append({'urn': c['urn'], 'szerzo': c['szerzo'], 'mu': c['mu'], 'kiadas': c['kiadas'],
+                              'oldal': kategoria(c), 'db': 0})
+            celok[cel_i[c['urn']]]['db'] += 1
+            if pl_ref not in helyek or kozos > helyek[pl_ref][2]:
+                helyek[pl_ref] = [cel_i[c['urn']], ref, kozos]
+        muvek[i]['jobb'] = celok
+        jdump({k: v[:2] for k, v in helyek.items()}, os.path.join(ki, 'data', 'jobb', f'{i}.json'))
+
+
 def main(ki, kor='kommentar'):
     if os.path.exists(ki):
         shutil.rmtree(ki)
@@ -131,6 +160,7 @@ def main(ki, kor='kommentar'):
         muvek.append({'szerzo': k['szerzo'], 'mu': k['mu'], 'nyelv': k['nyelv'], 'tipus': k['tipus'],
                       'kiadas': k['kiadas'], 'licenc': k['licenc'], 'online': k['online'],
                       'forras': k['forraskorpusz'], 'urn': k['urn'], 'darabok': len(darabok)})
+    jobb_szoveg(ki, kat, muvek)
     jdump(muvek, os.path.join(ki, 'data', 'katalogus.json'))
     # Szerzők a katalógus (nagyjából időrendi) sorrendjében, csak a ténylegesen meglévők
     meglevo = {m['szerzo'] for m in muvek}
