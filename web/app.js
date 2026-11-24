@@ -41,9 +41,20 @@ function link(mu, ref) {
 function hivatkozas(mu, ref) {
   return `${mu.szerzo}: ${mu.mu} ${ref}. ${mu.kiadas}. ${link(mu, ref)}`;
 }
-// A másolt szöveg és a Google AI mód kérdése: fordítási kérés a hivatkozott helyre.
-const forditasKeres = (mu, ref) => `fordítsd: "${hivatkozas(mu, ref)}"`;
-const aiModLink = (mu, ref) => `https://www.google.com/search?udm=50&hl=hu&q=${encodeURIComponent(forditasKeres(mu, ref))}`;
+// A másolt szöveg és a Google AI mód kérdése: fordítási kérés a szakasz eredeti szövegével.
+const forditasKeres = (szoveg) => `fordítsd: "${szoveg.replace(/\s+/g, " ").trim()}"`;
+// A Google a túl hosszú címet elutasítja; a nagyon hosszú szakasz eleje megy át, mondathatáron vágva.
+const AI_MAX = 6000;
+function aiModLink(szoveg) {
+  let t = szoveg.replace(/\s+/g, " ").trim();
+  if (encodeURIComponent(t).length > AI_MAX) {
+    while (encodeURIComponent(t).length > AI_MAX) t = t.slice(0, Math.floor(t.length * 0.9));
+    const v = Math.max(t.lastIndexOf(". "), t.lastIndexOf("; "));
+    if (v > t.length / 2) t = t.slice(0, v + 1);
+    t += " […]";
+  }
+  return `https://www.google.com/search?udm=50&hl=hu&q=${encodeURIComponent(forditasKeres(t))}`;
+}
 
 // ---- Magasság jelzése a beágyazó oldalnak (WordPress-iframe) ----
 const jelezMagassag = () => parent !== window &&
@@ -277,7 +288,7 @@ async function olvaso(m, d, ref, kiemel) {
   const s = await szakasz(m, d, ref);
   if (!s) return;
   const mu = KAT[m];
-  OLV = { m, d, i: s.i, n: s.sorok.length, ref, kiemel };
+  OLV = { m, d, i: s.i, n: s.sorok.length, ref, kiemel, szoveg: s.szoveg };
   $("#olvaso-cim").innerHTML = `<b>${esc(mu.szerzo)}</b><br>${esc(mu.mu)} ${esc(ref)}`;
   $("#olvaso-adat").innerHTML = `<p>Kiadás: ${esc(mu.kiadas)}</p>
     <p><a href="${esc(link(mu, ref))}" target="_blank" rel="noopener">Megnyitás a forrásnál</a>${mu.online.includes("{ref}") ? "" : ` (hely: ${esc(ref)})`} · ${esc(mu.urn)}</p>
@@ -289,7 +300,7 @@ async function olvaso(m, d, ref, kiemel) {
   const sz = $("#olvaso-szoveg");
   sz.innerHTML = html;
   sz.lang = mu.nyelv === "lat" ? "la" : mu.nyelv;
-  $("#forditas").href = aiModLink(mu, ref);
+  $("#forditas").href = aiModLink(s.szoveg);
   $("#elozo").disabled = s.i === 0 && d === 0;
   $("#kovetkezo").disabled = s.i === s.sorok.length - 1 && d === mu.darabok - 1;
   const dlg = $("#olvaso");
@@ -309,7 +320,7 @@ $("#elozo").onclick = () => lapoz(-1);
 $("#kovetkezo").onclick = () => lapoz(1);
 $("[data-bezar]").onclick = () => $("#olvaso").close();
 $("#olvaso").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
-// Hivatkozás másolása: a vágólap-API (beágyazott keretben csak engedéllyel működik), tartalékként a régi
+// Szöveg másolása („fordítsd: …” kéréssel): a vágólap-API (beágyazott keretben csak engedéllyel működik), tartalékként a régi
 // kijelöléses másolás; ha egyik sem megy, a hivatkozás kijelölt szövegként jelenik meg, és Ctrl+C-vel másolható.
 function regiMasolas(szoveg) {
   const ta = document.createElement("textarea");
@@ -321,18 +332,18 @@ function regiMasolas(szoveg) {
   return ok;
 }
 $("#masol").onclick = async () => {
-  const szoveg = forditasKeres(KAT[OLV.m], OLV.ref);
+  const szoveg = forditasKeres(OLV.szoveg);
   let ok = false;
   try { await navigator.clipboard.writeText(szoveg); ok = true; } catch { ok = regiMasolas(szoveg); }
   $("#olvaso-masolat")?.remove();
   if (ok) {
-    $("#masol").textContent = "Hivatkozás másolva";
+    $("#masol").textContent = "Szöveg másolva";
   } else {
     $("#masol").textContent = "Jelölje ki és másolja (Ctrl+C)";
     $("#olvaso-adat").insertAdjacentHTML("beforeend", `<textarea id="olvaso-masolat" class="masolat" readonly rows="3">${esc(szoveg)}</textarea>`);
     const t = $("#olvaso-masolat"); t.focus(); t.select();
   }
-  setTimeout(() => ($("#masol").textContent = "Hivatkozás másolása"), 3000);
+  setTimeout(() => ($("#masol").textContent = "Szöveg másolása"), 3000);
 };
 
 // ---- Útvonal (#v/Ter/3,15 · #q/szavak) – a keresés linkelhető ----
