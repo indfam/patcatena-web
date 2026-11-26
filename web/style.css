@@ -110,6 +110,9 @@ dialog#olvaso {
   /* A keret tetején nyílik, nem a (beágyazva akár sok ezer pixel magas) lap közepén: a szerzőkép a helyén marad */
   margin: 1rem auto auto;
 }
+/* Hosszú szakasznál csak a szöveg gördül, a fejléc (szerző, mű) és a gombsor a helyén marad */
+dialog#olvaso[open] { display: flex; flex-direction: column; }
+dialog#olvaso .szakasz-szoveg { overflow-y: auto; min-height: 0; flex: 1 1 auto; }
 dialog#olvaso::backdrop { background: rgba(20, 16, 12, .45); }
 .olvaso-fej { display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem .5rem; }
 .olvaso-fej h2 { font-size: 1.3rem; font-weight: 400; margin: 0; line-height: 1.3; }

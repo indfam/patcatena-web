@@ -340,9 +340,15 @@ document.addEventListener("click", (e) => {
 }, true);
 document.addEventListener("submit", (e) => { kattY = e.target.getBoundingClientRect().top; }, true);
 function helyez(dlg) {
-  if (parent === window || kattY === null) { dlg.style.marginTop = ""; return; }
-  const t = Math.min(Math.max(16, kattY - 60), Math.max(16, innerHeight - dlg.offsetHeight - 16));
+  if (parent === window || kattY === null) { dlg.style.marginTop = dlg.style.maxHeight = ""; return; }
+  // A teteje a kattintott elem fölött marad (hosszú szövegnél sem csúszik feljebb, a szerzőtől el); a magassága
+  // legfeljebb kb. egy képernyőnyi, a hosszú szöveg az ablakon belül gördül. Csak ha a keret alja túl közel van,
+  // kerül feljebb.
+  const kepernyo = Math.round((screen.availHeight || 900) * 0.7);
+  let t = Math.max(16, kattY - 60);
+  if (innerHeight - t - 16 < Math.min(kepernyo, 400)) t = Math.max(16, innerHeight - Math.min(kepernyo, 400) - 16);
   dlg.style.marginTop = `${t}px`;
+  dlg.style.maxHeight = `${Math.min(kepernyo, innerHeight - t - 16)}px`;
 }
 async function lapoz(irany) {
   if (!OLV) return;
