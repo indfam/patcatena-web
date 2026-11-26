@@ -192,6 +192,7 @@ async function versKereses(konyv, helyStr, szerzo) {
     </article>
     <div id="glosszak"></div>
     <div class="gyenge" id="gyenge-hely"></div>`;
+  if (gorgessen) { gorgessen = false; gorget(ki.querySelector(".textus")); }
   await glosszak(erosek.length ? erosek : talalat, $("#glosszak"));
   const gyengek = erosek.length ? talalat.filter((t) => erosseg(t.egy, t.ossz) === "gyenge") : [];
   if (gyengek.length) {
@@ -410,9 +411,18 @@ function utvonal() {
     if (MOD === "forras") mod("bongesz");
   }
 }
+// A Keresés gomb után a megtalált szentírási részhez gördül. Beágyazva a keret nem görget, ezért a beágyazó
+// oldalt kéri meg (postMessage „patcatena-gorget”, a keret tetejétől mért távolsággal).
+let gorgessen = false;
+function gorget(el) {
+  if (!el) return;
+  if (parent === window) { el.scrollIntoView({ block: "start", behavior: "smooth" }); return; }
+  parent.postMessage({ type: "patcatena-gorget", y: Math.round(el.getBoundingClientRect().top + scrollY) }, "*");
+}
 const ugrik = (h) => { if (location.hash === "#" + h) utvonal(); else location.hash = h; };
 $("#urlap-vers").onsubmit = (e) => {
   e.preventDefault();
+  gorgessen = true;
   const sz = $("#vszerzo").value;
   ugrik(`v/${$("#konyv").value}/${$("#hely").value.replace(/\s/g, "")}${sz ? "?szerzo=" + encodeURIComponent(sz) : ""}`);
 };
