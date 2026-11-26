@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denzinger-kereső</title>
+<meta name="description" content="Denzinger, Enchiridion symbolorum: keresés új (DS) és régi (D) szám, szöveg és dokumentum szerint, latinul és angolul.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=__VERZIO__">
+<style>
+  .egyseg { border-top: 1px solid var(--vonal); padding: 1.25rem 0; }
+  .szamok { font: 600 .95rem/1.3 var(--sans); color: var(--rubrika); margin: 0 0 .25rem; }
+  .szamok span { color: var(--halvany); font-weight: 400; }
+  .doknev { font-size: 1.05rem; font-variant: small-caps; letter-spacing: .02em; margin: 0 0 .2rem; }
+  .doknev a { color: var(--tinta); text-decoration: none; }
+  .angolcim { font: 400 .9rem/1.4 var(--sans); color: var(--halvany); margin: 0 0 .75rem; }
+  .ket-hasab { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+  .ket-hasab h3 { font: 600 .8rem/1.2 var(--sans); color: var(--halvany); margin: 0 0 .35rem; }
+  .ket-hasab p { margin: 0 0 .6rem; line-height: 1.65; }
+  .ds-jel { font: 700 .75em/1 var(--sans); color: var(--rubrika); margin-right: .25em; }
+  .lapozo { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .lapozo button, .lapozo a { font: 600 .9rem/1 var(--sans); background: none; color: var(--tinta); border: 1px solid var(--vonal);
+    border-radius: 3px; padding: .55rem .8rem; text-decoration: none; cursor: pointer; }
+  .lapozo a.gomb { background: var(--rubrika); color: #fff; border-color: var(--rubrika); }
+  .lapozo button:disabled { opacity: .4; cursor: default; }
+  .magyar { font: 600 .95rem/1.4 var(--sans); margin: .75rem 0 0; }
+  .forrasjel { font: 400 .8rem/1.4 var(--sans); color: var(--halvany); margin: .5rem 0 0; }
+  .doklista { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .doklista li { padding: .45rem 0; border-bottom: 1px solid var(--vonal); display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; }
+  .doklista .tart { font: 400 .85rem/1.4 var(--sans); color: var(--halvany); }
+  .talalat { padding: .8rem 0; border-bottom: 1px solid var(--vonal); }
+  .talalat h4 { margin: 0 0 .2rem; font-size: 1rem; }
+  .talalat p { margin: 0; font-size: .95rem; line-height: 1.55; }
+  @media (max-width: 640px) { .ket-hasab { grid-template-columns: 1fr; } .doklista li { grid-template-columns: 1fr; gap: .1rem; } }
+</style>
+</head>
+<body>
+<div class="lap">
+  <header class="fej">
+    <h1><a href="#">Denzinger-kereső</a></h1>
+    <p>Enchiridion symbolorum, definitionum et declarationum de rebus fidei et morum – a hitvallások és a tanítóhivatal
+    megnyilatkozásai latinul, angol fordítással. Keressen új (DS) vagy régi (D) szám, szavak, kifejezések vagy dokumentum szerint.</p>
+  </header>
+
+  <nav class="mod" role="tablist" aria-label="Keresés módja">
+    <button role="tab" id="tab-szam" aria-controls="panel-szam" aria-selected="true">Szám szerint</button>
+    <button role="tab" id="tab-szoveg" aria-controls="panel-szoveg" aria-selected="false">Szöveg és tárgy</button>
+    <button role="tab" id="tab-dok" aria-controls="panel-dok" aria-selected="false">Dokumentumok</button>
+  </nav>
+
+  <section id="panel-szam" role="tabpanel" aria-labelledby="tab-szam">
+    <form id="urlap-szam" class="urlap">
+      <label>Számozás
+        <select id="szamozas">
+          <option value="ds">DS / DH (új számozás)</option>
+          <option value="d">D (régi számozás)</option>
+        </select>
+      </label>
+      <label>Szám
+        <input id="szam" required placeholder="pl. 3011 vagy 1792" autocomplete="off" inputmode="numeric">
+      </label>
+      <button type="submit">Megnyitás</button>
+    </form>
+    <p class="tipp">Az új számozás a Denzinger–Schönmetzer (DS) és a Denzinger–Hünermann (DH) kiadásé, a régi a Bannwart–Umberg-féle
+    kiadásoké (D, a 30. kiadásig). A latin szöveg 1958-ig (DS 3928), az angol fordítás 1950-ig (D 2331) terjed.</p>
+  </section>
+
+  <section id="panel-szoveg" role="tabpanel" aria-labelledby="tab-szoveg" hidden>
+    <form id="urlap-szoveg" class="urlap">
+      <label class="szeles">Keresett szavak
+        <input id="kerdes" required placeholder="pl. transsubstantiatio, „ex cathedra”, infallibility" autocomplete="off">
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">A latin szövegben és az angol fordításban egyszerre keres, a dokumentumok címével együtt. Tárgyra angol vagy latin
+    kulcsszóval kereshet (pl. purgatory, purgatorium, indulgentiae). Több szó esetén mindegyiknek szerepelnie kell; idézőjelek
+    között pontos kifejezést keres. A latin u/v, i/j írásmód nem számít.</p>
+  </section>
+
+  <section id="panel-dok" role="tabpanel" aria-labelledby="tab-dok" hidden>
+    <form id="urlap-dok" class="urlap" onsubmit="return false">
+      <label class="szeles">Szűrés a dokumentumok címére
+        <input id="dokszuro" placeholder="pl. Trident, Pie IX, Florentinum" autocomplete="off">
+      </label>
+    </form>
+    <p class="tipp">A dokumentumok időrendben, a forrás (catho.org) francia nyelvű címeivel.</p>
+    <ul id="doklista" class="doklista"></ul>
+  </section>
+
+  <main id="eredmeny" aria-live="polite"></main>
+
+  <footer class="lab">
+    <p>Latin szöveg: catho.org „Denzinger (latin)” (DS- és D-számokkal, 1958-ig); a csak a régi kiadásban meglévő tételeknél
+    a 11. kiadás (Bannwart, Freiburg 1911) gépi olvasású szövege, a gustavo-depaula/ember közkincs feldolgozása alapján.
+    Angol fordítás: R. J. Deferrari, The Sources of Catholic Dogma (St. Louis: B. Herder 1955/57, a 30. kiadás fordítása),
+    a patristica.net szövege. Magyar fordítás: Fila Béla – Jug László (az új számozás szerint), a denzingerhu.wordpress.com
+    oldalain – a kereső csak a megfelelő oldalra mutat. A dokumentumok szövege közkincs; a fordítás és a számozás az idézett kiadásoké. Idézés előtt
+    érdemes a nyomtatott kiadással egyeztetni.</p>
+  </footer>
+</div>
+<script src="dz.js?v=__VERZIO__" type="module"></script>
+</body>
+</html>

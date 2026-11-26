@@ -25,14 +25,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Adatok és felület (Kommentár-kereső, Patrisztikus források keresője)
+      - name: Adatok és felület (Kommentár-kereső, Patrisztikus források keresője, Denzinger-kereső)
         run: |
           python3 eszkozok/web.py _site
           python3 eszkozok/web.py _site/forrasok --kor forras
+          python3 eszkozok/web_denzinger.py _site/denzinger
       - name: Szöveges keresőindexek (Pagefind)
         run: |
           bash eszkozok/web_pagefind.sh _site
           bash eszkozok/web_pagefind.sh _site/forrasok
+          bash eszkozok/web_pagefind.sh _site/denzinger
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
