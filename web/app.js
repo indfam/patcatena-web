@@ -356,7 +356,7 @@ $("#elozo").onclick = () => lapoz(-1);
 $("#kovetkezo").onclick = () => lapoz(1);
 $("[data-bezar]").onclick = () => $("#olvaso").close();
 $("#olvaso").addEventListener("click", (e) => { if (e.target === e.currentTarget) e.currentTarget.close(); });
-// Szöveg másolása („fordítsd: …” kéréssel): a vágólap-API (beágyazott keretben csak engedéllyel működik), tartalékként a régi
+// Szöveg másolása (csak maga a szöveg): a vágólap-API (beágyazott keretben csak engedéllyel működik), tartalékként a régi
 // kijelöléses másolás; ha egyik sem megy, a hivatkozás kijelölt szövegként jelenik meg, és Ctrl+C-vel másolható.
 function regiMasolas(szoveg) {
   const ta = document.createElement("textarea");
@@ -368,7 +368,7 @@ function regiMasolas(szoveg) {
   return ok;
 }
 $("#masol").onclick = async () => {
-  const szoveg = forditasKeres(OLV.szoveg);
+  const szoveg = OLV.szoveg.replace(/\s+/g, " ").trim();  // csak maga a szöveg
   let ok = false;
   try { await navigator.clipboard.writeText(szoveg); ok = true; } catch { ok = regiMasolas(szoveg); }
   $("#olvaso-masolat")?.remove();

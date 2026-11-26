@@ -86,7 +86,7 @@ function latinHtml(t) {
     return m ? `<p><span class="ds-jel">${esc(m[1])}</span>${esc(m[2])}</p>` : `<p>${esc(r)}</p>`;
   }).join("");
 }
-const forditasKeres = (t) => `fordítsd: "${t.replace(/⟦(\d+[a-z]?)⟧/g, "[DS $1]").replace(/\s+/g, " ").trim()}"`;
+const masolando = (t) => t.replace(/⟦(\d+[a-z]?)⟧/g, "[DS $1]").replace(/\s+/g, " ").trim();  // csak maga a szöveg
 function aiModLink(t) {
   let s = t.replace(/⟦(\d+[a-z]?)⟧/g, "[DS $1]").replace(/\s+/g, " ").trim();
   if (encodeURIComponent(s).length > 6000) {
@@ -141,7 +141,7 @@ async function egysegLap(i, megjegyzes = "") {
   $("#elozo").onclick = () => nyit(i - 1);
   $("#kovetkezo").onclick = () => nyit(i + 1);
   $("#masol").onclick = async () => {
-    const t = forditasKeres(e.latin);
+    const t = masolando(e.latin);
     let ok = false;
     try { await navigator.clipboard.writeText(t); ok = true; } catch { ok = regiMasolas(t); }
     $("#masol").textContent = ok ? "Szöveg másolva" : "Másolás nem sikerült";

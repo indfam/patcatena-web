@@ -76,7 +76,7 @@ function fa() {
 
 // ---- Fordítás és másolás ----
 const tiszta = (t) => t.replace(/ ¶ /g, " ").replace(/\s+/g, " ").trim();
-const forditasKeres = (t) => `fordítsd: "${tiszta(t)}"`;
+const masolando = (t) => tiszta(t);  // a Szöveg másolása csak magát a szöveget másolja
 function aiModLink(t) {
   let s = tiszta(t);
   if (encodeURIComponent(s).length > 6000) {
@@ -107,7 +107,7 @@ function bekot(k, t) {
     const i = +b.dataset.lap; location.hash = `#${k}/${(k === "a" ? A : L)[i][0]}`;
   });
   $("#masol").onclick = async () => {
-    const s = forditasKeres(t);
+    const s = masolando(t);
     let ok = false;
     try { await navigator.clipboard.writeText(s); ok = true; } catch { ok = regiMasolas(s); }
     $("#masol").textContent = ok ? "Szöveg másolva" : "Másolás nem sikerült";
