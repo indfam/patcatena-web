@@ -1,0 +1,163 @@
+kategoria	targyszo	latin	angol
+Szent helyek	templom	ecclesia	church
+Szent helyek	templomszentelés	dedicatio	consecration of a church|dedication
+Szent helyek	templomszentelés évfordulója	anniversari	anniversary of consecration
+Szent helyek	templom titulusa, búcsúünnep	titul	title|titular
+Szent helyek	kápolna, oratórium	oratori	oratory|chapel
+Szent helyek	oltár	altar	altar
+Szent helyek	oltárkő	ara	sacred stone|portable altar
+Szent helyek	kiváltságos oltár	altare privilegiat	privileged altar
+Szent helyek	ereklyesír	sepulcr	sepulcher
+Szent helyek	temető	coemeteri|cemeteri	cemetery
+Szent helyek	megszentségtelenítés, kiengesztelés	violat|reconcilia	violation|reconciliation
+Szent dolgok	kehely	calix|calic	chalice
+Szent dolgok	paténa	patena	paten
+Szent dolgok	cibórium	pyxis|ciborium	ciborium
+Szent dolgok	szentségtartó (monstrancia)	ostensori	monstrance
+Szent dolgok	lunula	lunul	lunette
+Szent dolgok	szent olajok	oleum|olea|chrism	holy oils|chrism
+Szent dolgok	liturgikus ruhák	paramenta	vestments
+Szent dolgok	liturgikus színek	color	color
+Szent dolgok	miseruha (kazula)	planeta|casula	chasuble
+Szent dolgok	alba	alba	alb
+Szent dolgok	vállkendő (amictus)	amict	amice
+Szent dolgok	cingulum	cingul	cincture
+Szent dolgok	manipulus	manipul	maniple
+Szent dolgok	stóla	stola	stole
+Szent dolgok	dalmatika	dalmatic	dalmatic|tunic
+Szent dolgok	pluviále	pluvial	cope
+Szent dolgok	vélum (humerale)	velum humerale	humeral veil
+Szent dolgok	karing	superpelliceum|cotta	surplice
+Szent dolgok	biréta	biret	biretta
+Szent dolgok	korporále	corporal	corporal
+Szent dolgok	palla	palla	pall
+Szent dolgok	purifikatórium	purificator	purificator
+Szent dolgok	oltárterítő	mappa|tobalea	altar cloth
+Szent dolgok	antependium	antipendium|pallium	antipendium
+Szent dolgok	tabernákulum (szentségház)	tabernacul	tabernacle
+Szent dolgok	konopeum (tabernákulum-függöny)	conopae	tabernacle veil|conopaeum
+Szent dolgok	örökmécses	lampas	sanctuary lamp
+Szent dolgok	oltárfeszület	crux|crucifix	crucifix
+Szent dolgok	gyertyák, gyertyatartók	candel|cereus|cerei	candle|candlestick
+Szent dolgok	virágok	flor	flowers
+Szent dolgok	misekönyv	missale	missal
+Szent dolgok	oltártáblák	tabella	altar cards
+Szent dolgok	csengő	tintinnabul|campanul	bell
+Szent dolgok	ampolnák	ampull	cruets
+Szent dolgok	szentképek, szobrok	imagin|statua	image|statue
+Szent dolgok	ereklyék	reliqui	relic
+Szent dolgok	Szent Kereszt ereklyéje	Ss. Crucis	relic of the Cross|relics of the True Cross
+Szent dolgok	harangok	campana	church bells|bell
+A szentmise	szentmise	Missa	Mass
+A szentmise	csendes mise	Missa privata|Missa lecta	low Mass
+A szentmise	énekes mise	Missa cantata	high Mass|sung Mass
+A szentmise	ünnepélyes (levitás) mise	Missa solemnis	solemn Mass
+A szentmise	főpapi (pontifikális) mise	pontifical	pontifical
+A szentmise	fogadalmi mise	votiv	votive
+A szentmise	gyászmise (requiem)	Defunctor|requiem	requiem
+A szentmise	temetési mise	exsequi	funeral Mass
+A szentmise	nászmise	pro sponsis|nuptial	nuptial Mass
+A szentmise	Gergely-misék	Gregorian	Gregorian Masses
+A szentmise	binálás	binat	bination
+A szentmise	esti mise	vespertin	evening Mass
+A szentmise	dialógus-mise	dialog	dialog Mass
+A szentmise	ministráns	minist|acolyth	server|acolyte
+A szentmise	ostya	hostia|particul	host|altar bread
+A szentmise	misebor	vinum	wine
+A szentmise	térdhajtás	genuflex	genuflection
+A szentmise	meghajlás	inclinat	bow
+A szentmise	tömjénezés	incens|thuribul	incensation|incense|thurible
+A szentmise	Glória	Gloria	Gloria
+A szentmise	Credo	Credo|Symbolum	Credo
+A szentmise	könyörgések (oratio)	oratio|collect	oration|collect
+A szentmise	szekvencia	sequenti	sequence
+A szentmise	prefáció	praefat	preface
+A szentmise	kánon, átváltoztatás	canon|consecratio	Canon|Consecration
+A szentmise	utolsó evangélium	ultimum Evangelium	last Gospel
+A szentmise	mise utáni imák		prayers after low Mass
+A szentmise	szentmise ideje és helye	locus	time of Mass|place of Mass
+A szentmise	ének, egyházzene	cantus|musica|organ	singing|music|organ
+A zsolozsma	zsolozsma (breviárium)	Officium|Breviari	Office|Breviary
+A zsolozsma	direktórium (ordo)	kalendari|ordo	Ordo|calendar
+A zsolozsma	egybeesés, áthelyezés	occurrenti|concurrenti|translat	occurrence|concurrence|transfer
+A zsolozsma	megemlékezés (commemoratio)	commemorat	commemoration
+A zsolozsma	himnuszok	hymn	hymn
+A zsolozsma	antifónák	antiphon	antiphon
+A zsolozsma	Mária-antifónák	Alma Redemptoris|Salve Regina|Regina coeli	final antiphons|Salve Regina
+A zsolozsma	preces	preces	prayers|preces
+A zsolozsma	matutínum, olvasmányok	matutin|lectio	matins|lesson
+A zsolozsma	vesperás	vesper	vespers
+A zsolozsma	laudes	laudes	lauds
+A zsolozsma	Te Deum	Te Deum	Te Deum
+A szentségek	szentségek általában	sacrament	sacrament
+A szentségek	keresztség	baptism|baptiz	baptism
+A szentségek	keresztszülők		sponsor
+A szentségek	bérmálás	confirmat	confirmation
+A szentségek	gyónás, bűnbánat szentsége	confess|poenitenti	confession|penance
+A szentségek	szentáldozás	communio	Communion
+A szentségek	eucharisztikus böjt	jejunium	eucharistic fast|fast
+A szentségek	betegek áldoztatása, viaticum	viatic|infirm	sick|Viaticum
+A szentségek	utolsó kenet	extrema unctio	extreme unction
+A szentségek	pápai áldás a halál óráján	in articulo mortis	apostolic blessing|moment of death
+A szentségek	egyházi rend, szentelés	ordinat|ordin	ordination|orders
+A szentségek	házasság	matrimoni	marriage|matrimony
+A szentségek	házassági akadályok	impediment	impediment
+A szentségek	anyakönyvezés		record
+Szertartások	Asperges, szenteltvízhintés	Asperges|aqua benedict	Asperges|holy water
+Szertartások	az Oltáriszentség kitétele	expositio	exposition
+Szertartások	szentségi áldás	benedictio cum Ss.|benedictionem	benediction
+Szertartások	negyvenórás szentségimádás	Quadraginta	Forty Hours
+Szertartások	körmenet	processio	procession
+Szertartások	temetés	exsequi|sepult	funeral|burial
+Szertartások	halottak zsolozsmája	Officium Defunctorum	Office of the Dead
+Szertartások	absolutio (Libera)	absolutio|Libera	absolution|Libera
+Szertartások	kisgyermekek temetése	parvul	little ones|infants
+Szertartások	keresztút	Via Crucis|stationes	Way of the Cross|stations
+Szertartások	avatás (áldás szülés után)	post partum	churching|child-birth
+Szertartások	áldások, szentelmények	benedictio	blessing
+Az egyházi év	egyházi év, egyszerűsített rubrikák	rubric	rubrics
+Az egyházi év	advent	Advent	Advent
+Az egyházi év	karácsony	Nativitat|Natal	Christmas
+Az egyházi év	éjféli mise		midnight Mass
+Az egyházi év	vízkereszt	Epiphan	Epiphany
+Az egyházi év	hetvened	Septuagesim	Septuagesima|Pre-Lent
+Az egyházi év	hamvazószerda	Cinerum	Ash Wednesday
+Az egyházi év	nagyböjt	Quadragesim	Lent
+Az egyházi év	nagyhét	hebdomadae sanctae	Holy Week
+Az egyházi év	virágvasárnap	Palmarum	Palm Sunday
+Az egyházi év	nagycsütörtök	Feria V in Coena	Holy Thursday
+Az egyházi év	nagypéntek	Parasceve|Feria VI in Parasceve	Good Friday
+Az egyházi év	nagyszombat, húsvéti gyertya	Sabbato Sancto|cereus paschalis	Holy Saturday|paschal candle
+Az egyházi év	húsvét	Pascha	Easter
+Az egyházi év	könyörgőnapok	Rogation	Rogation
+Az egyházi év	mennybemenetel	Ascension	Ascension
+Az egyházi év	pünkösd	Pentecost	Pentecost
+Az egyházi év	úrnapja	Corporis Christi	Corpus Christi
+Az egyházi év	Jézus Szíve	Cordis Jesu|Cor Jesu	Sacred Heart
+Az egyházi év	kántorböjt		Ember Days
+Az egyházi év	vigília	vigili	vigil
+Az egyházi év	nyolcad (oktáva)	octav	octave
+Az egyházi év	vasárnapok	Dominic	Sunday
+Az egyházi év	köznapok (feria)	feri	feria|ferial
+Szentek ünnepei	a szentek ünnepei	Festum|festi	feast
+Szentek ünnepei	Boldogságos Szűz Mária ünnepei	B. M. V.	Blessed Virgin|Our Lady
+Szentek ünnepei	gyertyaszentelő	Purificat	Purification|Candlemas
+Szentek ünnepei	Szent József	Joseph	St. Joseph
+Szentek ünnepei	Nagyboldogasszony	Assumpt	Assumption
+Szentek ünnepei	szeplőtelen fogantatás	Immaculat	Immaculate Conception
+Szentek ünnepei	halottak napja (november 2.)	Commemoratio omnium fidelium|Omnium Fidelium Defunctorum	All Souls
+Szentek ünnepei	mindenszentek	Omnium Sanctorum	All Saints
+Szentek ünnepei	Krisztus Király		Christ the King|Christ King
+Szentek ünnepei	októberi rózsafüzér-ájtatosság	Rosari	rosary|October Devotions
+Búcsúk	búcsúk	indulgenti	indulgence
+Búcsúk	teljes búcsú	plenari	plenary indulgence
+Búcsúk	porciunkulai búcsú	Portiuncul	Portiuncula
+Búcsúk	pápai áldás		Papal Blessing
+Búcsúk	kegytárgyak megáldása	numismata	articles of devotion
+Búcsúk	litániák	litani	litany
+Egyházi jog és döntések	Szertartási Kongregáció döntései	S. R. C.|Decreta	S.R.C.|Congregation of Rites
+Egyházi jog és döntések	Egyházi Törvénykönyv	can.	Code of Canon Law|c.
+Egyházi jog és döntések	indultum, kiváltság	indult|privilegi	indult|privilege
+Egyházi jog és döntések	megyéspüspök (ordinárius)	Ordinari|Episcop	Ordinary|Bishop
+Egyházi jog és döntések	plébános	parochus	pastor
+Egyházi jog és döntések	szerzetesek	religios|regular	religious

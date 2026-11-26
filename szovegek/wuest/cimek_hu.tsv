@@ -1,0 +1,611 @@
+n	magyar
+1	Meghatározás
+2	Engedély
+3	Építészet
+4	Az alapkő megáldása
+5	Szentmise az alapkő megáldása után
+6	A templom felajánlása
+7	A templom felszentelése
+8	A templom felszentelője
+9	A templom felszentelésének vigíliája
+10	A templomszentelés szertartása
+11	Szentmise a templom felszentelése után
+12	A templom felszentelésének ünnepe
+13	A templom felszentelésének évfordulója
+14	A templom ünnepélyes megáldása
+15	A templom ünnepélyes megáldásának végzője
+16	A templom ünnepélyes megáldásának szertartása
+17	Szentmise a templom ünnepélyes megáldása után
+18	A templom titulusa (védőszentje)
+19	Társtitulusok
+20	A titulusokra vonatkozó szabályok
+21	A titulus ünnepe (búcsúünnep)
+22	A társtitulus ünnepe
+23	A titulus megemlékezése
+24	Az Oltáriszentség őrzése
+25	Az Oltáriszentség kötelező őrzése
+26	Az Oltáriszentség megengedett őrzése
+27	Istentiszteletek
+28	A plébánosnak fenntartott szertartások
+29	Ének a templomokban
+30	Hangszeres zene a templomokban
+31	A templomban tiltott dolgok
+32	A templom feletti és alatti tér
+33	A templom megszentségtelenítése
+34	Kiengesztelés megszentségtelenítés után
+35	A felszentelt templom kiengesztelése
+36	A megáldott templom kiengesztelése
+37	Interdiktum alatt álló templom
+38	A templom szent jellegének elvesztése
+39	A templom profán használatra adása
+40	Meghatározás
+42	Az Oltáriszentség őrzése
+43	Istentiszteletek
+44	Meghatározás
+45	Létesítés
+46	Felajánlás
+47	Titulus
+48	Az Oltáriszentség őrzése
+49	Istentiszteletek
+50	Meghatározás
+51	Az Oltáriszentség őrzése
+52	Szent szertartások
+53	Tiltott dolgok
+54	Temetőkápolnák
+55	A megyéspüspök által létesített házikápolnák
+56	A jog által létesített házikápolnák
+57	Pápai indultum alapján létesített házikápolnák
+58	Meghatározás
+59	Az oltárasztal (mensa)
+60	Az oltár alapzata (stipes)
+61	Az ereklyesír (sepulcrum)
+62	Kötelező állandó oltár
+63	Az állandó oltár helye
+64	Az állandó oltár titulusa
+65	Az állandó oltár felszentelője
+66	Az állandó oltár felszentelésének vigíliája
+67	Az állandó oltár felszentelésének szertartása
+68	Szentmise az állandó oltár felszentelése után
+69	Az állandó oltár szent jellegének elvesztése
+70	Az állandó oltár újraszentelése
+71	Meghatározás
+72	Az oltárkő
+73	Az oltárkő ereklyesírja
+74	A hordozható oltár titulusa
+75	Az oltárkő felszentelője
+76	Az oltárkő felszentelésének szertartása
+77	Szentmise az oltárkő felszentelése után
+78	Az oltárkő szent jellegének elvesztése
+79	Az oltárkő újraszentelése
+81	Meghatározás
+82	Helyhez kötött kiváltságos oltár
+83	Személyhez kötött kiváltságos oltár
+84	Általános feltételek
+85	A temető ünnepélyes megáldása
+86	A temető egyszerű megáldása
+87	A temetőbővítés megáldása
+88	A sír megáldása
+89	Temetkezés megáldott temetőben
+90	A temető megválasztása
+91	Interdiktum alatt álló temető
+92	A temető megszentségtelenítése
+93	A megszentségtelenített temető kiengesztelése
+94	A kehely
+95	A kehely felszentelése
+96	A kehely érintése
+97	A kehely szent jellegének elvesztése
+98	A kehelytakaró (velum)
+99	A paténa
+100	A cibórium
+101	A cibórium megáldása
+102	A cibórium gondozása
+103	A cibórium kitisztítása
+105	A betegellátó szelence (pixis)
+106	A lunula
+107	A kusztódia
+108	A szentségtartó (monstrancia)
+109	Az áldoztatótányér
+110	A szent olajok edényei
+111	A liturgikus ruhák megáldása
+112	A liturgikus ruhák szent jellegének elvesztése
+113	A liturgikus színek
+114	Fehér miseruhák
+115	Piros miseruhák
+116	Zöld miseruhák
+117	Lila miseruhák
+118	Fekete miseruhák
+119	Rózsaszín miseruhák
+120	A vállkendő (amictus)
+121	Az alba
+122	A cingulum
+123	A manipulus
+124	A stóla
+125	A dalmatika és a tunicella
+126	A behajtott kazula (planeta plicata)
+127	A széles stóla (stola latior)
+128	A miseruha (kazula)
+129	A pluviále
+130	A vélum (humerale)
+131	A karing
+132	A biréta
+133	Az oltárvásznak megáldása
+134	Az oltárvásznak szent jellegének elvesztése
+135	Az oltárterítők
+137	A vesperále (oltárvédő takaró)
+138	A korporále
+139	A burza (korporáletartó)
+140	A palla
+141	A purifikatórium (kehelytörlő)
+142	A kéztörlő (manutergium)
+143	Az áldoztatókendő
+144	Az oltárlépcső (predella)
+145	Az oltár baldachinja
+146	Az antependium
+147	A tabernákulum (szentségház)
+148	A tabernákulum-függöny (konopeum)
+149	A tabernákulum kulcsa
+150	Az örökmécses
+151	A szentségkitételi trónus
+152	Az oltárfeszület
+153	Az oltár gyertyatartói
+154	Az oltárgyertyák
+156	Virágok
+157	A misekönyv
+158	Az oltártáblák
+159	Az ablutiós edény
+160	Az oltárcsengő
+161	Ampolnák és lavabótál
+162	A szentképek megáldása
+163	A szentképek kihelyezése
+164	Körmenet szentképekkel
+165	A szentképek tömjénezése
+166	A szentképek letakarása
+167	Értékes szentképek
+168	Az ereklyék hitelessége
+169	Az ereklyék gondozása és őrzése
+170	A Szent Kereszt ereklyéi
+171	A szentek ereklyéi
+172	Kiemelkedő ereklye ünnepe
+173	Kötelezettség
+174	A templomi harangok anyagi követelményei
+175	A templomi harangok megáldása
+176	A templomi harangok felszentelése
+177	A templomi harangok használata
+178	A miséző pap
+179	A szentmise helye
+180	A szentmise ideje
+181	Direktórium (ordo) a szentmiséhez
+182	Az ostya
+183	Az ostya a szentmise alatt
+184	A misebor
+185	A bor a szentmise alatt
+186	A ministráns
+187	A keresztvetés
+188	Összetett kezek
+189	Kitárt kezek
+190	Felemelt kezek
+191	A kettős térdhajtás
+192	Az egyszerű térdhajtás
+193	A test mély meghajlása
+194	A test közepes meghajlása
+195	A fej mély meghajtása
+196	A fej közepes meghajtása
+197	A fej egyszerű meghajtása
+198	A hangerő a szentmisében
+199	Tömjénezés a szentmisében
+200	A szem (tekintet) a szentmisében
+201	Csókok
+202	A sekrestyétől az oltárig
+203	Imák az oltár lépcsőjénél
+204	Az introitus (kezdőének)
+205	A Kyrie
+206	A Glória
+207	A Glória elhagyása
+210	Idő szerinti megemlékezések
+211	Előírt fogadalmi könyörgések
+212	Az Oltáriszentség könyörgése
+213	Könyörgés a pápa évfordulóin
+214	Könyörgés a püspök évfordulóin
+215	Könyörgés a pappászentelés évfordulóján
+216	A megyéspüspök által előírt könyörgés
+217	Szabadon választható fogadalmi könyörgések
+218	Szövegükben azonos könyörgések
+219	Ugyanarra a misztériumra vagy személyre vonatkozó könyörgések
+220	A könyörgések hosszú befejezése
+221	A könyörgések rövid befejezése
+222	Egy befejezés alá vont könyörgések
+223	A szentlecke és a következő részek
+224	A szekvencia
+225	A Munda cor meum és a Iube, Domne
+226	Az evangélium
+227	A Credo
+228	Az előírt Credo
+229	Az offertórium (felajánlás)
+230	A csendes imák (secreta)
+231	A prefáció
+232	Saját prefáció bizonyos esetekben
+233	A Sanctus és a Te igitur
+234	Megemlékezés az élőkről
+236	Az átváltoztatás
+237	Megemlékezés a holtakról és a Nobis quoque
+238	Ostyák az Oltáriszentség őrzésére
+239	Áldoztatás a szentmise alatt
+240	Az ablutio
+241	Az Oratio super populum
+242	Az utolsó evangélium
+243	Imák a csendes mise után
+244	Az éneklendő részek
+245	A papság a kórusban
+246	Az ünnepélyes (levitás) mise
+247	A szent szolgálattevők térdhajtásai
+248	Az énekes mise (missa cantata)
+249	Kötelezettség
+250	Változtatások a miseformulában
+251	Fogadalmi misék az Úrról
+252	Fogadalmi misék a Boldogságos Szűzről
+253	Fogadalmi misék az angyalokról
+254	Fogadalmi misék a szentekről
+255	Fogadalmi misék a boldogokról
+256	Fogadalmi misék különféle alkalmakra és szükségletekre
+257	Meghatározás
+258	Énekes magán fogadalmi misék
+259	Ének nélküli magán fogadalmi misék
+260	Magán fogadalmi misék az Úrról
+261	Magán fogadalmi misék a Boldogságos Szűzről
+262	Magán fogadalmi misék az angyalokról
+263	Magán fogadalmi misék a szentekről
+264	Magán fogadalmi misék különféle szükségletekre
+265	Meghatározás
+266	Tiltott ünnepélyes fogadalmi misék
+267	Az akadályozott ünnepélyes fogadalmi mise megemlékezése
+268	Az ünnepélyes fogadalmi mise rítusa
+269	Meghatározás
+270	A nászmise
+271	Mise a hit terjesztéséért
+272	A roráté
+273	Szentté- vagy boldoggáavatás ünnepi megülése
+274	Szentmise a hónap első csütörtökén
+275	Szentmise a hónap első péntekén
+276	Egyéb kiváltságos fogadalmi misék
+277	Akadályozott ünnep miséje
+278	Áthelyezett külső ünnep miséje
+279	A könyörgőnapi mise
+280	Választható vigília- és köznapi misék
+281	Akadályozott vasárnap pótolt miséje
+282	Tiltott gyászmise
+283	A gyászmise kötelezettsége
+284	A gyászmise rítusa
+285	A gyászmise könyörgései
+286	Meghatározás
+287	A temetési mise rítusa
+288	A holttest jelenléte
+289	A temetési mise temploma vagy kápolnája
+290	Tiltott temetési mise
+291	A temetés napján
+292	Egy napon a halál és a temetés között
+293	Minden napon a halál és a temetés között
+294	A halál utáni 3., 7. és 30. napon
+295	A halálhír vétele után
+296	A halál évfordulóján
+297	A halál kvázi-évfordulóján
+298	Temetői templomokban és kápolnákban
+299	Mikor használható
+300	Könyörgések
+301	Énekes mindennapi gyászmise
+302	Ének nélküli mindennapi gyászmise
+303	Gergely-misék
+304	Mise szentségkitétel mellett
+305	A püspök csendes miséje
+306	Csendes mise püspök jelenlétében (coram episcopo)
+307	Első csendes mise a pappászentelés után
+308	A Pro populo mise (a hívekért)
+309	Gyengén látó pap
+310	Binálás (napi két mise)
+311	Esti mise
+312	A dialógus-mise
+313	A kórusimára kötelezettek
+314	A magánzsolozsmára kötelezettek
+315	A Római breviárium kötelező volta
+316	Direktórium (ordo)
+317	A zsolozsma különleges esetekben
+318	A rangosabb zsolozsma egybeeséskor (concurrentia)
+319	Megemlékezések a vesperásban
+320	A rangosabb zsolozsma egybeeséskor (occurrentia)
+321	Az egybeeső zsolozsma áthelyezése (repositio)
+322	Az egybeeső zsolozsma áthelyezése (translatio)
+323	Az egybeeső zsolozsma elhagyása
+324	Megemlékezések a laudesben
+325	Az Aperi, Domine
+326	Az imaórák kezdete és vége
+327	Himnuszok
+328	Saját himnuszok
+329	A himnuszok befejezése
+330	A Te Deum
+331	A zsoltárok
+332	A Quicumque
+333	Zsoltárantifónák
+334	A Magnificat-antifóna
+335	A Benedictus-antifóna
+336	A Boldogságos Szűz záróantifónái
+337	A vasárnapi preces
+338	A köznapi preces
+339	A prímai vers
+340	A szentírási olvasmányok a matutínumban
+341	A szentírási olvasmányok responzóriumai
+342	A megemlékezett zsolozsma kilencedik olvasmánya
+343	Általános megjegyzések
+344	A keresztség anyaga
+346	A keresztség kiszolgáltatója
+347	A gyermekek keresztelése
+348	A felnőttek keresztelése
+349	A keresztszülők
+350	A keresztelés ideje és helye
+351	A keresztelés szertartásai
+352	A megtértek felvétele
+353	A keresztelés anyakönyvezése
+354	A bérmálkozó
+355	A bérmálás kiszolgáltatója
+357	A bérmaszülő
+358	A bérmálás ideje és helye
+359	Bérmálás pap által
+360	A bérmálás anyakönyvezése
+361	A bűnbánat szentségének kiszolgáltatója
+362	A gyónó
+363	A gyónás helye
+364	A szentáldozás kiszolgáltatója
+365	A szentáldozás alanya
+366	Az eucharisztikus böjt
+367	A szentáldozás ideje és helye
+368	Áldoztatás a szentmisén kívül
+369	Áldoztatás a szentmise előtt és után
+370	A betegek áldoztatása
+371	A szent útravaló (viaticum)
+372	Az utolsó kenet kiszolgáltatója
+373	Az utolsó kenet alanya
+374	Az utolsó kenet távoli anyaga
+375	Az utolsó kenet közvetlen anyaga
+376	Az utolsó kenet formája
+377	Az utolsó kenet szertartásai
+378	Pápai áldás a halál óráján
+379	A szakkifejezések magyarázata
+380	A szentelés kiszolgáltatója
+381	Elbocsátó levél (litterae dimissoriae)
+382	A szentelés alanya
+383	A szentelendők szükséges tulajdonságai
+384	A szentelés akadályai
+385	A szentelés előfeltételei
+386	A szentelés ideje és helye
+387	A szentelés szertartásai
+388	Előzetes fogalmak
+389	Házassági ígéret (eljegyzés)
+390	A házasságkötés előfeltételei
+391	Házassági akadályok
+392	Tiltó házassági akadályok
+393	Bontó házassági akadályok
+394	Felmentés az akadályok alól
+396	A házassági beleegyezés
+397	A házasságkötés jogi formája
+398	A házasságkötés liturgikus formája
+399	Az esküvő ideje és helye
+400	A házasság anyakönyvezése
+401	Mikor előírt és mikor megengedett
+402	A víz megáldása
+403	Az Asperges szent szolgálattevők nélkül
+404	Az Asperges szent szolgálattevőkkel
+405	Meghatározás
+407	A kitétel szertartása
+408	Szentségi áldás cibóriummal
+409	Meghatározás
+410	Előírt vagy megengedett kitétel
+411	Kitétel szentségtartóval
+412	Szentségi áldás szentségtartóval
+413	Szent szolgálattevőkkel
+414	Az Oltáriszentség kitétele alatt
+415	Meghatározás
+416	Mikor előírt és mikor megengedett
+417	Különféle észrevételek
+418	A nyitó mise
+419	A nyitó körmenet
+420	Mise a békéért (Pro pace)
+421	A záró mise
+422	A betétel (repositio)
+423	A szóban forgó szertartás
+424	A szertartást végző pap
+425	A szertartást végző pap ruházata
+426	A szertartást végző pap segédei
+427	A szertartás rendje
+428	Különféle megjegyzések
+429	A zsolozsma általában
+430	Mikor tilos
+431	A halottak vesperása
+433	A halottak laudesa
+434	Mikor előírt
+435	Mikor megengedett
+436	A celebráns
+437	Különféle megjegyzések
+438	A szóban forgó szertartás
+439	Különféle megjegyzések
+440	A templom ajtajánál
+441	A templomban
+442	Körmenet a temetőbe
+443	Különféle megjegyzések
+444	Felhatalmazás a keresztút felállítására
+445	A keresztút felállítása
+446	A keresztút búcsúi
+447	A fenti búcsúk elnyerésének feltételei
+449	Különféle megjegyzések
+451	A szertartás
+452	Az egyszerűsített rubrikák
+453	Különféle megjegyzések
+455	Vasárnapi zsolozsma adventben
+456	Vasárnapi mise adventben
+457	Adventi köznapok
+458	Köznapi zsolozsma adventben
+459	Köznapi mise adventben
+460	December 17–23.
+461	Karácsony vigíliája
+462	Különféle megjegyzések
+463	Karácsony ünnepe
+464	Az éjféli mise
+465	Karácsony nyolcada
+466	Szent István első vértanú ünnepe
+468	Aprószentek
+469	December utolsó vasárnapja
+470	December 29–31.
+471	Krisztus körülmetélésének ünnepe
+472	Január első vasárnapja
+473	Jézus Szent Neve ünnepe
+474	Január 2–5.
+475	A Boldogságos Szűz szombati zsolozsmája január 2–5. között
+476	Vízkereszt ünnepe
+477	Január 7–13.
+478	A Szent Család ünnepe
+479	Különféle megjegyzések
+480	Vízkereszt utáni vasárnapok
+481	Előrehozott vasárnap
+482	Vasárnapi zsolozsma és mise vízkereszt után
+483	Köznapi zsolozsma és mise vízkereszt után
+484	A Boldogságos Szűz szombati zsolozsmája
+485	Különféle megjegyzések
+486	A hetvened vasárnapjai
+487	A hetvened vasárnapi zsolozsmája
+488	A hetvened vasárnapi miséje
+489	A hetvened köznapjai
+490	Különféle megjegyzések
+491	A nagyböjt és a szenvedés idejének vasárnapjai
+492	Vasárnapi zsolozsma nagyböjtben és a szenvedés idejében
+493	Vasárnapi mise nagyböjtben és a szenvedés idejében
+494	A nagyböjt és a szenvedés idejének köznapjai
+495	Köznapi zsolozsma nagyböjtben és a szenvedés idejében
+496	Köznapi mise nagyböjtben és a szenvedés idejében
+497	Hamvazószerda
+498	Feketevasárnap (a szenvedés vasárnapja)
+499	A szentmise nagyhéten
+500	A zsolozsma nagyhéten
+501	Virágvasárnap
+502	Nagycsütörtök
+503	Nagypéntek
+504	Nagyszombat
+505	A húsvéti gyertya meggyújtása
+506	Különféle megjegyzések
+507	Húsvétvasárnap
+508	Húsvét nyolcada
+509	Fehérvasárnap
+510	A húsvét utáni 2–5. vasárnap
+511	A húsvét utáni 2–5. vasárnap zsolozsmája
+512	A húsvét utáni 2–5. vasárnap miséje
+513	Köznapok és vigíliák a húsvéti időben
+515	Köznapi és vigíliamise a húsvéti időben
+517	Könyörgőhétfő
+518	Könyörgőkedd
+519	Könyörgőszerda
+520	Urunk mennybemenetelének ünnepe
+521	Mennybemenetel és pünkösd vigíliája között
+522	Mennybemenetel utáni vasárnap
+523	Pünkösd vigíliája
+524	Pünkösdvasárnap
+525	Pünkösd nyolcada
+526	Különféle megjegyzések
+527	A Szentháromság ünnepe
+528	Úrnapja
+529	Úrnapja megszűnt nyolcada
+530	Úrnapi körmenet
+531	Jézus Szent Szívének ünnepe
+532	A pünkösd utáni negyedik vasárnaptól az utolsóig
+533	Előrehozott vasárnap
+534	Vasárnapi zsolozsma és mise pünkösd után
+535	Köznapi zsolozsma és mise pünkösd után
+536	Közönséges vigíliák pünkösd után
+537	Szeptemberi kántorböjt
+538	Lelkipásztori irányelvek a nagyhétre
+539	A kilencolvasmányos ünnepek zsolozsmája
+540	A háromolvasmányos ünnepek zsolozsmája
+541	Január 14.
+542	Január 18.
+543	Január 20.
+544	Január 21.
+545	Január 25.
+546	Január 28.
+547	Január 30.
+548	Február 2.
+549	Február 3.
+550	Február 5.
+551	Február 11.
+552	Február 12.
+553	Február 22.
+554	Február 23.
+558	Március 19.
+559	Március 22.
+560	Március 24.
+561	Március 25.
+562	A Hétfájdalmú Szűz ünnepe
+563	Április 25.
+564	Szent József ünnepélyes ünnepe
+565	Május 1.
+566	Május 3.
+567	Május 6.
+568	Május 8.
+569	Május 11.
+570	Május 18.
+571	Május 25.
+572	Május 30.
+573	Május 31.
+575	Június 11.
+576	Június 23.
+577	Június 24.
+578	Június 26.
+579	Június 28.
+580	Június 29.
+581	Június 30.
+582	Július 1.
+583	Július 2.
+584	Július 3–6.
+585	Július 16.
+586	Július 22.
+587	Augusztus 1.
+588	Augusztus 2.
+589	Augusztus 3.
+590	Augusztus 5.
+591	Augusztus 9.
+592	Augusztus 14.
+593	Augusztus 15.
+596	Szeptember 3.
+597	Szeptember 8.
+598	Szeptember 9.
+600	Szeptember 15.
+601	Szeptember 29.
+602	Októberi ájtatosságok
+603	Október 2.
+604	Október 20.
+605	Október 24.
+606	Október 28.
+607	Október 31.
+608	A missziók vasárnapja
+609	Krisztus Király ünnepe
+610	November 2.
+611	November 11.
+612	November 22.
+613	November 23.
+614	November 29.
+615	December 7.
+616	December 8.
+617	December 13.
+618	December 18.
+619	December 20.
+620	December 22.
+621	December 17–31.
+622	Különféle megjegyzések
+623	A búcsúk elnyerése
+624	Januárra
+625	Márciusra
+626	Májusra
+627	Júniusra
+628	Júliusra
+629	Szeptemberre
+630	Októberre
+631	Novemberre
+632	Decemberre
+633	A porciunkulai búcsú
+634	A pápai (apostoli) áldás
+635	Egyéb teljes búcsúk
+636	Kegytárgyak

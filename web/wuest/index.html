@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wuest liturgikus kereső</title>
+<meta name="description" content="Wuest, Collectio Rerum Liturgicarum (1915) és Matters Liturgical (1959): keresés témák, tárgyszavak, szám és szöveg szerint.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=__VERZIO__">
+<style>
+  .egyseg { border-top: 1px solid var(--vonal); padding: 1.25rem 0; }
+  .szamok { font: 600 .95rem/1.3 var(--sans); color: var(--rubrika); margin: 0 0 .25rem; }
+  .szamok span { color: var(--halvany); font-weight: 400; }
+  .doknev { font-size: 1.05rem; font-variant: small-caps; letter-spacing: .02em; margin: 0 0 .2rem; }
+  .doknev a { color: var(--tinta); text-decoration: none; }
+  .angolcim { font: 400 .9rem/1.4 var(--sans); color: var(--halvany); margin: 0 0 .75rem; }
+  .ket-hasab { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+  .ket-hasab h3 { font: 600 .8rem/1.2 var(--sans); color: var(--halvany); margin: 0 0 .35rem; }
+  .ket-hasab p { margin: 0 0 .6rem; line-height: 1.65; }
+  .ds-jel { font: 700 .75em/1 var(--sans); color: var(--rubrika); margin-right: .25em; }
+  .lapozo { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .lapozo button, .lapozo a { font: 600 .9rem/1 var(--sans); background: none; color: var(--tinta); border: 1px solid var(--vonal);
+    border-radius: 3px; padding: .55rem .8rem; text-decoration: none; cursor: pointer; }
+  .lapozo a.gomb { background: var(--rubrika); color: #fff; border-color: var(--rubrika); }
+  .lapozo button:disabled { opacity: .4; cursor: default; }
+  .tszdoboz { margin-top: .75rem; font: 400 .9rem/1.5 var(--sans); }
+  .tszdoboz summary { cursor: pointer; font-weight: 600; color: var(--lazur); }
+  .tszkat h4 { font: 600 .85rem/1.2 var(--sans); color: var(--halvany); margin: .8rem 0 .2rem; }
+  .tszkat p { margin: 0; }
+  .tszfej { font: 400 .9rem/1.45 var(--sans); color: var(--halvany); margin: 0 0 .5rem; }
+  .tszfej b { color: var(--tinta); }
+  .magyar { font: 600 .95rem/1.4 var(--sans); margin: .75rem 0 0; }
+  .forrasjel { font: 400 .8rem/1.4 var(--sans); color: var(--halvany); margin: .5rem 0 0; }
+  .doklista { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .doklista li { padding: .45rem 0; border-bottom: 1px solid var(--vonal); display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; }
+  .doklista .tart { font: 400 .85rem/1.4 var(--sans); color: var(--halvany); }
+  .talalat { padding: .8rem 0; border-bottom: 1px solid var(--vonal); }
+  .talalat h4 { margin: 0 0 .2rem; font-size: 1rem; }
+  .talalat p { margin: 0; font-size: .95rem; line-height: 1.55; }
+  @media (max-width: 640px) { .ket-hasab { grid-template-columns: 1fr; } .doklista li { grid-template-columns: 1fr; gap: .1rem; } }
+  .fa { list-style: none; padding: 0; margin: .75rem 0 0; }
+  .fa > li > details > summary { font: 600 1.05rem/1.4 var(--sans); cursor: pointer; padding: .35rem 0; }
+  .fa .fej { margin: .3rem 0 .3rem 1rem; }
+  .fa .fej > summary { font: 600 .95rem/1.4 var(--sans); color: var(--lazur); cursor: pointer; }
+  .fa .tetelek { margin: .2rem 0 .5rem 1.5rem; padding: 0; list-style: none; font: 400 .92rem/1.6 var(--sans); }
+  .fa .tetelek span { color: var(--halvany); display: inline-block; min-width: 2.6rem; }
+  .kapcs { font: 400 .9rem/1.5 var(--sans); margin: .75rem 0 0; }
+  .lmutato { columns: 3 14rem; font: 400 .9rem/1.6 var(--sans); margin-top: .75rem; }
+  .lmutato a { display: block; break-inside: avoid; }
+</style>
+</head>
+<body>
+<div class="lap">
+  <header class="fej">
+    <h1><a href="#">Liturgikus kérdések (Wuest)</a></h1>
+    <p>Joseph Wuest C.Ss.R. kézikönyve a római liturgia szabályairól: a latin Collectio Rerum Liturgicarum (1915) és az angol,
+    átdolgozott és bővített Matters Liturgical (1959). Keressen témák, magyar tárgyszavak, tételszám vagy szavak szerint.</p>
+  </header>
+
+  <nav class="mod" role="tablist" aria-label="Keresés módja">
+    <button role="tab" id="tab-tema" aria-controls="panel-tema" aria-selected="true">Témák</button>
+    <button role="tab" id="tab-szoveg" aria-controls="panel-szoveg" aria-selected="false">Szöveg és tárgy</button>
+    <button role="tab" id="tab-szam" aria-controls="panel-szam" aria-selected="false">Szám szerint</button>
+  </nav>
+
+  <section id="panel-tema" role="tabpanel" aria-labelledby="tab-tema">
+    <p class="tipp">Az 1959-es angol kiadás tematikus rendje: kilenc rész, fejezetek és számozott tételek. Nyissa ki a részt és a
+    fejezetet, majd válasszon tételt. A latin kiadás bekezdéseit a „Szám szerint” lapon vagy a szövegkeresővel érheti el.</p>
+    <ul id="fa" class="fa"></ul>
+  </section>
+
+  <section id="panel-szoveg" role="tabpanel" aria-labelledby="tab-szoveg" hidden>
+    <form id="urlap-szoveg" class="urlap">
+      <label class="szeles">Keresett szavak
+        <input id="kerdes" required placeholder="pl. kehely, gyászmise, tabernacle, „sanctuary lamp”, ostensorium" autocomplete="off">
+      </label>
+      <label>Kiadás
+        <select id="kiadas"><option value="">mindkettő</option><option value="angol (1959)">angol (1959)</option><option value="latin (1915)">latin (1915)</option></select>
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">Az angol és a latin szövegben keres, a tételek címével együtt. Magyar tárgyszóra is kereshet (pl. kehely,
+    gyászmise, szentségi áldás): ilyenkor a kereső a tárgyszó latin és angol megfelelőire keres. Több szó esetén mindegyiknek
+    szerepelnie kell; idézőjelek között pontos kifejezést keres. A latin u/v, i/j írásmód nem számít.</p>
+    <details class="tszdoboz"><summary>Magyar tárgyszavak böngészése</summary><div id="tszlista"></div></details>
+    <details class="tszdoboz"><summary>A latin kiadás tárgymutatója (Index alphabeticus)</summary><div id="lmutato" class="lmutato"></div></details>
+  </section>
+
+  <section id="panel-szam" role="tabpanel" aria-labelledby="tab-szam" hidden>
+    <form id="urlap-szam" class="urlap">
+      <label>Kiadás
+        <select id="szamkiadas"><option value="a">angol (1959), tételszám</option><option value="l">latin (1915), bekezdésszám</option></select>
+      </label>
+      <label>Szám
+        <input id="szam" required placeholder="pl. 147 vagy 615" autocomplete="off" inputmode="numeric">
+      </label>
+      <button type="submit">Megnyitás</button>
+    </form>
+    <p class="tipp">A két kiadás számozása eltér: az angol kiadás (1–636) átrendezett és bővített, a latin (1–786) az eredeti
+    sorrendet követi. A kapcsolódó tételeket a kereső a mindkettőben hivatkozott Szertartási Kongregációs döntések alapján jelzi.</p>
+  </section>
+
+  <main id="eredmeny" aria-live="polite"></main>
+
+  <footer class="lab">
+    <p>Latin: J. Wuest, Collectio Rerum Liturgicarum, Ratisbonae–Romae–Neo Eboraci–Cincinnati: Pustet, 1915 (az Internet Archive
+    gépi olvasású szövege; OCR-hibák lehetnek benne). Angol: J. Wuest – T. W. Mullaney – W. T. Barry, Matters Liturgical, 10. átdolgozott
+    kiadás, New York: Pustet, 1959 (gépi olvasású szöveg). A magyar címek és tárgyszavak e kereső saját fordításai, az egyházi
+    helyesírási útmutató szerint. A Szertartási Kongregáció döntéseit (S.R.C.) a „Decreta authentica” számozása szerint idézik.</p>
+  </footer>
+</div>
+<script src="wu.js?v=__VERZIO__" type="module"></script>
+</body>
+</html>

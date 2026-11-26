@@ -30,11 +30,13 @@ jobs:
           python3 eszkozok/web.py _site
           python3 eszkozok/web.py _site/forrasok --kor forras
           python3 eszkozok/web_denzinger.py _site/denzinger
+          python3 eszkozok/web_wuest.py _site/wuest
       - name: Szöveges keresőindexek (Pagefind)
         run: |
           bash eszkozok/web_pagefind.sh _site
           bash eszkozok/web_pagefind.sh _site/forrasok
           bash eszkozok/web_pagefind.sh _site/denzinger
+          bash eszkozok/web_pagefind.sh _site/wuest
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
