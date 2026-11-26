@@ -92,6 +92,7 @@ async function egysegLap(i, megjegyzes = "") {
     ${megjegyzes ? `<p class="uzenet">${esc(megjegyzes)}</p>` : ""}
     <p class="szamok">${esc(szamFelirat(e))}${e.dsforras === "filajug" ? ` <span>(az új szám a Fila–Jug-féle összehasonlító táblázat szerint)</span>` : ""}</p>
     <p class="doknev"><a href="#dok/${e.dok}">${esc(dok[0] || "–")}</a></p>
+    ${dok[3] && dok[3] !== dok[0] ? `<p class="angolcim">${esc(dok[3])}</p>` : ""}
     ${e.acim ? `<p class="angolcim">${esc(e.acim)}</p>` : ""}
     ${e.megj ? `<p class="angolcim">${esc(e.megj)}</p>` : ""}
     <div class="ket-hasab">
@@ -143,7 +144,8 @@ function dokTartomany(k) {
 }
 function dokLista() {
   const q = $("#dokszuro").value.trim().toLowerCase();
-  const sorok = DOK.map((d, k) => [d, k]).filter(([d]) => !q || d[0].toLowerCase().includes(q));
+  const nq = ekezetNelkul(q);
+  const sorok = DOK.map((d, k) => [d, k]).filter(([d]) => !q || ekezetNelkul(d[0]).includes(nq) || ekezetNelkul(d[3] || "").includes(nq));
   $("#doklista").innerHTML = sorok.slice(0, 400).map(([d, k]) =>
     `<li><span class="tart">${esc(dokTartomany(k))}</span><a href="#dok/${k}">${esc(d[0] || "–")}</a></li>`).join("") +
     (sorok.length > 400 ? `<li><span></span><span class="tart">… további ${sorok.length - 400} dokumentum – szűkítse a keresést.</span></li>` : "");
@@ -151,11 +153,11 @@ function dokLista() {
 $("#dokszuro").oninput = dokLista;
 
 async function dokLap(k) {
-  const [cim, elso, n] = DOK[k];
+  const [cim, elso, n, eredeti] = DOK[k];
   const ki = $("#eredmeny");
   ki.innerHTML = `<p class="toltes">Betöltés…</p>`;
   const egysegek = await Promise.all(Array.from({ length: n }, (_, j) => egyseg(elso + j)));
-  ki.innerHTML = `<section class="egyseg"><p class="szamok">${esc(dokTartomany(k))}</p><h2 class="doknev">${esc(cim)}</h2>
+  ki.innerHTML = `<section class="egyseg"><p class="szamok">${esc(dokTartomany(k))}</p><h2 class="doknev">${esc(cim)}</h2>${eredeti && eredeti !== cim ? `<p class="angolcim">${esc(eredeti)}</p>` : ""}
     ${egysegek.map((e) => `<div class="talalat"><h4><a href="#i/${e.i}">${esc(szamFelirat(e))}</a></h4>
       ${e.acim ? `<p class="angolcim">${esc(e.acim)}</p>` : ""}
       <p lang="la">${esc((e.latin || e.angol).replace(/⟦\d+[a-z]?⟧/g, "").slice(0, 260))}…</p></div>`).join("")}</section>`;

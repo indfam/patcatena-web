@@ -5,7 +5,7 @@ Bemenet: szovegek/denzinger/denzinger.tsv (az eszkozok/denzinger.py kimenete).
 Kimenet (pl. _site/denzinger):
   index.html, dz.js, style.css            a felület (web/denzinger/ + a közös web/style.css)
   data/mutato.json                        egységenként [D, "DS,DS,…", dokumentum sorszáma, darab]
-  data/dokumentumok.json                  [cím, első egység, egységek száma]
+  data/dokumentumok.json                  [magyar cím, első egység, egységek száma, eredeti (francia) cím]
   data/e/<darab>.json                     az egységek szövege, 100-asával
   <kimenet>_pagefind/0/                   egységenként egy HTML-lap a Pagefind-indexhez (eszkozok/web_pagefind.sh)
 Használat: python3 eszkozok/web_denzinger.py _site/denzinger ; bash eszkozok/web_pagefind.sh _site/denzinger
@@ -40,14 +40,18 @@ def main(ki):
 
     sorok = list(csv.DictReader(open(os.path.join(GYOKER, 'szovegek', 'denzinger', 'denzinger.tsv'), encoding='utf-8'),
                                 delimiter='\t'))
+    # A dokumentumcímek magyar fordítása (szovegek/denzinger/cimek_hu.tsv: francia → magyar)
+    hf = os.path.join(GYOKER, 'szovegek', 'denzinger', 'cimek_hu.tsv')
+    magyar = {r['francia']: r['magyar'] for r in csv.DictReader(open(hf, encoding='utf-8'), delimiter='\t')} \
+        if os.path.exists(hf) else {}
     mutato, dok, darab = [], [], []
     pf = ki.rstrip('/') + '_pagefind'
     if os.path.exists(pf):
         shutil.rmtree(pf)
     for i, s in enumerate(sorok):
         cim = s['cim'] or (dok[-1][0] if dok else '') or s['angol_cim'] or 'Hitvallások'
-        if not dok or dok[-1][0] != cim:
-            dok.append([cim, i, 0])
+        if not dok or dok[-1][3] != cim:
+            dok.append([magyar.get(cim, cim), i, 0, cim])
         dok[-1][2] += 1
         mutato.append([s['d'], s['ds'], len(dok) - 1])
         darab.append([s['d'], s['ds'], s['megj'], s['latin'], s['latin_forras'], s['angol'], s['angol_cim'], s.get('ds_forras', '')])
@@ -57,7 +61,7 @@ def main(ki):
         ut = os.path.join(pf, '0', f'{i}.html')
         os.makedirs(os.path.dirname(ut), exist_ok=True)
         with open(ut, 'w', encoding='utf-8') as o:
-            o.write(LAP.format(i=i, cim=html.escape(cim), t=html.escape(szoveg)))
+            o.write(LAP.format(i=i, cim=html.escape(dok[-1][0]), t=html.escape(cim + ' ' + szoveg)))
     if darab:
         jdump(darab, os.path.join(ki, 'data', 'e', f'{(len(sorok) - 1) // DARAB}.json'))
     jdump(mutato, os.path.join(ki, 'data', 'mutato.json'))
