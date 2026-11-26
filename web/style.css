@@ -107,6 +107,8 @@ button { font: 600 .95rem/1 var(--sans); cursor: pointer; }
 dialog#olvaso {
   width: min(46rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0;
   border: 1px solid var(--vonal); border-radius: 4px; background: var(--lap); color: var(--tinta);
+  /* A keret tetején nyílik, nem a (beágyazva akár sok ezer pixel magas) lap közepén: a szerzőkép a helyén marad */
+  margin: 1rem auto auto;
 }
 dialog#olvaso::backdrop { background: rgba(20, 16, 12, .45); }
 .olvaso-fej { display: flex; justify-content: space-between; gap: 1rem; padding: 1.25rem 1.5rem .5rem; }
