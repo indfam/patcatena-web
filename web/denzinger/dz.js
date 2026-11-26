@@ -77,7 +77,9 @@ function fjLink(ds) {
   if (n < 101) return "https://denzingerhu.wordpress.com/hitvallasok/";
   let o = FJ_OLDALAK[0];
   for (const x of FJ_OLDALAK) if (x[0] <= n) o = x;
-  return `https://denzingerhu.wordpress.com/${o[1]}`;
+  // A Fila–Jug-oldalakon a bekezdések „{1525}” jelöléssel kezdődnek: szövegtöredék-hivatkozással (#:~:text=) a böngésző
+  // (Chrome, Edge, Safari, újabb Firefox) odagörget és kiemeli; ha a jel nincs az oldalon, egyszerűen az oldal eleje nyílik meg
+  return `https://denzingerhu.wordpress.com/${o[1]}#:~:text=${encodeURIComponent(`{${ds}}`)}`;
 }
 
 async function egysegLap(i, megjegyzes = "") {
@@ -99,7 +101,7 @@ async function egysegLap(i, megjegyzes = "") {
       <div lang="la"><h3>Latin</h3>${e.latin ? latinHtml(e.latin) : `<p class="uzenet">A latin szöveg nincs meg a forrásokban.</p>`}</div>
       <div lang="en"><h3>Angol (Deferrari, régi számozás)</h3>${e.angol ? `<p>${esc(e.angol)}</p>` : `<p class="uzenet">${e.D ? "Ehhez a számhoz nincs angol szöveg." : "Ez a tétel a régi kiadásban (és így az angol fordításban) nem szerepel."}</p>`}</div>
     </div>
-    ${e.ds.length ? `<p class="magyar"><a href="${esc(fjLink(e.ds[0]))}" target="_blank" rel="noopener">Magyarul: Fila–Jug-fordítás (denzingerhu.wordpress.com)</a> – a megnyíló oldalon a ${esc(e.ds[0])}. bekezdésnél.</p>` : ""}
+    ${e.ds.length ? `<p class="magyar"><a href="${esc(fjLink(e.ds[0]))}" target="_blank" rel="noopener">Magyarul: Fila–Jug-fordítás (denzingerhu.wordpress.com)</a> – a megnyíló oldal a {${esc(e.ds[0])}} bekezdéshez görget.</p>` : ""}
     <p class="forrasjel">${esc(forras)}${e.angol ? "Angol: R. J. Deferrari, The Sources of Catholic Dogma (1955/57), patristica.net." : ""}</p>
     <div class="lapozo">
       <button id="elozo" ${i === 0 ? "disabled" : ""}>Előző tétel</button>
