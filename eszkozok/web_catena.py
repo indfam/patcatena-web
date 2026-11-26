@@ -81,6 +81,11 @@ def main(ki, latin):
     for r in csv.DictReader(open(os.path.join(GY, 'biblia', 'vulgata.tsv'), encoding='utf-8'), delimiter='\t'):
         if r['konyv'] in EVNEV: vul[r['konyv']][f"{r['fejezet']}:{r['vers']}"] = r['szoveg']
     for k, v in vul.items(): jdump(v, os.path.join(ki, 'data', 'vulgata', f'{k}.json'))
+    # magyar szentírási szöveg: Káldi-Biblia (biblia.kapisztran.info; a szentiras.eu szerint a Tárkányi-féle 1865-ös revízió)
+    kal = defaultdict(dict)
+    for r in csv.DictReader(open(os.path.join(GY, 'biblia', 'kaldi_evangeliumok.tsv'), encoding='utf-8'), delimiter='\t'):
+        kal[r['konyv']][f"{r['fejezet']}:{r['vers']}"] = r['szoveg']
+    for k, v in kal.items(): jdump(v, os.path.join(ki, 'data', 'kaldi', f'{k}.json'))
     jdump({'latin': bool(latin)}, os.path.join(ki, 'data', 'beall.json'))
     print(f'{len(sorok)} egység, {sum(szerzok.values())} idézet, {len(szerzok)} szerző, '
           f'{sum(len(v) for v in kapcs.values())} könyvtári kapcsolat ({forras}) -> {ki}', file=sys.stderr)

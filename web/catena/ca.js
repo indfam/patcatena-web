@@ -18,6 +18,8 @@ async function idezetek(i) {
 }
 const vulCache = new Map();
 const vulgata = (ev) => { if (!vulCache.has(ev)) vulCache.set(ev, json(`data/vulgata/${ev}.json`)); return vulCache.get(ev); };
+const kalCache = new Map();
+const kaldi = (ev) => { if (!kalCache.has(ev)) kalCache.set(ev, json(`data/kaldi/${ev}.json`).catch(() => ({}))); return kalCache.get(ev); };
 const helyCim = (e) => `${e[1]} ${e[2]},${e[3]}${e[4] !== e[3] ? "–" + e[4] : ""}`;
 
 // ---- Felugró ablak a szakaszokhoz (a lista a helyén marad); beágyazva a kattintás helyén nyílik ----
@@ -95,9 +97,12 @@ const bekezdesek = (t, lang) => t.split(" ¶ ").map((p) => `<p lang="${lang}">${
 // ---- Egy szakasz ----
 async function szakaszHtml(i, kiemelt = null) {
   const e = E[i];
-  const [q, vul] = await Promise.all([idezetek(i), vulgata(e[1])]);
-  const versek = [];
-  for (let v = e[3]; v <= e[4]; v++) if (vul[`${e[2]}:${v}`]) versek.push(`<sup>${v}</sup>${esc(vul[`${e[2]}:${v}`])}`);
+  const [q, vul, kal] = await Promise.all([idezetek(i), vulgata(e[1]), kaldi(e[1])]);
+  const versek = [], magyar = [];
+  for (let v = e[3]; v <= e[4]; v++) {
+    if (vul[`${e[2]}:${v}`]) versek.push(`<sup>${v}</sup>${esc(vul[`${e[2]}:${v}`])}`);
+    if (kal[`${e[2]}:${v}`]) magyar.push(`<sup>${v}</sup>${esc(kal[`${e[2]}:${v}`])}`);
+  }
   const ct = e[8] ? `<a href="${CT}${e[8].replace("#", ".html#")}" target="_blank" rel="noopener">latin szöveg: Corpus Thomisticum, ${esc(e[1] === "Jn" ? "Io." : e[1] === "Mk" ? "Mc." : e[1] === "Lk" ? "Lc." : "Mt.")} cap. ${e[2]} lectio ${esc(e[5])}</a>` : "";
   const idez = q.map((x, k) => {
     const [kulcs, hu, ecim, en, lcim, la, kt] = x;
@@ -112,7 +117,7 @@ async function szakaszHtml(i, kiemelt = null) {
   }).join("");
   return `<article class="egyseg" data-i="${i}">
     <p class="szamok">${esc(helyCim(e))} <span>· ${EVNEV[e[1]]} evangéliuma, ${e[2]}. fejezet · ${e[7]} idézet</span></p>
-    <div class="ige">${versek.length ? `<p class="lat" lang="la">${versek.join(" ")}</p>` : ""}${e[6] ? `<p lang="en">${esc(e[6])}</p>` : ""}</div>
+    <div class="ige">${versek.length ? `<p class="lat" lang="la">${versek.join(" ")}</p>` : ""}${magyar.length ? `<p lang="hu">${magyar.join(" ")}</p><p class="forrasjel">Káldi-Biblia</p>` : (e[6] ? `<p lang="en">${esc(e[6])}</p>` : "")}</div>
     ${idez}
     <p class="forrasjel">${ct}</p>
     <div class="lapozo">
