@@ -188,6 +188,7 @@ async function versKereses(konyv, helyStr, szerzo) {
         <div lang="la"><h3>Vulgata</h3>${vul || '<p class="uzenet">Nincs a Vulgata-fájlban.</p>'}</div>
         <div lang="grc"><h3>Szeptuaginta</h3>${lxx || '<p class="uzenet">Nincs a Szeptuaginta-fájlban.</p>'}</div>
       </div>
+      ${["Mt", "Mk", "Lk", "Jn"].includes(konyv) ? `<p class="tipp jobb">Ennek a versnek az atyai magyarázatai Aquinói Szent Tamás Catena Aureájában: <a href="${MOD === "forras" ? "../" : ""}catena/#v/${konyv}/${hely.fej},${hely.versek[0]}" target="_blank" rel="noopener">${esc(helyCim)} a Catena Aurea keresőben</a></p>` : ""}
       <p class="osszegzes">${talalat.length ? `${talalat.length} idéző szakasz ${new Set(talalat.map((t) => KAT[t.m].szerzo)).size} szerzőtől${talalat.length > erosek.length ? `, ebből ${talalat.length - erosek.length} gyenge egyezés` : ""}.` : "Az index nem talált szó szerinti idézetet. Próbálja a szöveges keresést kulcsszavakkal."}</p>
     </article>
     <div id="glosszak"></div>

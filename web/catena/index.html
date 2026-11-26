@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catena Aurea kereső</title>
+<meta name="description" content="Aquinói Szent Tamás: Catena aurea – az egyházatyák magyarázatai a négy evangéliumhoz, versenként, atyák és szavak szerint kereshetően.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=__VERZIO__">
+<style>
+  /* Tétel felugró ablakban, a keret tetején (a lista a helyén marad) */
+  dialog.ablak { width: min(60rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0; margin: 1rem auto auto;
+    border: 1px solid var(--vonal); border-radius: 4px; background: var(--lap); color: var(--tinta); }
+  dialog.ablak::backdrop { background: rgba(20, 16, 12, .45); }
+  .ablak .olvaso-fej { padding: .6rem 1rem 0; }
+  .ablak-tartalom { padding: 0 1.5rem 1.25rem; }
+  .ablak-tartalom .egyseg { border-top: 0; padding-top: 0; }
+  .egyseg { border-top: 1px solid var(--vonal); padding: 1.25rem 0; }
+  .szamok { font: 600 .95rem/1.3 var(--sans); color: var(--rubrika); margin: 0 0 .25rem; }
+  .szamok span { color: var(--halvany); font-weight: 400; }
+  .doknev { font-size: 1.05rem; font-variant: small-caps; letter-spacing: .02em; margin: 0 0 .2rem; }
+  .doknev a { color: var(--tinta); text-decoration: none; }
+  .angolcim { font: 400 .9rem/1.4 var(--sans); color: var(--halvany); margin: 0 0 .75rem; }
+  .ket-hasab { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+  .ket-hasab h3 { font: 600 .8rem/1.2 var(--sans); color: var(--halvany); margin: 0 0 .35rem; }
+  .ket-hasab p { margin: 0 0 .6rem; line-height: 1.65; }
+  .ds-jel { font: 700 .75em/1 var(--sans); color: var(--rubrika); margin-right: .25em; }
+  .lapozo { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .lapozo button, .lapozo a { font: 600 .9rem/1 var(--sans); background: none; color: var(--tinta); border: 1px solid var(--vonal);
+    border-radius: 3px; padding: .55rem .8rem; text-decoration: none; cursor: pointer; }
+  .lapozo a.gomb { background: var(--rubrika); color: #fff; border-color: var(--rubrika); }
+  .lapozo button:disabled { opacity: .4; cursor: default; }
+  .tszdoboz { margin-top: .75rem; font: 400 .9rem/1.5 var(--sans); }
+  .tszdoboz summary { cursor: pointer; font-weight: 600; color: var(--lazur); }
+  .tszkat h4 { font: 600 .85rem/1.2 var(--sans); color: var(--halvany); margin: .8rem 0 .2rem; }
+  .tszkat p { margin: 0; }
+  .tszfej { font: 400 .9rem/1.45 var(--sans); color: var(--halvany); margin: 0 0 .5rem; }
+  .tszfej b { color: var(--tinta); }
+  .magyar { font: 600 .95rem/1.4 var(--sans); margin: .75rem 0 0; }
+  .forrasjel { font: 400 .8rem/1.4 var(--sans); color: var(--halvany); margin: .5rem 0 0; }
+  .doklista { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .doklista li { padding: .45rem 0; border-bottom: 1px solid var(--vonal); display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; }
+  .doklista .tart { font: 400 .85rem/1.4 var(--sans); color: var(--halvany); }
+  .talalat { padding: .8rem 0; border-bottom: 1px solid var(--vonal); }
+  .talalat h4 { margin: 0 0 .2rem; font-size: 1rem; }
+  .talalat p { margin: 0; font-size: .95rem; line-height: 1.55; }
+  @media (max-width: 640px) { .ket-hasab { grid-template-columns: 1fr; } .doklista li { grid-template-columns: 1fr; gap: .1rem; } }
+  .fa { list-style: none; padding: 0; margin: .75rem 0 0; }
+  .fa > li > details > summary { font: 600 1.05rem/1.4 var(--sans); cursor: pointer; padding: .35rem 0; }
+  .fa .fej { margin: .3rem 0 .3rem 1rem; }
+  .fa .fej > summary { font: 600 .95rem/1.4 var(--sans); color: var(--lazur); cursor: pointer; }
+  .fa .tetelek { margin: .2rem 0 .5rem 1.5rem; padding: 0; list-style: none; font: 400 .92rem/1.6 var(--sans); }
+  .fa .tetelek span { color: var(--halvany); display: inline-block; min-width: 2.6rem; }
+  .kapcs { font: 400 .9rem/1.5 var(--sans); margin: .75rem 0 0; }
+  .lmutato { columns: 3 14rem; font: 400 .9rem/1.6 var(--sans); margin-top: .75rem; }
+  .lmutato a { display: block; break-inside: avoid; }
+  .idezet { padding: .9rem 0; border-top: 1px solid var(--vonal); }
+  .idezet:first-of-type { border-top: 0; }
+  .idezet h4 { margin: 0 0 .3rem; font: 600 1rem/1.3 var(--sans); color: var(--rubrika); }
+  .idezet h4 span { font-weight: 400; color: var(--halvany); font-size: .85rem; }
+  .idezet p { margin: 0 0 .5rem; line-height: 1.65; }
+  .idezet .eszk { display: flex; flex-wrap: wrap; gap: .4rem .9rem; font: 400 .85rem/1.4 var(--sans); }
+  .idezet .eszk button { background: none; border: 0; padding: 0; color: var(--lazur); font: inherit; cursor: pointer; text-decoration: underline; }
+  .idezet .eszk a { color: var(--lazur); }
+  .idezet .konyvtar { color: var(--tinta); border-left: 3px solid var(--rubrika); padding-left: .5rem; }
+  .ige { background: var(--mezo); padding: .75rem 1rem; border-radius: 3px; margin: .5rem 0 1rem; }
+  .ige p { margin: 0 0 .35rem; }
+  .ige .lat { font-style: italic; }
+  .szerzolista { columns: 2 18rem; font: 400 .95rem/1.7 var(--sans); margin-top: .75rem; }
+  .szerzolista a { display: block; break-inside: avoid; }
+  .szerzolista span { color: var(--halvany); }
+  .fejlista { display: flex; flex-wrap: wrap; gap: .35rem; margin: .4rem 0 .6rem; }
+  .fejlista a { font: 600 .9rem/1 var(--sans); border: 1px solid var(--vonal); border-radius: 3px; padding: .4rem .55rem; text-decoration: none; color: var(--tinta); }
+  .fejlista a:hover { border-color: var(--rubrika); color: var(--rubrika); }
+</style>
+</head>
+<body>
+<div class="lap">
+  <header class="fej">
+    <h1><a href="#">Catena Aurea</a></h1>
+    <p>Aquinói Szent Tamás „aranylánca”: az egyházatyák magyarázatai a négy evangélium minden szakaszához, egymás után fűzve.
+    Keressen bibliai hely, atya vagy szavak szerint.</p>
+  </header>
+
+  <nav class="mod" role="tablist" aria-label="Keresés módja">
+    <button role="tab" id="tab-hely" aria-controls="panel-hely" aria-selected="true">Bibliai hely</button>
+    <button role="tab" id="tab-tartalom" aria-controls="panel-tartalom" aria-selected="false">Tartalom</button>
+    <button role="tab" id="tab-atyak" aria-controls="panel-atyak" aria-selected="false">Atyák</button>
+    <button role="tab" id="tab-szoveg" aria-controls="panel-szoveg" aria-selected="false">Szöveg</button>
+  </nav>
+
+  <section id="panel-hely" role="tabpanel" aria-labelledby="tab-hely">
+    <form id="urlap-hely" class="urlap">
+      <label>Evangélium
+        <select id="ev"><option value="Mt">Máté (Mt)</option><option value="Mk">Márk (Mk)</option><option value="Lk">Lukács (Lk)</option><option value="Jn">János (Jn)</option></select>
+      </label>
+      <label>Fejezet, vers
+        <input id="hely" required placeholder="pl. 5,14 vagy 19,34" autocomplete="off">
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">A kereső megmutatja azt a szakaszt, amelyhez a vers tartozik: a Vulgata szövegét, majd az atyák
+    magyarázatait abban a sorrendben, ahogy Tamás egymás után fűzte őket.</p>
+  </section>
+
+  <section id="panel-tartalom" role="tabpanel" aria-labelledby="tab-tartalom" hidden>
+    <p class="tipp">Válasszon evangéliumot és fejezetet; a fejezet szakaszai a Catena tagolását követik.</p>
+    <div id="tartalom"></div>
+  </section>
+
+  <section id="panel-atyak" role="tabpanel" aria-labelledby="tab-atyak" hidden>
+    <p class="tipp">Az idézett szerzők, zárójelben az idézetek száma. Egy névre kattintva megjelennek a szakaszok, ahol Tamás idézi.</p>
+    <div id="szerzolista" class="szerzolista"></div>
+  </section>
+
+  <section id="panel-szoveg" role="tabpanel" aria-labelledby="tab-szoveg" hidden>
+    <form id="urlap-szoveg" class="urlap">
+      <label class="szeles">Keresett szavak
+        <input id="kerdes" required placeholder="pl. light of the world, lamb, „bread of life”" autocomplete="off">
+      </label>
+      <label>Evangélium
+        <select id="sev"><option value="">mind</option><option>Máté</option><option>Márk</option><option>Lukács</option><option>János</option></select>
+      </label>
+      <label>Atya
+        <select id="sszerzo"><option value="">mind</option></select>
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">Az angol fordításban keres (Newman, Oxford 1841–45). Több szó esetén mindegyiknek szerepelnie kell;
+    idézőjelek között pontos kifejezést keres.</p>
+  </section>
+
+  <main id="eredmeny" aria-live="polite"></main>
+
+<dialog id="ablak" class="ablak" aria-label="Szakasz">
+  <div class="olvaso-fej"><span></span><button class="bezar" id="ablak-bezar" aria-label="Bezárás">×</button></div>
+  <div id="ablak-tartalom" class="ablak-tartalom"></div>
+</dialog>
+
+  <footer class="lab">
+    <p>Angol szöveg: Catena Aurea. Commentary on the Four Gospels, Collected out of the Works of the Fathers by S. Thomas Aquinas,
+    Oxford: J. H. Parker, 1841–45 (J. H. Newman szerkesztésében; közkincs), az ecatholic2000.com átírása. Latin szöveg: Corpus
+    Thomisticum (E. Alarcón, Universidad de Navarra; az 1953-as torinói Marietti-kiadás alapján) – szakaszonként link mutat rá.
+    Vulgata: Clementina. A „Latin eredeti a könyvtárban” linkek a patcatena könyvtár nyílt szövegeire mutatnak, ahol az idézett mű
+    megvan; a párosítás gépi (szóegyezés), idézés előtt érdemes ellenőrizni.</p>
+  </footer>
+</div>
+<script src="ca.js?v=__VERZIO__" type="module"></script>
+</body>
+</html>
