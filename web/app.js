@@ -326,8 +326,22 @@ async function olvaso(m, d, ref, kiemel) {
   $("#elozo").disabled = s.i === 0 && d === 0;
   $("#kovetkezo").disabled = s.i === s.sorok.length - 1 && d === mu.darabok - 1;
   const dlg = $("#olvaso");
-  if (!dlg.open) dlg.showModal();
+  if (!dlg.open) { dlg.showModal(); helyez(dlg); }
   sz.scrollTop = 0;
+}
+
+// Beágyazva (WordPress-iframe) a keret a teljes tartalom magasságú, ezért a felugró ablak ott nyílik, ahol a
+// kattintott elem van – így a látható részen marad, és bezáráskor nem kell visszagörgetni. Önálló lapon a tetején.
+let kattY = null;
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a, button");
+  if (a && !a.closest("dialog")) kattY = a.getBoundingClientRect().top;
+}, true);
+document.addEventListener("submit", (e) => { kattY = e.target.getBoundingClientRect().top; }, true);
+function helyez(dlg) {
+  if (parent === window || kattY === null) { dlg.style.marginTop = ""; return; }
+  const t = Math.min(Math.max(16, kattY - 60), Math.max(16, innerHeight - dlg.offsetHeight - 16));
+  dlg.style.marginTop = `${t}px`;
 }
 async function lapoz(irany) {
   if (!OLV) return;

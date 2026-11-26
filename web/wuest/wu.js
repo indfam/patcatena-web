@@ -17,6 +17,34 @@ async function szoveg(k, i) {
   return (await cache.get(kulcs))[i % DARAB];
 }
 
+const RESZLET = new Set(["a", "l", "lm"]);
+
+// ---- Felugró ablak a tételekhez: a keret tetején nyílik, a lista (találatok, témafa) a helyén marad ----
+const ABLAK = $("#ablak");
+let lista = "";  // az utolsó listanézet címe (#q/…, #t/…); bezáráskor ide tér vissza
+const reszlet = (h) => RESZLET.has(decodeURIComponent(h.slice(1)).split("/")[0]);
+// Beágyazva (WordPress-iframe) a keret a teljes tartalom magasságú, ezért a felugró ablak ott nyílik, ahol a
+// kattintott elem van – így a látható részen marad, és bezáráskor nem kell visszagörgetni. Önálló lapon a tetején.
+let kattY = null;
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a, button");
+  if (a && !a.closest("dialog")) kattY = a.getBoundingClientRect().top;
+}, true);
+document.addEventListener("submit", (e) => { kattY = e.target.getBoundingClientRect().top; }, true);
+function helyez(dlg) {
+  if (parent === window || kattY === null) { dlg.style.marginTop = ""; return; }
+  const t = Math.min(Math.max(16, kattY - 60), Math.max(16, innerHeight - dlg.offsetHeight - 16));
+  dlg.style.marginTop = `${t}px`;
+}
+function ablakNyit() { if (!ABLAK.open) { ABLAK.showModal(); helyez(ABLAK); } ABLAK.scrollTop = 0; }
+const ablakba = (html) => { $("#ablak-tartalom").innerHTML = html; ablakNyit(); };
+new ResizeObserver(() => ABLAK.open && helyez(ABLAK)).observe(ABLAK);  // betöltés után is a keretben maradjon
+$("#ablak-bezar").onclick = () => ABLAK.close();
+ABLAK.addEventListener("click", (e) => { if (e.target === ABLAK) ABLAK.close(); });
+ABLAK.addEventListener("close", () => {
+  if (reszlet(location.hash)) history.replaceState(null, "", lista ? `#${lista}` : location.pathname + location.search);
+});
+
 // ---- Magasság jelzése a beágyazó oldalnak (WordPress-iframe) ----
 const jelezMagassag = () => parent !== window &&
   parent.postMessage({ type: "patcatena-magassag", h: document.documentElement.scrollHeight }, "*");
@@ -90,10 +118,10 @@ const bekezdesek = (t) => t.split(" ¶ ").map((p) => `<p>${esc(p)}</p>`).join(""
 
 async function angolLap(n) {
   const i = aIdx.get(String(n));
-  if (i === undefined) { $("#eredmeny").innerHTML = `<p class="uzenet">Az angol kiadásban nincs ${esc(n)}. számú tétel (vagy a gépi tagolás nem találta meg).</p>`; return; }
+  if (i === undefined) { ablakba(`<p class="uzenet">Az angol kiadásban nincs ${esc(n)}. számú tétel (vagy a gépi tagolás nem találta meg).</p>`); return; }
   const t = A[i], sz = await szoveg("a", i);
   const kapcs = (PAR["a" + t[0]] || []).filter((x) => lIdx.has(x));
-  $("#eredmeny").innerHTML = `<article class="egyseg">
+  ablakba(`<article class="egyseg">
     <p class="szamok">Matters Liturgical (1959), ${esc(t[0])}. tétel <span>· ${esc(t[2])} · ${esc(t[3])}</span></p>
     <h2 class="doknev">${esc(t[4] || t[5])}</h2>
     <p class="angolcim">${esc(t[5])}</p>
@@ -101,21 +129,21 @@ async function angolLap(n) {
     ${kapcs.length ? `<p class="kapcs">Kapcsolódó bekezdések a latin kiadásban (közös döntések alapján): ${kapcs.map((x) => `<a href="#l/${x}">${x}.</a>`).join(" · ")}</p>` : ""}
     <p class="forrasjel">Gépi olvasású szöveg. <a href="${ANGOL_PDF}#page=${esc(t[1])}" target="_blank" rel="noopener">Az eredeti oldal (PDF, ${esc(t[1])}. oldal)</a></p>
     ${gombok("a", i, sz, A.length)}
-  </article>`;
+  </article>`);
   bekot("a", sz);
 }
 async function latinLap(n) {
   const i = lIdx.get(String(n));
-  if (i === undefined) { $("#eredmeny").innerHTML = `<p class="uzenet">A latin kiadásban a ${esc(n)}. bekezdést a gépi tagolás nem találta meg; valószínűleg az előző bekezdés végén olvasható.</p>`; return; }
+  if (i === undefined) { ablakba(`<p class="uzenet">A latin kiadásban a ${esc(n)}. bekezdést a gépi tagolás nem találta meg; valószínűleg az előző bekezdés végén olvasható.</p>`); return; }
   const t = L[i], sz = await szoveg("l", i);
   const kapcs = (PAR["l" + t[0]] || []).filter((x) => aIdx.has(x));
-  $("#eredmeny").innerHTML = `<article class="egyseg">
+  ablakba(`<article class="egyseg">
     <p class="szamok">Collectio Rerum Liturgicarum (1915), ${esc(t[0])}. bekezdés <span>· ${esc(t[2])}</span></p>
     <div lang="la"><p>${esc(sz)}</p></div>
     ${kapcs.length ? `<p class="kapcs">Kapcsolódó tételek az angol kiadásban (közös döntések alapján): ${kapcs.map((x) => `<a href="#a/${x}">${x}. ${esc(A[aIdx.get(x)][4] || A[aIdx.get(x)][5])}</a>`).join(" · ")}</p>` : ""}
     <p class="forrasjel">Gépi olvasású szöveg, OCR-hibák lehetnek benne. <a href="${LATIN_IA}${+t[1] - 1}" target="_blank" rel="noopener">Az eredeti oldal (Internet Archive)</a></p>
     ${gombok("l", i, sz, L.length)}
-  </article>`;
+  </article>`);
   bekot("l", sz);
 }
 
@@ -136,8 +164,8 @@ function listak() {
 }
 function mutatoLap(i) {
   const [cimszo, sz, nums] = MUT[i];
-  $("#eredmeny").innerHTML = `<section class="egyseg"><p class="szamok">Index alphabeticus (1915)</p><h2 class="doknev">${esc(cimszo)}</h2>
-    <p lang="la">${esc(sz)}</p><p class="kapcs">Bekezdések: ${nums.map((n) => lIdx.has(String(n)) ? `<a href="#l/${n}">${n}.</a>` : `${n}.`).join(" · ")}</p></section>`;
+  ablakba(`<section class="egyseg"><p class="szamok">Index alphabeticus (1915)</p><h2 class="doknev">${esc(cimszo)}</h2>
+    <p lang="la">${esc(sz)}</p><p class="kapcs">Bekezdések: ${nums.map((n) => lIdx.has(String(n)) ? `<a href="#l/${n}">${n}.</a>` : `${n}.`).join(" · ")}</p></section>`);
 }
 
 // ---- Szöveges keresés (Pagefind) ----
@@ -186,13 +214,15 @@ async function utvonal() {
   const h = decodeURIComponent(location.hash.slice(1));
   const [tipus, ...resz] = h.split("/");
   const ertek = resz.join("/");
-  if (tipus === "a" && ertek) { await angolLap(ertek); }
-  else if (tipus === "l" && ertek) { await latinLap(ertek); }
-  else if (tipus === "t" && TSZ[+ertek]) { mod("szoveg"); $("#kerdes").value = TSZ[+ertek][1]; await szovegKereses(TSZ[+ertek][1], +ertek); }
+  if (tipus === "a" && ertek) { await angolLap(ertek); return; }
+  if (tipus === "l" && ertek) { await latinLap(ertek); return; }
+  if (tipus === "lm" && MUT[+ertek]) { mutatoLap(+ertek); return; }
+  if (ABLAK.open) ABLAK.close();
+  if (h === lista && $("#eredmeny").innerHTML.trim()) return;  // visszatérés a már kirakott listához
+  lista = h;
+  if (tipus === "t" && TSZ[+ertek]) { mod("szoveg"); $("#kerdes").value = TSZ[+ertek][1]; await szovegKereses(TSZ[+ertek][1], +ertek); }
   else if (tipus === "q" && ertek) { mod("szoveg"); $("#kerdes").value = ertek; await szovegKereses(ertek); }
-  else if (tipus === "lm" && MUT[+ertek]) { mutatoLap(+ertek); }
-  else { $("#eredmeny").innerHTML = ""; }
-  if (h && tipus !== "q" && tipus !== "t") $("#eredmeny").scrollIntoView({ block: "start" });
+  else { lista = ""; $("#eredmeny").innerHTML = ""; }
 }
 window.addEventListener("hashchange", utvonal);
 

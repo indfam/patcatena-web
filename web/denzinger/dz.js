@@ -14,6 +14,34 @@ async function egyseg(i) {
   return { i, D, ds: ds ? ds.split(",") : [], megj, latin, lforras, angol, acim, dsforras, dok: MUT[i][2] };
 }
 
+const RESZLET = new Set(["ds", "d", "i", "dok"]);
+
+// ---- Felugró ablak a tételekhez: a keret tetején nyílik, a lista (találatok, témafa) a helyén marad ----
+const ABLAK = $("#ablak");
+let lista = "";  // az utolsó listanézet címe (#q/…, #t/…); bezáráskor ide tér vissza
+const reszlet = (h) => RESZLET.has(decodeURIComponent(h.slice(1)).split("/")[0]);
+// Beágyazva (WordPress-iframe) a keret a teljes tartalom magasságú, ezért a felugró ablak ott nyílik, ahol a
+// kattintott elem van – így a látható részen marad, és bezáráskor nem kell visszagörgetni. Önálló lapon a tetején.
+let kattY = null;
+document.addEventListener("click", (e) => {
+  const a = e.target.closest("a, button");
+  if (a && !a.closest("dialog")) kattY = a.getBoundingClientRect().top;
+}, true);
+document.addEventListener("submit", (e) => { kattY = e.target.getBoundingClientRect().top; }, true);
+function helyez(dlg) {
+  if (parent === window || kattY === null) { dlg.style.marginTop = ""; return; }
+  const t = Math.min(Math.max(16, kattY - 60), Math.max(16, innerHeight - dlg.offsetHeight - 16));
+  dlg.style.marginTop = `${t}px`;
+}
+function ablakNyit() { if (!ABLAK.open) { ABLAK.showModal(); helyez(ABLAK); } ABLAK.scrollTop = 0; }
+const ablakba = (html) => { $("#ablak-tartalom").innerHTML = html; ablakNyit(); };
+new ResizeObserver(() => ABLAK.open && helyez(ABLAK)).observe(ABLAK);  // betöltés után is a keretben maradjon
+$("#ablak-bezar").onclick = () => ABLAK.close();
+ABLAK.addEventListener("click", (e) => { if (e.target === ABLAK) ABLAK.close(); });
+ABLAK.addEventListener("close", () => {
+  if (reszlet(location.hash)) history.replaceState(null, "", lista ? `#${lista}` : location.pathname + location.search);
+});
+
 // ---- Magasság jelzése a beágyazó oldalnak (WordPress-iframe) ----
 const jelezMagassag = () => parent !== window &&
   parent.postMessage({ type: "patcatena-magassag", h: document.documentElement.scrollHeight }, "*");
@@ -83,7 +111,7 @@ function fjLink(ds) {
 }
 
 async function egysegLap(i, megjegyzes = "") {
-  const ki = $("#eredmeny");
+  const ki = $("#ablak-tartalom"); ablakNyit();
   ki.innerHTML = `<p class="toltes">Betöltés…</p>`;
   const e = await egyseg(i);
   const dok = DOK[e.dok];
@@ -156,7 +184,7 @@ $("#dokszuro").oninput = dokLista;
 
 async function dokLap(k) {
   const [cim, elso, n, eredeti] = DOK[k];
-  const ki = $("#eredmeny");
+  const ki = $("#ablak-tartalom"); ablakNyit();
   ki.innerHTML = `<p class="toltes">Betöltés…</p>`;
   const egysegek = await Promise.all(Array.from({ length: n }, (_, j) => egyseg(elso + j)));
   ki.innerHTML = `<section class="egyseg"><p class="szamok">${esc(dokTartomany(k))}</p><h2 class="doknev">${esc(cim)}</h2>${eredeti && eredeti !== cim ? `<p class="angolcim">${esc(eredeti)}</p>` : ""}
@@ -234,22 +262,24 @@ async function utvonal() {
   const [tipus, ...resz] = h.split("/");
   const ertek = resz.join("/");
   if ((tipus === "ds" || tipus === "d") && ertek) {
-    mod("szam"); $("#szamozas").value = tipus; $("#szam").value = ertek;
+    $("#szamozas").value = tipus; $("#szam").value = ertek;
     const r = keresSzam(tipus, ertek);
-    if (!r) { $("#eredmeny").innerHTML = `<p class="uzenet">Nincs ilyen szám: ${esc(tipus.toUpperCase())} ${esc(ertek)}.</p>`; return; }
+    if (!r) { ablakba(`<p class="uzenet">Nincs ilyen szám: ${esc(tipus.toUpperCase())} ${esc(ertek)}.</p>`); return; }
     await egysegLap(r.i, r.pontos ? "" : `${tipus.toUpperCase()} ${ertek} nincs meg külön tételként; a legközelebbi következő:`);
-  } else if (tipus === "i" && ertek) {
-    await egysegLap(Math.max(0, Math.min(MUT.length - 1, +ertek)));
-  } else if (tipus === "t" && ertek && TSZ[+ertek]) {
+    return;
+  }
+  if (tipus === "i" && ertek) { await egysegLap(Math.max(0, Math.min(MUT.length - 1, +ertek))); return; }
+  if (tipus === "dok" && ertek) { await dokLap(+ertek); return; }
+  if (ABLAK.open) ABLAK.close();
+  if (h === lista && $("#eredmeny").innerHTML.trim()) return;  // visszatérés a már kirakott listához
+  lista = h;
+  if (tipus === "t" && ertek && TSZ[+ertek]) {
     mod("szoveg"); $("#kerdes").value = TSZ[+ertek][1]; await szovegKereses(TSZ[+ertek][1], +ertek);
   } else if (tipus === "q" && ertek) {
     mod("szoveg"); $("#kerdes").value = ertek; await szovegKereses(ertek);
-  } else if (tipus === "dok" && ertek) {
-    await dokLap(+ertek);
   } else {
-    $("#eredmeny").innerHTML = "";
+    lista = ""; $("#eredmeny").innerHTML = "";
   }
-  if (h && tipus !== "q") $("#eredmeny").scrollIntoView({ block: "start" });
 }
 window.addEventListener("hashchange", utvonal);
 

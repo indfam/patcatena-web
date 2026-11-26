@@ -10,6 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=__VERZIO__">
 <style>
+  /* Tétel felugró ablakban, a keret tetején (a lista a helyén marad) */
+  dialog.ablak { width: min(60rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0; margin: 1rem auto auto;
+    border: 1px solid var(--vonal); border-radius: 4px; background: var(--lap); color: var(--tinta); }
+  dialog.ablak::backdrop { background: rgba(20, 16, 12, .45); }
+  .ablak .olvaso-fej { padding: .6rem 1rem 0; }
+  .ablak-tartalom { padding: 0 1.5rem 1.25rem; }
+  .ablak-tartalom .egyseg { border-top: 0; padding-top: 0; }
   .egyseg { border-top: 1px solid var(--vonal); padding: 1.25rem 0; }
   .szamok { font: 600 .95rem/1.3 var(--sans); color: var(--rubrika); margin: 0 0 .25rem; }
   .szamok span { color: var(--halvany); font-weight: 400; }
@@ -97,6 +104,11 @@
   </section>
 
   <main id="eredmeny" aria-live="polite"></main>
+
+<dialog id="ablak" class="ablak" aria-label="Tétel">
+  <div class="olvaso-fej"><span></span><button class="bezar" id="ablak-bezar" aria-label="Bezárás">×</button></div>
+  <div id="ablak-tartalom" class="ablak-tartalom"></div>
+</dialog>
 
   <footer class="lab">
     <p>Latin szöveg: catho.org „Denzinger (latin)” (DS- és D-számokkal, 1958-ig); a csak a régi kiadásban meglévő tételeknél
