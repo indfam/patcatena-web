@@ -14,8 +14,11 @@ const cache = new Map();
 async function idezetek(i) {
   const d = Math.floor(i / DARAB);
   if (!cache.has(d)) cache.set(d, json(`data/e/${d}.json`));
-  return (await cache.get(d))[i % DARAB];
+  const x = (await cache.get(d))[i % DARAB];
+  return Array.isArray(x) ? { q: x, hu: [] } : x;  // {q: idézetek, hu: a párosítatlan magyar szemelvények}
 }
+const DEZSO = "https://ppek.hu/summa-pdf/Dezso_Istvan_Jezus_evangeliuma_es_a_szentatyak_facsimile.pdf";
+const dezsoJel = (o) => `<a href="${DEZSO}#page=${o}" target="_blank" rel="noopener">Dezső István fordítása (1942), a PDF ${o}. oldala</a>`;
 const vulCache = new Map();
 const vulgata = (ev) => { if (!vulCache.has(ev)) vulCache.set(ev, json(`data/vulgata/${ev}.json`)); return vulCache.get(ev); };
 const kalCache = new Map();
@@ -97,7 +100,8 @@ const bekezdesek = (t, lang) => t.split(" ¶ ").map((p) => `<p lang="${lang}">${
 // ---- Egy szakasz ----
 async function szakaszHtml(i, kiemelt = null) {
   const e = E[i];
-  const [q, vul, kal] = await Promise.all([idezetek(i), vulgata(e[1]), kaldi(e[1])]);
+  const [d, vul, kal] = await Promise.all([idezetek(i), vulgata(e[1]), kaldi(e[1])]);
+  const q = d.q;
   const versek = [], magyar = [];
   for (let v = e[3]; v <= e[4]; v++) {
     if (vul[`${e[2]}:${v}`]) versek.push(`<sup>${v}</sup>${esc(vul[`${e[2]}:${v}`])}`);
@@ -105,13 +109,14 @@ async function szakaszHtml(i, kiemelt = null) {
   }
   const ct = e[8] ? `<a href="${CT}${e[8].replace("#", ".html#")}" target="_blank" rel="noopener">latin szöveg: Corpus Thomisticum, ${esc(e[1] === "Jn" ? "Io." : e[1] === "Mk" ? "Mc." : e[1] === "Lk" ? "Lc." : "Mt.")} cap. ${e[2]} lectio ${esc(e[5])}</a>` : "";
   const idez = q.map((x, k) => {
-    const [kulcs, hu, ecim, en, lcim, la, kt] = x;
+    const [kulcs, hu, ecim, en, lcim, la, kt, mg] = x;
     const kv = kt ? `<a class="konyvtar" href="${KONYVTAR[kt[0]]}#u/${kt[1]}/${encodeURIComponent(kt[2])}" target="_blank" rel="noopener">Latin eredeti a könyvtárban: ${esc(kt[3])} ${esc(kt[2])}</a>` : "";
     const szovegek = la
       ? `<div class="ket-hasab"><div><h3>Latin${lcim ? ` (${esc(lcim)})` : ""}</h3>${bekezdesek(la, "la")}</div><div><h3>Angol</h3>${en ? bekezdesek(en, "en") : ""}</div></div>`
       : (en ? bekezdesek(en, "en") : `<p class="uzenet">Ehhez az idézethez az angol fordításban nincs megfelelő szöveg.</p>`);
+    const magyarul = mg ? `<div class="magyarul">${bekezdesek(mg[0], "hu")}<p class="forrasjel">${dezsoJel(mg[2])}</p></div>` : "";
     return `<div class="idezet${kiemelt && kiemelt === hu ? " kiem" : ""}" data-k="${k}">
-      <h4>${esc(hu)} ${ecim ? `<span>(${esc(ecim)})</span>` : ""}</h4>${szovegek}
+      <h4>${esc(hu)} ${ecim ? `<span>(${esc(ecim)})</span>` : ""}</h4>${magyarul}${szovegek}
       <div class="eszk"><button data-masol="${k}">Szöveg másolása</button>
       <a href="${esc(aiModLink(la || en || ""))}" target="_blank" rel="noopener">Fordítás (Google AI mód)</a>${kv}</div></div>`;
   }).join("");
@@ -119,6 +124,9 @@ async function szakaszHtml(i, kiemelt = null) {
     <p class="szamok">${esc(helyCim(e))} <span>· ${EVNEV[e[1]]} evangéliuma, ${e[2]}. fejezet · ${e[7]} idézet</span></p>
     <div class="ige">${versek.length ? `<p class="lat" lang="la">${versek.join(" ")}</p>` : ""}${magyar.length ? `<p lang="hu">${magyar.join(" ")}</p><p class="forrasjel">Káldi-Biblia</p>` : (e[6] ? `<p lang="en">${esc(e[6])}</p>` : "")}</div>
     ${idez}
+    ${d.hu.length ? `<details class="tszdoboz"><summary>További magyar szemelvények ehhez a szakaszhoz (${d.hu.length})</summary>
+      <p class="tipp">Dezső István fordításának azok a szemelvényei, amelyeket a gépi párosítás nem tudott egy-egy idézethez rendelni.</p>
+      ${d.hu.map((x) => `<div class="idezet"><h4>${esc(x[1])} <span>(${esc(x[3])})</span></h4>${bekezdesek(x[0], "hu")}<p class="forrasjel">${dezsoJel(x[2])}</p></div>`).join("")}</details>` : ""}
     <p class="forrasjel">${ct}</p>
     <div class="lapozo">
       <button data-lep="${i - 1}" ${i === 0 ? "disabled" : ""}>Előző szakasz</button>
@@ -133,7 +141,7 @@ async function szakaszAblak(id) {
   const i = idIdx.get(id);
   if (i === undefined) { $("#ablak-tartalom").innerHTML = `<p class="uzenet">Nincs ilyen szakasz: ${esc(id)}.</p>`; ablakNyit(); return; }
   $("#ablak-tartalom").innerHTML = await szakaszHtml(i);
-  bekot($("#ablak-tartalom"), i, await idezetek(i));
+  bekot($("#ablak-tartalom"), i, (await idezetek(i)).q);
   ablakNyit();
 }
 
@@ -153,7 +161,7 @@ async function helyKereses(ev, hely) {
   const html = [];
   for (const [, i] of talalt) html.push(await szakaszHtml(i));
   ki.innerHTML = html.join("");
-  for (const [, i] of talalt) bekot(ki.querySelector(`[data-i="${i}"]`), i, await idezetek(i));
+  for (const [, i] of talalt) bekot(ki.querySelector(`[data-i="${i}"]`), i, (await idezetek(i)).q);
   ki.querySelectorAll("[data-lep]").forEach((b) => b.onclick = () => {
     const e = E[+b.dataset.lep]; location.hash = `#v/${e[1]}/${e[2]},${e[3]}`;
   });

@@ -50,6 +50,14 @@ def main(ki, latin):
         if not k or (not latin and not nyilt(k)): continue
         kapcs[r['id']][int(r['sorszam'])] = ['k' if kategoria(k) == 'kommentar' else 'f', r['urn'], r['ref'], k['mu']]
 
+    # magyar szemelvények: Dezső István, Jézus evangéliuma és a szentatyák I. (Rákospalota 1942; PPEK)
+    hu_par, hu_tobb = {}, defaultdict(list)
+    mp = os.path.join(C, 'magyar_dezso.tsv')
+    if os.path.exists(mp):
+        for r in csv.DictReader(open(mp, encoding='utf-8'), delimiter='\t'):
+            x = [r['szoveg'], r['szerzo'], int(r['oldal']), r['vers']]
+            if r['sorszam'] != '': hu_par[(r['id'], int(r['sorszam']))] = x
+            elif r['id']: hu_tobb[r['id']].append(x)
     pf = ki.rstrip('/') + '_pagefind'
     if os.path.exists(pf): shutil.rmtree(pf)
     os.makedirs(os.path.join(pf, '0'))
@@ -59,19 +67,21 @@ def main(ki, latin):
         idez = []
         for s, p in enumerate(q):
             # [kulcs, magyar név, angol címke, angol szöveg, latin címke, latin szöveg, könyvtári hely]
-            idez.append([p[0], p[1], p[4], p[5], p[2] if latin else '', p[3] if latin else '', kapcs[r['id']].get(s)])
+            idez.append([p[0], p[1], p[4], p[5], p[2] if latin else '', p[3] if latin else '', kapcs[r['id']].get(s),
+                         hu_par.get((r['id'], s))])
             for n in p[1].split(' / '):  # összevont idézetnél (pl. „Glossa / Pszeudo-Aranyszájú János”) mindkét szerző
                 szerzok[n] += 1
                 if not szerzo_egys[n] or szerzo_egys[n][-1] != i: szerzo_egys[n].append(i)
         meta.append([r['id'], r['evangelium'], int(r['fejezet']), int(r['vers_tol']), int(r['vers_ig']), r['lectio'],
                      r['ige_angol'], len(q), r['lat_hely']])
-        darab.append(idez)
+        darab.append({'q': idez, 'hu': hu_tobb.get(r['id'], [])})
         if len(darab) == DARAB:
             jdump(darab, os.path.join(ki, 'data', 'e', f'{i // DARAB}.json')); darab = []
         hely = f"{r['evangelium']} {r['fejezet']},{r['vers_tol']}" + (f"–{r['vers_ig']}" if r['vers_ig'] != r['vers_tol'] else '')
         nevek = sorted({n for p in q for n in p[1].split(' / ')})
         szf = ''.join(f'<span data-pagefind-filter="szerzo:{html.escape(n)}"></span>' for n in nevek)
-        szoveg = ' '.join([r['ige_angol']] + [f'{p[1]} ({p[4]}): {p[5]}' for p in q])
+        szoveg = ' '.join([r['ige_angol']] + [f'{p[1]} ({p[4]}): {p[5]}' for p in q]
+                          + [x[7][0] for x in idez if x[7]] + [x[0] for x in hu_tobb.get(r['id'], [])])
         with open(os.path.join(pf, '0', f'{r["id"]}.html'), 'w', encoding='utf-8') as o:
             o.write(LAP.format(k=r['id'], cim=html.escape(hely), ev=EVNEV[r['evangelium']], szf=szf, t=html.escape(szoveg)))
     if darab: jdump(darab, os.path.join(ki, 'data', 'e', f'{(len(sorok) - 1) // DARAB}.json'))
