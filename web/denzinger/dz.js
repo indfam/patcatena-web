@@ -167,21 +167,49 @@ function valtozatok(q) {
   const v = u.replace(/(^|[^a-z])u(?=[aeiou])|(?<=[aeiou])u(?=[aeiou])/g, (m, p) => (p ?? "") + "v");
   return [...new Set([q, u, v])];
 }
-async function szovegKereses(q) {
-  const ki = $("#eredmeny");
-  ki.innerHTML = `<p class="toltes">Keresés…</p>`;
+// ---- Magyar tárgyszótár: magyar tárgyszó → latin és angol keresőszavak ----
+let TSZ = [];
+const ekezetNelkul = (t) => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
+// A tárgyszó részei (vesszők és zárójelek mentén): „purgatórium (tisztítóhely, tisztítótűz)” → 3 kereshető alak
+const tszReszek = (t) => t.split(/[,()]/).map((x) => ekezetNelkul(x)).filter(Boolean);
+function tszKeres(q) {
+  const n = ekezetNelkul(q);
+  if (!n) return { pontos: null, hasonlo: [] };
+  const pontos = TSZ.findIndex((t) => ekezetNelkul(t[1]) === n || tszReszek(t[1]).includes(n));
+  const hasonlo = TSZ.map((t, i) => [t, i]).filter(([t, i]) => i !== pontos && n.length >= 3 &&
+    tszReszek(t[1]).some((r) => r.includes(n) || r.split(" ").some((w) => w.startsWith(n)))).map(([, i]) => i);
+  return { pontos: pontos >= 0 ? pontos : null, hasonlo };
+}
+function tszLista() {
+  const kat = [...new Set(TSZ.map((t) => t[0]))];
+  $("#tszlista").innerHTML = kat.map((k) => `<div class="tszkat"><h4>${esc(k)}</h4><p>${TSZ.map((t, i) => [t, i]).filter(([t]) => t[0] === k)
+    .map(([t, i]) => `<a href="#t/${i}">${esc(t[1])}</a>`).join(" · ")}</p></div>`).join("");
+}
+
+async function pfInit() {
   if (!pagefind) {
     pagefind = await import(`./pagefind/pagefind.js${V ? "?v=" + V : ""}`);
     await pagefind.options({ excerptLength: 40 });
   }
-  const eredm = await Promise.all(valtozatok(q).map((v) => pagefind.search(v)));
+}
+async function szovegKereses(q, tsz = null) {
+  const ki = $("#eredmeny");
+  ki.innerHTML = `<p class="toltes">Keresés…</p>`;
+  await pfInit();
+  // Ha a keresett szó egy magyar tárgyszó, annak latin és angol megfelelőire keresünk
+  const tk = tsz === null ? tszKeres(q) : { pontos: tsz, hasonlo: [] };
+  const t = tk.pontos !== null ? TSZ[tk.pontos] : null;
+  const kerdesek = t ? [...t[2], ...t[3]].flatMap(valtozatok) : valtozatok(q);
+  const eredm = await Promise.all([...new Set(kerdesek)].map((v) => pagefind.search(v)));
   const lattuk = new Set(), talalatok = [];
-  for (const r of eredm) for (const t of r.results) if (!lattuk.has(t.id)) { lattuk.add(t.id); talalatok.push(t); }
-  if (!talalatok.length) { ki.innerHTML = `<p class="uzenet">Nincs találat erre: „${esc(q)}”. Próbálja más alakban vagy más nyelven.</p>`; return; }
-  ki.innerHTML = `<p class="osszegzes">${talalatok.length} tétel</p><div id="talalatok"></div><button class="tobb" id="tobb" hidden>További találatok</button>`;
+  for (const r of eredm) for (const x of r.results) if (!lattuk.has(x.id)) { lattuk.add(x.id); talalatok.push(x); }
+  const fej = (t ? `<p class="tszfej">Tárgyszó: <b>${esc(t[1])}</b> <span>(${esc(t[0])})</span> – keresve: ${esc([...t[2], ...t[3]].join(", "))}</p>` : "") +
+    (tk.hasonlo.length ? `<p class="tszfej">Hasonló tárgyszavak: ${tk.hasonlo.slice(0, 12).map((i) => `<a href="#t/${i}">${esc(TSZ[i][1])}</a>`).join(" · ")}</p>` : "");
+  if (!talalatok.length) { ki.innerHTML = fej + `<p class="uzenet">Nincs találat erre: „${esc(q)}”. Próbálja latinul vagy angolul, vagy válasszon a tárgyszavak közül.</p>`; return; }
+  ki.innerHTML = fej + `<p class="osszegzes">${talalatok.length} tétel</p><div id="talalatok"></div><button class="tobb" id="tobb" hidden>További találatok</button>`;
   let n = 0;
   const lap = async () => {
-    const adat = await Promise.all(talalatok.slice(n, n + 20).map((t) => t.data()));
+    const adat = await Promise.all(talalatok.slice(n, n + 20).map((x) => x.data()));
     n += adat.length;
     $("#talalatok").insertAdjacentHTML("beforeend", adat.map((a) => {
       const i = +a.meta.i, [d, ds] = MUT[i];
@@ -208,6 +236,8 @@ async function utvonal() {
     await egysegLap(r.i, r.pontos ? "" : `${tipus.toUpperCase()} ${ertek} nincs meg külön tételként; a legközelebbi következő:`);
   } else if (tipus === "i" && ertek) {
     await egysegLap(Math.max(0, Math.min(MUT.length - 1, +ertek)));
+  } else if (tipus === "t" && ertek && TSZ[+ertek]) {
+    mod("szoveg"); $("#kerdes").value = TSZ[+ertek][1]; await szovegKereses(TSZ[+ertek][1], +ertek);
   } else if (tipus === "q" && ertek) {
     mod("szoveg"); $("#kerdes").value = ertek; await szovegKereses(ertek);
   } else if (tipus === "dok" && ertek) {
@@ -219,6 +249,8 @@ async function utvonal() {
 }
 window.addEventListener("hashchange", utvonal);
 
-[MUT, DOK] = await Promise.all([json("data/mutato.json"), json("data/dokumentumok.json")]);
+[MUT, DOK, TSZ] = await Promise.all([json("data/mutato.json"), json("data/dokumentumok.json"),
+  json("data/targyszotar.json").catch(() => [])]);
 dokLista();
+tszLista();
 utvonal();

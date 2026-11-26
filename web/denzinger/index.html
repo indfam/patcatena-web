@@ -25,6 +25,12 @@
     border-radius: 3px; padding: .55rem .8rem; text-decoration: none; cursor: pointer; }
   .lapozo a.gomb { background: var(--rubrika); color: #fff; border-color: var(--rubrika); }
   .lapozo button:disabled { opacity: .4; cursor: default; }
+  .tszdoboz { margin-top: .75rem; font: 400 .9rem/1.5 var(--sans); }
+  .tszdoboz summary { cursor: pointer; font-weight: 600; color: var(--lazur); }
+  .tszkat h4 { font: 600 .85rem/1.2 var(--sans); color: var(--halvany); margin: .8rem 0 .2rem; }
+  .tszkat p { margin: 0; }
+  .tszfej { font: 400 .9rem/1.45 var(--sans); color: var(--halvany); margin: 0 0 .5rem; }
+  .tszfej b { color: var(--tinta); }
   .magyar { font: 600 .95rem/1.4 var(--sans); margin: .75rem 0 0; }
   .forrasjel { font: 400 .8rem/1.4 var(--sans); color: var(--halvany); margin: .5rem 0 0; }
   .doklista { list-style: none; padding: 0; margin: 1rem 0 0; }
@@ -70,13 +76,14 @@
   <section id="panel-szoveg" role="tabpanel" aria-labelledby="tab-szoveg" hidden>
     <form id="urlap-szoveg" class="urlap">
       <label class="szeles">Keresett szavak
-        <input id="kerdes" required placeholder="pl. transsubstantiatio, „ex cathedra”, infallibility" autocomplete="off">
+        <input id="kerdes" required placeholder="pl. átlényegülés, purgatórium, transsubstantiatio, „ex cathedra”" autocomplete="off">
       </label>
       <button type="submit">Keresés</button>
     </form>
-    <p class="tipp">A latin szövegben és az angol fordításban egyszerre keres, a dokumentumok címével együtt. Tárgyra angol vagy latin
-    kulcsszóval kereshet (pl. purgatory, purgatorium, indulgentiae). Több szó esetén mindegyiknek szerepelnie kell; idézőjelek
-    között pontos kifejezést keres. A latin u/v, i/j írásmód nem számít.</p>
+    <p class="tipp">A latin szövegben és az angol fordításban keres, a dokumentumok címével együtt. Magyar tárgyszóra is kereshet
+    (pl. átlényegülés, megigazulás, pápai tévedhetetlenség): ilyenkor a kereső a tárgyszó latin és angol megfelelőire keres.
+    Több szó esetén mindegyiknek szerepelnie kell; idézőjelek között pontos kifejezést keres. A latin u/v, i/j írásmód nem számít.</p>
+    <details class="tszdoboz"><summary>Magyar tárgyszavak böngészése</summary><div id="tszlista"></div></details>
   </section>
 
   <section id="panel-dok" role="tabpanel" aria-labelledby="tab-dok" hidden>

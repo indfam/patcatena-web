@@ -61,6 +61,13 @@ def main(ki):
     if darab:
         jdump(darab, os.path.join(ki, 'data', 'e', f'{(len(sorok) - 1) // DARAB}.json'))
     jdump(mutato, os.path.join(ki, 'data', 'mutato.json'))
+    # Magyar tárgyszótár (kategória, tárgyszó, latin és angol keresőszavak)
+    tf = os.path.join(GYOKER, 'szovegek', 'denzinger', 'targyszotar.tsv')
+    if os.path.exists(tf):
+        tsz = [[r['kategoria'], r['targyszo'], [x.strip() for x in r['latin'].split('|') if x.strip()],
+                [x.strip() for x in r['angol'].split('|') if x.strip()]]
+               for r in csv.DictReader(open(tf, encoding='utf-8'), delimiter='\t')]
+        jdump(tsz, os.path.join(ki, 'data', 'targyszotar.json'))
     jdump(dok, os.path.join(ki, 'data', 'dokumentumok.json'))
     print(f'{len(sorok)} egység, {len(dok)} dokumentum -> {ki}', file=sys.stderr)
 
