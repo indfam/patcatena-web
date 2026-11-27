@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prümmer-morális kereső</title>
+<meta name="description" content="Dominicus M. Prümmer: Vademecum theologiae moralis – a latin szöveg és magyar fordítása margószámok, témák és szavak szerint kereshetően.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=__VERZIO__">
+<style>
+  .egyseg { border-top: 1px solid var(--vonal); padding: 1.25rem 0; }
+  .ut { font: 400 .85rem/1.5 var(--sans); color: var(--halvany); margin: 0 0 .5rem; }
+  .ut a { color: var(--halvany); }
+  .egysegcim { font: 600 1.1rem/1.35 var(--sans); margin: 0 0 .2rem; }
+  .egysegcim + .lat-cim { font: italic 400 .95rem/1.4 var(--serif); color: var(--halvany); margin: 0 0 1rem; }
+  .tetel { padding: 1rem 0; border-top: 1px solid var(--vonal); }
+  .tetel:first-of-type { border-top: 0; }
+  .tetel .szam { font: 700 1rem/1 var(--sans); color: var(--rubrika); margin: 0 0 .5rem; display: flex; gap: .8rem; align-items: baseline; flex-wrap: wrap; }
+  .tetel .szam a { color: var(--rubrika); text-decoration: none; }
+  .tetel .szam span { font-weight: 400; font-size: .8rem; color: var(--halvany); }
+  .ket-hasab { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+  .ket-hasab h3 { font: 600 .78rem/1.2 var(--sans); color: var(--halvany); margin: 0 0 .35rem; }
+  .ket-hasab p { margin: 0 0 .55rem; line-height: 1.62; }
+  .ket-hasab .la p { font-size: .97rem; }
+  .ket-hasab .bel { font: 600 .9rem/1.35 var(--sans); color: var(--lazur); margin: .9rem 0 .4rem; }
+  .ocr { grid-template-columns: 1fr; }
+  .ocrjel { font: 400 .82rem/1.45 var(--sans); color: var(--halvany); border-left: 3px solid var(--vonal); padding-left: .6rem; margin: 0 0 .6rem; }
+  .jegyzet { font-size: .9rem !important; color: var(--halvany); }
+  .lapozo { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .lapozo a, .lapozo button { font: 600 .9rem/1 var(--sans); color: var(--tinta); border: 1px solid var(--vonal); border-radius: 3px;
+    padding: .55rem .8rem; text-decoration: none; background: none; }
+  .lapozo a.gomb { background: var(--rubrika); color: #fff; border-color: var(--rubrika); }
+  .lapozo button:disabled { opacity: .4; }
+  .fa { margin-top: .5rem; }
+  .fa .pars { font: 600 .8rem/1.2 var(--sans); color: var(--halvany); margin: 1.2rem 0 .3rem; }
+  .fa details { margin: .15rem 0; }
+  .fa details details, .fa .level { margin-left: 1.1rem; }
+  .fa summary { cursor: pointer; font: 600 1rem/1.4 var(--sans); padding: .25rem 0; }
+  .fa details details summary { font-weight: 400; font-size: .95rem; }
+  .fa .tart { font: 400 .8rem/1 var(--sans); color: var(--halvany); margin-left: .35rem; }
+  .fa .nyit { font: 400 .85rem/1.4 var(--sans); margin-left: .4rem; }
+  .fa .level { font: 400 .95rem/1.5 var(--sans); padding: .15rem 0; }
+  .fa .nincs { color: var(--halvany); }
+  .talalat { padding: .8rem 0; border-bottom: 1px solid var(--vonal); }
+  .talalat h4 { margin: 0 0 .2rem; font: 600 1rem/1.35 var(--sans); }
+  .talalat h4 span { font-weight: 400; color: var(--halvany); font-size: .85rem; }
+  .talalat p { margin: 0; font-size: .95rem; line-height: 1.55; }
+  .talalat mark { background: var(--jelolo); color: inherit; }
+  .tszdoboz { margin-top: 1rem; font: 400 .92rem/1.6 var(--sans); }
+  .tszdoboz summary { cursor: pointer; font-weight: 600; color: var(--lazur); }
+  .tszkat h4 { font: 600 .82rem/1.2 var(--sans); color: var(--halvany); margin: .9rem 0 .25rem; }
+  .tszkat p { margin: 0; }
+  .tszkat a { margin-right: .7rem; white-space: nowrap; }
+  .tszfej { font: 400 .92rem/1.5 var(--sans); background: var(--mezo); border-radius: 3px; padding: .6rem .8rem; margin: 0 0 .75rem; }
+  .szamlista { columns: 2 20rem; font: 400 .92rem/1.6 var(--sans); margin-top: 1rem; }
+  .szamlista p { margin: 0 0 .25rem; break-inside: avoid; }
+  .szamlista span { color: var(--halvany); }
+  .allapot { font: 400 .85rem/1.5 var(--sans); color: var(--halvany); margin: .25rem 0 0; }
+  @media (max-width: 640px) { .ket-hasab { grid-template-columns: 1fr; gap: .5rem; } }
+</style>
+</head>
+<body>
+<div class="lap">
+  <header class="fej">
+    <h1><a href="#">Prümmer: Vademecum theologiae moralis</a></h1>
+    <p>Dominicus M. Prümmer domonkos teológus erkölcsteológiai kézikönyve a latin szöveggel és magyar fordítással,
+    a könyv margószámai szerint. A keresés magyarul és latinul is működik.</p>
+  </header>
+
+  <nav class="mod" role="tablist" aria-label="Keresés módja">
+    <button role="tab" id="tab-temak" aria-controls="panel-temak" aria-selected="true">Témák</button>
+    <button role="tab" id="tab-szoveg" aria-controls="panel-szoveg" aria-selected="false">Szöveg és tárgy</button>
+    <button role="tab" id="tab-szam" aria-controls="panel-szam" aria-selected="false">Szám szerint</button>
+  </nav>
+
+  <section id="panel-temak" role="tabpanel" aria-labelledby="tab-temak">
+    <p class="tipp">A könyv szerkezete: traktátusok, kérdések, fejezetek, cikkelyek és paragrafusok. Egy egységre kattintva
+    megnyílnak a hozzá tartozó számok.</p>
+    <p class="allapot" id="allapot"></p>
+    <div id="fa" class="fa"></div>
+  </section>
+
+  <section id="panel-szoveg" role="tabpanel" aria-labelledby="tab-szoveg" hidden>
+    <form id="urlap-szoveg" class="urlap">
+      <label class="szeles">Keresett szavak
+        <input id="kerdes" required placeholder="pl. kártérítés, fogadalom, zsolozsma, restitutio, votum" autocomplete="off">
+      </label>
+      <label>Traktátus
+        <select id="straktatus"><option value="">mind</option></select>
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">A magyar fordításban és a latin szövegben keres. Több szó esetén mindegyiknek szerepelnie kell.
+    Ha a keresett szó a tárgyszótárban van, a még le nem fordított részek latin szövegében is keres (latin megfelelőivel).</p>
+    <details class="tszdoboz" id="tszdoboz"><summary>Tárgyszavak böngészése</summary><div id="tszlista"></div></details>
+  </section>
+
+  <section id="panel-szam" role="tabpanel" aria-labelledby="tab-szam" hidden>
+    <form id="urlap-szam" class="urlap">
+      <label>Margószám
+        <input id="szam" required inputmode="numeric" placeholder="pl. 341" autocomplete="off">
+      </label>
+      <button type="submit">Megnyitás</button>
+    </form>
+    <p class="tipp">A Vademecum 5. kiadásának margószámai (0–949). A nagyobb kézikönyv (Manuale theologiae moralis) és az angol
+    Handbook of Moral Theology is ezekre a számokra épül.</p>
+    <div id="szamlista" class="szamlista"></div>
+  </section>
+
+  <main id="eredmeny" aria-live="polite"></main>
+
+  <footer class="lab">
+    <p>Forrás: Dominicus M. Prümmer O.P., Vademecum theologiae moralis in usum examinandorum et confessariorum, ed. 5., ed. Engelbertus M. Münch O.P.
+    (Freiburg im Breisgau: Herder, 1941), a librinostri.com szkennelése alapján. A latin szöveg gépi szövegfelismerésből (OCR)
+    készült és kézzel javított; ahol a fordítás még nem készült el, a javítatlan gépi szöveg áll, ezért ott hibák lehetnek.
+    A magyar fordítás saját, nem hivatalos. A hivatkozott kánonok az 1917-es Egyházi Törvénykönyvre (CIC) vonatkoznak.
+    Idézéskor a nyomtatott kiadást ellenőrizze.</p>
+  </footer>
+</div>
+<script src="pr.js?v=__VERZIO__" type="module"></script>
+</body>
+</html>

@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
-      - name: Adatok és felület (Kommentár-kereső, Patrisztikus források keresője, Denzinger-, Wuest- és Catena-kereső)
+      - name: Adatok és felület (Kommentár-kereső, Patrisztikus források keresője, Denzinger-, Wuest-, Catena-, Ott- és Prümmer-kereső)
         run: |
           python3 eszkozok/web.py _site
           python3 eszkozok/web.py _site/forrasok --kor forras
@@ -33,6 +33,7 @@ jobs:
           python3 eszkozok/web_wuest.py _site/wuest
           python3 eszkozok/web_catena.py _site/catena
           python3 eszkozok/web_ott.py _site/ott
+          python3 eszkozok/web_prummer.py _site/prummer
       - name: Szöveges keresőindexek (Pagefind)
         run: |
           bash eszkozok/web_pagefind.sh _site
@@ -41,6 +42,7 @@ jobs:
           bash eszkozok/web_pagefind.sh _site/wuest
           bash eszkozok/web_pagefind.sh _site/catena
           bash eszkozok/web_pagefind.sh _site/ott
+          bash eszkozok/web_pagefind.sh _site/prummer
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
