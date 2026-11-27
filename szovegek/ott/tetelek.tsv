@@ -1,0 +1,402 @@
+n	resz	par	par_cim	minosites	tetel	dszam
+1	0	5	The Development of Dogma	Sententia certa	With Christ and the Apostles General Revelation concluded.	2021
+2	1	1	The Possibility of the Natural Knowledge of God in the Light of Supernatural Revelation	De fide	God, our Creator and Lord, can be known with certainty, by the natural light of reason from created things.	1806
+3	1	2	The Possibility of a Proof of God’s Existence	Sententia fidei proxima	The Existence of God can be proved by means of causality.	1622,1650,2145
+4	1	4	God’s Existence as an Object of Faith	De fide	God’s existence is not merely an object of natural rational knowledge, but also an object of supernatural faith.	1782,1801,798,1173,1786
+5	1	5	The Natural Knowledge of the Nature of God in This World	Sententia certa	Our natural knowledge of God in this world is not an immediate, intuitive cognition, but a mediate, abstractive knowledge, because it is attained through the knowledge of creatures.	475,1659
+6	1	5	The Natural Knowledge of the Nature of God in This World	Sententia certa	Our knowledge of God here below is not proper (cognitio propria) but analogical (cognitio analoga or analogica).	
+7	1	5	The Natural Knowledge of the Nature of God in This World	De fide	God’s Nature is incomprehensible to men.	428,1782
+8	1	6	The Supernatural Knowledge of the Divine Essence in the Other World	De fide	The blessed in Heaven possess an immediate intuitive knowledge of the Divine Essence.	530,693
+9	1	6	The Supernatural Knowledge of the Divine Essence in the Other World	De fide	The Immediate Vision of God transcends the natural power of cognition of the human soul, and is therefore supernatural.	475
+10	1	6	The Supernatural Knowledge of the Divine Essence in the Other World	De fide	The soul, for the Immediate Vision of God, requires the light of glory.	475
+11	1	6	The Supernatural Knowledge of the Divine Essence in the Other World	De fide	God’s Essence is also incomprehensible to the blessed in Heaven.	418,1782
+12	1	10	The Attributes of God in General	De fide	The Divine Attributes are really identical among themselves and with the Divine Essence.	389,703
+13	1	11	The Absolute Perfection of God	De fide	God is absolutely perfect.	1782
+14	1	12	God’s Infinity	De fide	God is actually infinite in every perfection.	1782
+15	1	13	God’s Simplicity	De fide	God is absolutely simple.	428,1782
+16	1	14	God’s Unicity	De fide	There is only One God.	54,86,428
+17	1	15	God’s Truth	De fide	The One God is, in the ontological sense, The True God.	
+18	1	15	God’s Truth	De fide	God possesses an infinite power of cognition.	1782,1789
+19	1	16	God’s Goodness	De fide	God is absolute ontological Goodness in Himself and in relation to others.	1782,1783
+20	1	16	God’s Goodness	De fide	God is absolute Moral Goodness or Holiness.	1782
+21	1	16	God’s Goodness	De fide	God is absolute Benignity.	1782
+22	1	17	God’s Immutability	De fide	God is absolutely immutable.	428,1782
+23	1	18	God’s Eternity	De fide	God is eternal.	39,428,1782
+24	1	19	The Immensity or Immeasurability of God and His Omnipresence	De fide	God is immense or absolutely immeasurable.	39,428,1782
+25	1	19	The Immensity or Immeasurability of God and His Omnipresence	De fide	God is everywhere present in created space.	
+26	1	21	Object and Division of the Divine Knowing		The primary and formal object of the Divine Cognition is God Himself.	
+27	1	21	Object and Division of the Divine Knowing	De fide	God knows all that is merely possible by the knowledge of simple intelligence (scientia simplicis intelligentiae).	1782
+28	1	21	Object and Division of the Divine Knowing	De fide	God knows all real things in the past, the present and the future (Scientia visionis).	1782
+29	1	21	Object and Division of the Divine Knowing	De fide	By the knowledge of vision (scientia visionis) God also foresees the future free acts of the rational creatures with infallible certainty.	1784,815
+30	1	21	Object and Division of the Divine Knowing	Sententia communis	God also knows the conditioned future free actions with infallible certainty (Scientia futuribilium).	
+31	1	26	The Physical Properties of the Divine Will	De fide	God loves Himself of necessity, but loves and wills the creation of extra-Divine things, on the other hand, with freedom.	
+32	1	26	The Physical Properties of the Divine Will	De fide	God is almighty.	428,1782
+33	1	26	The Physical Properties of the Divine Will	De fide	God is the Lord of the heavens and of the earth.	1782
+34	1	27	The Moral Attributes of the Divine Will	De fide	God is infinitely just.	1782
+35	1	27	The Moral Attributes of the Divine Will	De fide	God is infinitely merciful.	1782
+36	2	2	The Doctrinal Decisions of the Church	De fide	In God there are Three Persons, the Father, the Son and the Holy Ghost. Each of the Three Persons possesses the one (numerical) Divine Essence.	1,48,54,86,58,39
+37	2	10	The Internal Divine Processions in General	De fide	In God there are two Internal Divine Processions.	86
+38	2	10	The Internal Divine Processions in General	De fide	The Divine Persons, not the Divine Nature, are the subject of the Internal Divine processions (in the active and in the passive sense).	
+39	2	11	The Procession of the Son from the Father by Way of Generation	De fide	The Second Divine Person proceeds from the First Divine Person by Generation, and therefore is related to Him as Son to a Father.	39,54
+40	2	12	The Procession of the Holy Ghost from the Father and the Son by way of Spiration	De fide	The Holy Ghost proceeds from the Father and from the Son as from a Single Principle through a Single Spiration.	460,19,39,277,428,691,703
+41	2	19	The Trinitarian Perichoresis (Circumincession)	De fide	The Three Divine Persons are in One Another.	704
+42	2	20	The Unity of the Divine Operation ad extra	De fide	All the ad extra Activities of God are common to the Three Persons.	428,704,254,281,284
+43	2	22	The Divine Missions	Sententia certa	The Father sends the Son: the Father and the Son send the Holy Ghost.	277,794
+44	2	23	The Mysterious Character of the Dogma of the Trinity	Sententia fidei proxima	The Trinity of God can only be known through Divine Revelation.	1795
+45	3	1	The Reality of the Divine Creation of the World	De fide	All that exists outside God was, in its whole substance, produced out of nothing by God.	1805,428
+46	3	2	The Divine World-Idea	Sententia certa	The world is the work of the Divine Wisdom.	
+47	3	3	Motive and Purpose of the Creation of the World	De fide	God was moved by His Goodness to create the world.	1783,1782
+48	3	3	Motive and Purpose of the Creation of the World	De fide	The world was created for the Glorification of God.	1805
+49	3	4	The Trinity and Creation	De fide	The Three Divine Persons are one single, common Principle of the Creation.	704,428
+50	3	5	Freedom of the Divine Act of Creation	De fide	God created the world free from exterior compulsion and inner necessity.	1783,1805,706
+51	3	5	Freedom of the Divine Act of Creation	Sententia certa	“God was free to create this world or any other.”	374
+52	3	5	Freedom of the Divine Act of Creation	De fide	God has created a good world.	706,428,816
+53	3	6	The Temporal Character of the World	De fide	The world had a beginning in time.	428,1783,501
+54	3	7	The Incommunicability of the Creative Power	De fide	God alone created the World.	428
+55	3	7	The Incommunicability of the Creative Power	Sententia communis	No creature can, as Principal Cause (causa principalis) that is, from its own power, create something out of nothing.	
+56	3	8	The Preservation of the World	De fide	God keeps all created things in existence.	1784
+57	3	9	The Divine Co-operation	Sententia communis	God co-operates immediately in every act of His creatures.	
+58	3	10	Divine Providence and the Government of the World	De fide	God, through His Providence, protects and guides all that He has created.	1784,239
+59	3	13	The Origin of the First Human Pair and the Unity of the Human Race	De fide	The First Man was created by God.	428,1783,2286
+60	3	13	The Origin of the First Human Pair and the Unity of the Human Race	Sententia certa	The whole human race stems from one single human pair.	2123
+61	3	14	The Essential Constituent Parts of Human Nature	De fide	Man consists of two essential parts—a material body and a spiritual soul.	428,1783,338,1655
+62	3	14	The Essential Constituent Parts of Human Nature	De fide	The rational soul is per se the essential form of the body.	481,40
+63	3	14	The Essential Constituent Parts of Human Nature	De fide	Every human being possesses an individual soul.	738
+64	3	15	The Origin of Individual Human Souls	Sententia certa	Every individual soul was immediately created out of nothing by God.	738,1100,1641,348
+65	3	17	Relation between nature and supernature	Sententia communis	A creature has the capacity to receive supernatural gifts.	
+66	3	17	Relation between nature and supernature	Sententia communis	The Supernatural presupposes Nature.	
+67	3	17	Relation between nature and supernature	Sententia communis	The Supernatural perfects Nature.	
+68	3	17	Relation between nature and supernature	De fide	God has conferred on man a supernatural Destiny.	1786,1808
+69	3	18	The Supernatural Endowment of the First Man	De fide	Our first parents, before the Fall, were endowed with sanctifying grace.	788,192,1021,1516
+70	3	18	The Supernatural Endowment of the First Man	Sententia fidei proxima	The donum rectitudinis or integritatis in the narrower sense, i.e., the freedom from irregular desire.	792,2123,1026
+71	3	18	The Supernatural Endowment of the First Man	De fide	The donum immortalitatis, i.e., bodily immortality.	788,101,175,1078,2123
+72	3	18	The Supernatural Endowment of the First Man	Sententia communis	The donum impassibilitatis, i.e., the freedom from suffering.	
+73	3	18	The Supernatural Endowment of the First Man	Sententia communis	The donum scientiae, i.e., a knowledge of natural and supernatural truths infused by God.	
+74	3	18	The Supernatural Endowment of the First Man	Sententia certa	Adam received sanctifying grace not merely for himself, but for all his posterity.	789
+75	3	20	The Personal Sin of Our First Parents or Original Sin	De fide	Our First Parents in Paradise sinned grievously through transgression of the Divine probationary commandment.	788,2123
+76	3	20	The Personal Sin of Our First Parents or Original Sin	De fide	Through sin our First Parents lost sanctifying grace and provoked the anger and the indignation of God.	
+77	3	20	The Personal Sin of Our First Parents or Original Sin	De fide	Our First Parents became subject to death and to the dominion of the Devil.	788
+78	3	21	The Existence of Original Sin	De fide	Adam’s sin is transmitted to his posterity, not by imitation, but by descent.	789
+79	3	22	The Nature of Original Sin	Sententia communis	Original sin consists in the deprivation of grace caused by the free act of sin committed by the head of the race.	789,792,799,1047
+80	3	23	The Transmission of Original Sin	De fide	Original sin is transmitted by natural generation.	790,791
+81	3	24	The Consequences of Original Sin	De fide	In the state of original sin man is deprived of sanctifying grace and all that this implies, as well as of the preternatural gifts of integrity.	788,1785,1806,815,174,181,199,793
+82	3	26	Existence, Origin and Number of the Angels	De fide	In the beginning of time God created spiritual essences (angels) out of nothing.	428,1783
+83	3	27	The Nature of the Angels	De fide	The nature of the angels is spiritual.	428,1783
+84	3	27	The Nature of the Angels	Sententia communis	The angels are by nature immortal.	
+85	3	28	The Supernatural Exaltation and Probation of the Angels	Sententia certa	God set a supernatural final end for the angels, the immediate vision of God, and endowed them with sanctifying grace in order that they might achieve this end.	1003
+86	3	28	The Supernatural Exaltation and Probation of the Angels	Sententia certa	The angels were subjected to a moral testing,	
+87	3	29	The fall through sin and the rejection of the bad angels		The evil spirits (demons) were created good by God; they became evil through their own fault.	428,427
+88	3	30	The Efficacy of the Good Angels	Sententia certa	The primary task of the good angels is the glorification and the service of God.	
+89	3	30	The Efficacy of the Good Angels	De fide	The secondary task of the good angels is the protection of men and care for their salvation.	
+90	3	30	The Efficacy of the Good Angels	Sententia certa	Every one of the faithful has his own special guardian angel from baptism.	984
+91	3	31	The Power of the Bad Angels	De fide	The Devil possesses a certain dominion over mankind by reason of Adam’s sin.	788,793
+92	4	2	The Dogma of the True Divinity of Christ, and Its Opponents	De fide	Jesus Christ is True God and True Son of God.	40,54,86,148,214
+93	4	8	The Reality of Christ’s Human Nature	De fide	Christ assumed a real body, not an apparent body.	148,462,710
+94	4	9	The Integrity of Christ’s Human Nature	De fide	Christ assumed not only a body but also a rational soul.	85,65,148,40,216,480,710
+95	4	10	The Adamite Origin of Christ’s Human Nature	De fide	Christ was truly generated and born of a daughter of Adam, the Virgin Mary.	40
+96	4	11	Christ is one Person	De fide	The Divine and the human natures are united hypostatically in Christ, that is, joined to each other in one Person.	113,226,148
+97	4	12	The Duality of the Natures	De fide	In the Hypostatic Union each of the two natures of Christ continues unimpaired, untransformed and unmixed with the other.	143,148
+98	4	13	The Duality of Wills and Modes of Operation in Christ	De fide	Each of the two natures in Christ possesses its own natural will and its own natural mode of operation.	263,288,291
+99	4	14	The Beginning and Duration of the Hypostatic Union	De fide	The Hypostatic Union of Christ’s human nature with the Divine Logos took place at the moment of conception.	204
+100	4	14	The Beginning and Duration of the Hypostatic Union	Sententia certa	The Hypostatic Union was never interrupted.	
+101	4	14	The Beginning and Duration of the Hypostatic Union	De fide	The Hypostatic Union will never cease.	85,86,283
+102	4	14	The Beginning and Duration of the Hypostatic Union	Sententia certa	The Blood in the Living Body of Jesus Christ is an integral constituent part of human nature, immediately, not merely mediately, united with the Person of the Divine Logos.	117,718
+103	4	17	The Relationship of the Hypostatic Union to the Trinity	De fide	The Hypostatic Union was effected by the Three Divine Persons acting in common.	284,429
+104	4	17	The Relationship of the Hypostatic Union to the Trinity	De fide	Only the Second Divine Person became Man.	392
+105	4	18	The Natural Sonship of God of the Man Jesus Christ	De fide	Not only as God but also as man Jesus Christ is the natural Son of God.	299,309,311
+106	4	19	Christ’s Right to Adoration	De fide	The God-Man Jesus Christ is to be venerated with one single mode of Worship, the absolute Worship of Latria which is due to God alone.	120,1561
+107	4	20	Adoration of the Most Sacred Heart of Jesus	Sententia certa	Just as Latria is due to the whole Human Nature of Christ, so is it due to the individual parts of His nature.	1563
+108	4	21	The Communication of Idioms	De fide	Christ’s Divine and Human characteristics and activities are to be predicated of the one Word Incarnate.	116
+109	4	22	The Christological Perichoresis	Sententia communis	The Two Natures of Christ exist in the closest union	291,148
+110	4	23	The Immediate Vision of God	Sententia certa	Christ’s soul possessed the immediate vision of God from the first moment of its existence.	2032,2183,2289
+111	4	23	The Immediate Vision of God	Sententia certa	Christ’s human knowledge was free from positive ignorance and from error.	2184,248
+112	4	24	Christ’s Infused Knowledge	Sententia communis	From the beginning of Christ’s life, His soul possessed infused knowledge (scientia infusa).	
+113	4	25	Christ’s Acquired Knowledge and the Progress of His Human Knowledge	Sententia communis	Christ’s soul possessed also an acquired knowledge or experimental knowledge (scientia acquisita, sc. experimentalis).	
+114	4	26	Christ’s Sinlessness and Impeccability	De fide	Christ was free from all sin, from original sin as well as from all personal sin.	711,224
+115	4	26	Christ’s Sinlessness and Impeccability	Sententia fidei proxima	Christ has not merely not actually sinned, but also could not sin.	224,291
+116	4	27	Christ’s Sanctity and Fullness of Grace	Sententia communis	By reason of the Hypostatic Union, Christ’s human nature, through the Uncreated Holiness of the Word, is substantially Holy.	
+117	4	27	Christ’s Sanctity and Fullness of Grace	Sententia certa	By reason of His endowment with the fullness of created habitual grace, Christ’s soul is also accidentally holy.	
+118	4	27	Christ’s Sanctity and Fullness of Grace	Sententia communis	Sanctifying Grace overflows from Christ, the Head, to the Members of His Mystical Body.	
+119	4	28	Christ’s Power	Sententia certa	Christ’s Humanity, as instrument of the Logos, possesses the power of producing supernatural effects.	
+120	4	29	Christ’s Capacity for Suffering	De fide	Christ’s human nature was passible.	429,708
+121	4	29	Christ’s Capacity for Suffering	Sententia certa	Christ’s soul was subject to sensual emotions.	
+122	5	1	The Purpose of the Incarnation	De fide	The Son of God became man in order to redeem men.	86
+123	5	4	Necessity for and Freedom of the Redemption	De fide	Fallen man cannot redeem himself.	
+124	5	4	Necessity for and Freedom of the Redemption	Sententia certa	God was not compelled to redeem mankind by either an internal or an external compulsion.	
+125	5	4	Necessity for and Freedom of the Redemption	Sententia communis	Even on the presupposition of the Divine Resolve of Redemption, the Incarnation was not absolutely necessary.	
+126	5	4	Necessity for and Freedom of the Redemption	Sententia communis	If God demanded a full atonement the Incarnation of a Divine Person was necessary.	
+127	5	5	Christ’s Teaching or Prophetical Office	Sententia certa	Christ is the Supreme Prophet promised in the Old Covenant and the absolute teacher of humanity.	
+128	5	7	Reality of Christ’s Priestly Office	De fide	The God-Man Jesus Christ is a High Priest.	122,938
+129	5	8	The Exercise of the Sacerdotal Office or Christ’s Sacrifice	De fide	Christ offered Himself on the Cross as a true and proper sacrifice.	122,940,938,951,2038
+130	5	9	The Soteriological Importance of Christ’s Sacrifice	De fide	Christ by His Sacrifice on the Cross has ransomed us and reconciled us with God.	938,790
+131	5	10	Christ’s Vicarious Atonement	Sententia fidei proxima	Christ, through His Suffering and Death rendered vicarious atonement to God for the sins of man.	122,799
+132	5	10	Christ’s Vicarious Atonement	Sententia communior	Christ’s Vicarious Atonement is adequate or of full value, by reason of its intrinsic merit.	
+133	5	10	Christ’s Vicarious Atonement	Sententia communis	Christ’s Vicarious Atonement is superabundant, that is, the positive value of the expiation is greater than the negative value of the sin.	550
+134	5	10	Christ’s Vicarious Atonement	De fide	(i) Christ did not die for the predestined only.	
+135	5	10	Christ’s Vicarious Atonement	Sententia fidei proxima	(ii) Christ died not for the Faithful only, but for all mankind without exception.	1096,1294,794,319,795
+136	5	10	Christ’s Vicarious Atonement		Christ’s Atonement does not extend to the fallen angels.	211
+137	5	11	Christ’s Merits	De fide	Christ, through His Passion and Death, merited reward from God.	799,790,552
+138	5	11	Christ’s Merits	Sententia certa	Christ merited for Himself the condition of exaltation (Resurrection, Transfiguration of the body, Ascension into Heaven).	
+139	5	11	Christ’s Merits	Sententia certa	Christ merited all supernatural graces received by fallen mankind.	711,800,790,795,797,799,103
+140	5	12	Christ’s Descent into Hell	De fide	After His Death, Christ’s soul, which was separated from His body, descended into the underworld.	40,429,385
+141	5	13	Christ’s Resurrection	De fide	On the third day after His Death Christ rose gloriously from the dead.	286,2036,2,2272
+142	5	14	Christ’s Ascension into Heaven	De fide	Christ ascended body and soul into Heaven and sits at the right hand of the Father.	429
+143	6	1	Reality of Mary’s Motherhood of God	De fide	Mary is truly the Mother of God.	113,148,218,290
+144	6	3	Mary’s Immaculate Conception	De fide	Mary was conceived without stain of original sin.	1641
+145	6	4	Mary’s Freedom from Evil Concupiscence and from Every Personal Sin	Sententia communis	From her conception Mary was free from all motions of concupiscence.	
+146	6	4	Mary’s Freedom from Evil Concupiscence and from Every Personal Sin	Sententia fidei proxima	In consequence of a Special Privilege of Grace from God, Mary was free from every personal sin during her whole life.	833
+147	6	5	Mary’s Perpetual Virginity		Mary was a Virgin before, during and after the Birth of Jesus Christ.	256,993
+148	6	5	Mary’s Perpetual Virginity	De fide	Mary conceived by the Holy Ghost without the co-operation of man.	86,256,993
+149	6	5	Mary’s Perpetual Virginity	De fide	Mary bore her Son without any violation of her virginal integrity.	
+150	6	5	Mary’s Perpetual Virginity	De fide	Also after the Birth of Jesus Mary remained a Virgin.	91,214,218,227
+151	6	6	The Bodily Assumption of Mary into Heaven	Sententia communior	Mary suffered a temporal death.	1073
+152	6	6	The Bodily Assumption of Mary into Heaven	De fide	Mary was assumed body and soul into Heaven.	2291
+153	6	8	The Veneration of Mary	Sententia certa	Mary, the Mother of God, is entitled to the Cult of Hyperdulia.	
+154	7	5	Enlightening and Strengthening Grace	Sententia certa	Actual Grace internally and directly enlightens the understanding and strengthens the will.	180,1791
+155	7	6	Antecedent and Consequent Grace	De fide	There is a supernatural intervention of God in the faculties of the soul, which precedes the free act of the will.	797
+156	7	6	Antecedent and Consequent Grace	De fide	There is a supernatural influence of God in the faculties of the soul which coincides in time with man’s free act of will.	182,797,810,141,193
+157	7	8	The Necessity of Grace for the Acts of the Supernatural Order	De fide	For every salutary act internal supernatural grace of God (gratia elevans) is absolutely necessary.	182,193,811
+158	7	8	The Necessity of Grace for the Acts of the Supernatural Order	De fide	Internal supernatural grace is absolutely necessary for the beginning of faith and of salvation.	178,797
+159	7	8	The Necessity of Grace for the Acts of the Supernatural Order	Sententia communis	The justified also require actual grace for the performance of salutary acts.	809,182
+160	7	8	The Necessity of Grace for the Acts of the Supernatural Order	De fide	Without the special help of God the justified cannot persevere to the end in justification.	183,826,832
+161	7	8	The Necessity of Grace for the Acts of the Supernatural Order	De fide	The justified person is not able for his whole life long to avoid all sins, even venial sins, without the special privilege of the grace of God.	833,107
+162	7	9	Human Nature’s Capacity to Act without Grace, and the Limits of This Capacity	De fide	Even in the fallen state, man can, by his natural intellectual power, know religious and moral truths.	788,793,815,1398,1785,1806
+163	7	9	Human Nature’s Capacity to Act without Grace, and the Limits of This Capacity	De fide	For the performance of a morally good action Sanctifying Grace is not required.	817
+164	7	9	Human Nature’s Capacity to Act without Grace, and the Limits of This Capacity	Sententia certa	The Grace of Faith is not necessary for the performance of a morally good action.	1025,1022
+165	7	9	Human Nature’s Capacity to Act without Grace, and the Limits of This Capacity	Sententia certa	Actual Grace is not necessary for the performance of a morally good action.	1027,195
+166	7	9	Human Nature’s Capacity to Act without Grace, and the Limits of This Capacity	De fide	In the state of fallen nature it is morally impossible for man without Supernatural Revelation, to know easily, with absolute certainty and without admixture of error, all religious and moral truths of the natural order.	1786
+167	7	9	Human Nature’s Capacity to Act without Grace, and the Limits of This Capacity	Sententia certa	In the condition of fallen nature it is morally impossible for man without restoring grace (gratia sanans) to fulfil the entire moral law and to overcome all serious temptations for any considerable period of time.	
+168	7	11	The Universality of Grace	Sententia fidei proxima	Despite men’s sins God truly and earnestly desires the salvation of all men.	318,1294
+169	7	11	The Universality of Grace	De fide	God gives all the just sufficient grace (gratia proxime vel remote sufficiens) for the observation of the Divine Commandments.	200,828,1092,804
+170	7	11	The Universality of Grace	Sententia communis	God gives all the faithful who are sinners sufficient grace (gratia saltem remote sufficiens) for conversion.	430,911,321
+171	7	11	The Universality of Grace	Sententia certa	God gives all innocent unbelievers (infideles negativi) sufficient grace to achieve eternal salvation.	1376,801,1173,1789,1793
+172	7	12	The Mystery of Predestination	De fide	God, by His Eternal Resolve of Will, has predetermined certain men to eternal blessedness.	805,825,827,316
+173	7	13	The Mystery of Reprobation	De fide	God, by an Eternal Resolve of His Will, predestines certain men, on account of their foreseen sins, to eternal rejection.	322,200,316,827
+174	7	14	The Teaching of the Church on Grace and Freedom	De fide	The Human Will remains free under the influence of efficacious grace, which is not irresistible.	814,1093,797,815
+175	7	14	The Teaching of the Church on Grace and Freedom	De fide	There is a grace which is truly sufficient and yet remains inefficacious (gratia vere et mere sufficiens).	814,1296
+176	7	18	The Preparation for Justification	De fide	The sinner can and must prepare himself by the help of actual grace for the reception of the grace by which he is justified.	819,797
+177	7	18	The Preparation for Justification	De fide	The justification of an adult is not possible without Faith.	801,799,1793,822,798,1789
+178	7	18	The Preparation for Justification	De fide	Besides faith, further acts of disposition must be present.	819,798,897
+179	7	19	The Nature of Sanctifying Grace	Sententia fidei proxima	Sanctifying Grace is a created supernatural gift really distinct from God.	799
+180	7	19	The Nature of Sanctifying Grace	Sententia certa	Sanctifying Grace is a supernatural state of being which is infused by God, and which permanently inheres in the soul.	800,809,821,410,483,790
+181	7	19	The Nature of Sanctifying Grace	Sententia certa	Sanctifying grace is not a substance, but a real accident, which inheres in the soul-substance.	800,809,821
+182	7	19	The Nature of Sanctifying Grace	Sententia communior	Sanctifying grace is really distinct from charity.	821,800
+183	7	19	The Nature of Sanctifying Grace	Sententia certa	Supernatural grace is a participation in the divine nature.	1021
+184	7	20	The Formal Effects of Sanctifying Grace	De fide	Sanctifying grace sanctifies the soul.	799
+185	7	20	The Formal Effects of Sanctifying Grace	Sententia communis	Sanctifying grace bestows supernatural beauty on the soul.	
+186	7	20	The Formal Effects of Sanctifying Grace	De fide	Sanctifying grace makes the just man a friend of God.	799,803
+187	7	20	The Formal Effects of Sanctifying Grace	De fide	Sanctifying grace makes the just man a child of God and gives him a claim to the inheritance of Heaven.	796,799
+188	7	20	The Formal Effects of Sanctifying Grace	Sententia certa	Sanctifying grace makes the just man a Temple of the Holy Ghost.	898,1015
+189	7	21	The Comity of sanctifying grace	De fide	The three Divine or theological virtues of faith, hope and charity are infused with sanctifying grace.	800,821,1031,808,838
+190	7	21	The Comity of sanctifying grace	Sententia communis	The moral virtues also are infused with sanctifying grace.	483
+191	7	21	The Comity of sanctifying grace	Sententia communis	The Gifts of the Holy Ghost also are infused with sanctifying grace.	
+192	7	22	The Attributes of the State of Grace	De fide	Without special Divine Revelation no one can know with the certainty of faith, if he be in the state of grace.	802
+193	7	22	The Attributes of the State of Grace	De fide	The degree of justifying grace is not identical in all the just.	
+194	7	22	The Attributes of the State of Grace	De fide	Grace can be increased by good works.	799,834,803,842
+195	7	22	The Attributes of the State of Grace	De fide	The grace by which we are justified may be lost, and is lost by every grievous sin.	808,804
+196	7	23	The Reality of Supernatural Merit	De fide	By his good works the justified man really acquires a claim to supernatural reward from God.	191,809,842
+197	7	25	The Object of Supernatural Merit	De fide	A just man merits for himself through each good work an increase of sanctifying grace, eternal life (if he dies in a state of grace) and an increase of heavenly glory.	842,803,834
+198	8	1	The Concept Church	Sententia certa	The Church is the Mystical Body of Jesus Christ.	
+199	8	2	The Foundation of the Church by Christ	De fide	The Church was founded by the God-Man Jesus Christ.	1821,2145,2052,2091
+200	8	3	The Purpose of the Church	De fide	Christ founded the Church in order to continue His work of redemption for all time.	1821
+201	8	3	The Purpose of the Church	Sententia certa	By reason of her purpose and the means she uses to effect it the Church is a supernatural spiritual society.	1740,1799,1726
+202	8	3	The Purpose of the Church	Sententia certa	The Church is a perfect society.	1866,1719
+203	8	4	The Hierarchical Constitution of the Church	De fide	Christ gave His Church an hierarchical constitution.	966,1502,2054
+204	8	4	The Hierarchical Constitution of the Church	De fide	The powers bestowed on the Apostles have descended to the bishops.	960,1821,1828
+205	8	5	The Primacy of St. Peter	De fide	Christ appointed the Apostle Peter to be the first of all the Apostles and to be the visible Head of the whole Church, by appointing him immediately and personally to the primacy of jurisdiction.	1823,694,2055
+206	8	6	The Primacy of Jurisdiction of the Pope	De fide	According to Christ’s ordinance, Peter is to have successors in his Primacy over the whole Church and for all time.	1825,112,1824
+207	8	6	The Primacy of Jurisdiction of the Pope	De fide	The successors of Peter in the Primacy are the bishops of Rome.	1825,466,694
+208	8	7	The Nature of the Papal Primacy	De fide	The Pope possesses full and supreme power of jurisdiction over the whole Church, not merely in matters of faith and morals, but also in Church discipline and in the government of the Church.	1831,1827
+209	8	8	Papal Teaching Primacy or Papal Infallibility	De fide	The Pope is infallible when he speaks ex cathedra.	1839,466,694,1833
+210	8	9	The Bishops	De fide	By virtue of Divine right the bishops possess an ordinary power of government over their dioceses.	1828
+211	8	9	The Bishops	Sententia probabilior	The individual bishop receives his pastoral power immediately from the Pope.	2287,1500
+212	8	10	Christ and the Church	De fide	Christ founded the Church.	1821,2145,480
+213	8	10	Christ and the Church	De fide	Christ is the Head of the Church.	468,809
+214	8	10	Christ and the Church		“Our Redeemer Himself conserves with divine power the society founded by Him, the Church.” (Pius XII.)	
+215	8	10	Christ and the Church		“Christ is the Divine Redeemer of His Body, the Church.” (Pius XII.)	
+216	8	11	The Holy Ghost and the Church	Sententia communis	The Holy Ghost is the Soul of the Church.	2288
+217	8	12	The Indefectibility of the Church	Sententia certa	The Church is indefectible, that is, she remains and will remain the Institution of Salvation, founded by Christ, until the end of the world.	1794,1824,1955,1445,1501,2053
+218	8	13	The Infallibility of the Church	De fide	In the final decision on doctrines concerning faith and morals the Church is infallible.	1839
+219	8	13	The Infallibility of the Church	De fide	The primary object of the Infallibility is the formally revealed truths of Christian Doctrine concerning faith and morals.	1839,1793,1798
+220	8	13	The Infallibility of the Church	Sententia certa	The secondary object of the Infallibility is truths of the Christian teaching on faith and morals, which are not formally revealed, but which are closely connected with the teaching of Revelation.	1836
+221	8	13	The Infallibility of the Church	De fide	The Pope is infallible when he speaks ex cathedra.	
+222	8	13	The Infallibility of the Church	De fide	The totality of the Bishops is infallible, when they, either assembled in general council or scattered over the earth, propose a teaching of faith or morals as one to be held by all the faithful.	960,1828,1821
+223	8	14	The Visibility of the Church	Sententia certa	The Church founded by Christ is an external visible commonwealth.	957,1821,627
+224	8	15	The Unity of the Church	De fide	The Church founded by Christ is unique and one.	86,1821,1960,1685
+225	8	16	The Sanctity of the Church	De fide	The Church founded by Christ is holy.	2,1794
+226	8	16	The Sanctity of the Church	Sententia certa	Not only those members who are holy but the sinners also belong to the Church.	1422
+227	8	17	The Catholicity of the Church	De fide	The Church founded by Christ is catholic.	6,86,1686
+228	8	18	The Apostolicity of the Church	De fide	The Church founded by Christ is apostolic.	86,14,1686
+229	8	19	Membership of the Church	Sententia certa	The members of the Church are those who have validly received the Sacrament of Baptism and who are not separated from the unity of the confession of the Faith, and from the unity of the lawful communion of the Church.	2286
+230	8	20	The Necessity for Membership of the Church	De fide	Membership of the Church is necessary for all men for salvation.	430,714,423,468,570,1473,1647,1677,1955,2286
+231	8	21	Concept and Reality of the Communion of Saints	Sententia certa	The members of the Kingdom of God on earth and in the other world sanctified by the redeeming grace of Christ are united in a common supernatural life with the Head of the Church and with one another.	
+232	8	22	The Communion of the Faithful Living on Earth	Sententia certa	By intercessory prayer the Faithful on earth can procure gifts from God for one another.	
+233	8	22	The Communion of the Faithful Living on Earth	Sententia probabilis	By good works performed in the state of grace the Faithful on earth can merit de congruo gifts from God.	
+234	8	22	The Communion of the Faithful Living on Earth	Sententia certa	The Faithful on earth can, by their good works performed in the state of grace, render atonement for one another.	552
+235	8	23	The Communion between the Faithful on Earth and the Saints in Heaven	De fide	It is permissible and profitable to venerate the Saints in Heaven, and to invoke their intercession.	986,984
+236	8	23	The Communion between the Faithful on Earth and the Saints in Heaven	De fide	It is permissible and profitable to venerate the relics of the Saints.	985,998,440,304
+237	8	23	The Communion between the Faithful on Earth and the Saints in Heaven	De fide	It is permissible and profitable to venerate images of the Saints.	302,986,1569
+238	8	24	The Communion of the Faithful on earth and the Saints in Heaven with the Poor Souls in Purgatory	De fide	The living Faithful can come to the assistance of the Souls in Purgatory by their intercessions (suffrages).	464,693,983,427,456,998
+239	8	24	The Communion of the Faithful on earth and the Saints in Heaven with the Poor Souls in Purgatory	Sententia communis	The Saints in Heaven also can come to the help of the Souls in Purgatory by their intercession.	
+240	8	24	The Communion of the Faithful on earth and the Saints in Heaven with the Poor Souls in Purgatory	Sententia probabilis	The Souls in Purgatory can intercede for other members of the Mystical Body.	
+241	8	24	The Communion of the Faithful on earth and the Saints in Heaven with the Poor Souls in Purgatory	Sententia communis	Suffrages are of no profit to the damned in Hell as they do not belong to the Mystical Body of Christ.	
+242	9	1	The Concept of Sacrament		The Sacraments of the New Covenant are effective signs of grace instituted by Christ.	
+243	9	2	The Constituent Parts of the Sacramental Sign	Sententia fidei proxima	The outward sign of the sacraments is composed of two essential parts, namely, thing and word (res et verbum or elementum et verbum).	695
+244	9	3	The Objective Efficacy of the Sacraments	De fide	The Sacraments of the New Covenant contain the grace which they signify, and bestow it on those who do not hinder it.	849,695,850,799
+245	9	3	The Objective Efficacy of the Sacraments	De fide	The Sacraments work ex opere operato.	851
+246	9	5	The Effects of the Sacraments	De fide	All the Sacraments of the New Covenant confer sanctifying grace on the receivers.	843,849
+247	9	5	The Effects of the Sacraments	Sententia communis	Each individual sacrament confers a specific sacramental grace.	846,695
+248	9	5	The Effects of the Sacraments	De fide	Three Sacraments, Baptism, Confirmation and Holy Orders, imprint a character, that is, an indelible spiritual mark, and for this reason cannot be repeated.	852,411,695
+249	9	5	The Effects of the Sacraments	De fide	The Sacramental Character is a spiritual mark imprinted on the soul.	
+250	9	5	The Effects of the Sacraments	Sententia communis	The Sacramental Character confers the full power for the performance of acts of Christian Worship.	
+251	9	5	The Effects of the Sacraments	De fide	The Sacramental Character continues at least until the death of its bearer.	852
+252	9	6	The Institution of the Sacraments by Christ	De fide	All Sacraments of the New Covenant were instituted by Jesus Christ.	844,2039
+253	9	6	The Institution of the Sacraments by Christ	Sententia certa	Christ instituted all the Sacraments immediately and personally.	
+254	9	6	The Institution of the Sacraments by Christ	Sententia certa	Christ fixed the substance of the Sacraments. The Church has no power to alter them.	931,570
+255	9	7	The Seven Sacraments	De fide	There are seven Sacraments of the New Law.	844,465,695,424,665
+256	9	8	The Necessity of the Sacraments	Sententia certa	God can communicate grace even without the Sacraments.	
+257	9	8	The Necessity of the Sacraments	De fide	The Sacraments of the New Covenant are necessary for the salvation of mankind.	
+258	9	9	The Minister of the Sacraments	Sententia certa	The primary minister of the Sacraments is the God Man Jesus Christ.	
+259	9	9	The Minister of the Sacraments	Sententia communis	The secondary minister of the Sacraments is man in the wayfaring state.	853,413
+260	9	9	The Minister of the Sacraments		The validity and efficacy of the Sacrament is independent of the minister’s orthodoxy and state of grace.	860,855,424,488,584,672,46
+261	9	9	The Minister of the Sacraments	De fide	For the valid dispensing of the Sacraments it is necessary that the minister accomplish the Sacramental Sign in the proper manner.	695
+262	9	9	The Minister of the Sacraments	De fide	The minister must further have the intention at least of doing what the Church does.	854,424,672,695,752
+263	9	10	The Recipient of the Sacraments	Sententia communis	Only a person in the wayfaring state can validly receive a Sacrament.	
+264	9	10	The Recipient of the Sacraments	Sententia communis	Excepting the Sacrament of Penance, neither orthodox belief nor moral worthiness is necessary for the validity of the Sacrament, on the part of the recipient.	
+265	9	10	The Recipient of the Sacraments	Sententia certa	For the validity of the Sacraments in the case of adult recipients the intention of receiving the Sacrament is necessary.	799,411,410
+266	9	10	The Recipient of the Sacraments	De fide	In the case of adult recipients moral worthiness is necessary for the worthy or fruitful reception of the Sacraments.	849,880,893
+267	9	10	The Recipient of the Sacraments	Sententia communis	The Sacraments of Baptism, Confirmation and Consecration, when they are received validly but unworthily, revive after the removal of the moral indisposition, that is, the sacramental grace is conferred subsequently.	
+268	9	11	The Pre-Christian Sacraments	Sententia certa	The Old Testament Sacraments wrought, ex opere operato, not grace, but merely an external lawful purity.	695,845
+269	10	1	Concept of Baptism and Its Sacramental Nature	De fide	Baptism is a true Sacrament instituted by Jesus Christ.	844,2042,857
+270	10	2	The Outward Sign of Baptism	De fide	The materia remota of the Sacrament of Baptism is true and natural water.	858,696,412,477
+271	10	2	The Outward Sign of Baptism	Sententia certa	The materia proxima of the Sacrament of Baptism is the ablution, by physical contact, of the body with water.	859,435,229
+272	10	2	The Outward Sign of Baptism		The form of Baptism consists in the words of the minister which accompany it and more closely determine it.	696,335,229
+273	10	3	The Effects of Baptism	De fide	Baptism confers the grace of justification.	799,792
+274	10	3	The Effects of Baptism	De fide	Baptism effects the remission of all punishments of sin, both the eternal and the temporal.	792,696
+275	10	3	The Effects of Baptism	De fide	Even if it be unworthily received, valid Baptism imprints on the soul of the recipient an indelible spiritual mark, the Baptismal Character, and for this reason, the Sacrament cannot be repeated.	852,867
+276	10	4	The Necessity of Baptism	De fide	Baptism by water (Baptismus fluminis) is, since the promulgation of the Gospel, necessary for all men without exception, for salvation.	861,791,796
+277	10	4	The Necessity of Baptism	Sententia fidei proxima	In case of emergency Baptism by water can be replaced by Baptism of desire or Baptism by blood.	796,847,388,413
+278	10	5	The Minister of Baptism	De fide	Baptism can be validly administered by anyone.	430,696,52
+279	10	6	The Recipient of Baptism	De fide	Baptism can be received by any person in the wayfaring state who is not already baptised.	411,798
+280	10	6	The Recipient of Baptism	De fide	The Baptism of young children is valid and licit.	869,791
+281	11	1	Concept of Confirmation and Its Sacramental Nature	De fide	Confirmation is a true Sacrament properly so-called.	871,2044
+282	11	2	The Outward Sign of Confirmation	Sententia communis	The form of Confirmation consists in the words which the minister speaks when he imposes his hands on the recipient and anoints his forehead.	
+283	11	3	The Effects of Confirmation	Sententia certa	As a Sacrament of the living, Confirmation effects (per se) an increase of Sanctifying Grace.	695
+284	11	3	The Effects of Confirmation	Sententia communis	The specific operation of Confirmation is the perfection of Baptismal Grace.	697,52
+285	11	3	The Effects of Confirmation	De fide	Confirmation imprints on the soul an indelible spiritual mark, and for this reason, cannot be repeated.	852
+286	11	4	The Necessity of Confirmation	Sententia fidei proxima	A baptised person can achieve eternal salvation even without Confirmation.	792,52,669
+287	11	5	The Minister of Confirmation	De fide	The ordinary minister of Confirmation is the Bishop alone.	419,424,450,465,572,608,697,52,98
+288	11	5	The Minister of Confirmation	Sententia certa	The extraordinary minister of Confirmation is a priest on whom this full power is conferred by the common law or by a special apostolic indult.	697,573
+289	11	6	The Recipient of Confirmation	Sententia certa	Confirmation can be received by any baptised person who is not already confirmed.	
+290	11	6	The Recipient of Confirmation		The repetition of Confirmation is invalid and grievously sinful.	46
+291	12	3	Christ’s Real Presence according to the Testimony of Holy Scripture	De fide	The Body and Blood of Jesus Christ are truly, really and substantially present in the Eucharist.	883
+292	12	5	Dogma and Concept of Transubstantiation	De fide	Christ becomes present in the Sacrament of the Altar by the transformation of the whole substance of the bread into His Body and of the whole substance of the wine into His Blood.	884,335,430,465,1529
+293	12	7	The Sacramental Accidents	De fide	The Accidents of bread and wine continue after the change of the substance.	884
+294	12	7	The Sacramental Accidents	Sententia certa	The Sacramental Accidents retain their physical reality after the change of the substance.	
+295	12	7	The Sacramental Accidents	Sententia certa	The Sacramental Accidents continue without a subject in which to inhere.	582
+296	12	8	The Totality of the Presence	De fide	The Body and the Blood of Christ together with His Soul and His Divinity and therefore the Whole Christ are truly present in the Eucharist.	883,876
+297	12	8	The Totality of the Presence	De fide	The Whole Christ is present under each of the two Species.	626,885,698,876
+298	12	8	The Totality of the Presence	De fide	When either consecrated species is divided the Whole Christ is present in each part of the species.	885,876
+299	12	9	The Permanence of the Real Presence	De fide	After the Consecration has been completed the Body and Blood are permanently present in the Eucharist.	886
+300	12	10	The Adoration due to the Eucharist	De fide	The Worship of Adoration (latria) must be given to Christ present in the Eucharist.	888
+301	12	11	The Mysterious Character of the Eucharist	Sententia certa	The Real Presence of Christ in the Eucharist is a mystery of Faith.	
+302	12	13	The Sacramental Nature of the Eucharist	De fide	The Eucharist is a true Sacrament instituted by Christ.	844,2045
+303	12	14	The Outward Signs of the Eucharist	De fide	The matter for the consummation of the Eucharist is bread and wine.	877,884,698,692
+304	12	14	The Outward Signs of the Eucharist	Sententia certa	The form of the Eucharist consists in Christ’s Words of institution, uttered at the Consecration.	698,876
+305	12	15	The Effects of the Eucharist	Sententia certa	The chief fruit of the Eucharist is an intrinsic union of the recipient with Christ.	698
+306	12	15	The Effects of the Eucharist	Sententia certa	The Eucharist, as food for the soul, preserves and increases the supernatural life of the soul.	698,875,887
+307	12	15	The Effects of the Eucharist	Sententia certa	The Eucharist is a pledge of heavenly bliss and of the future resurrection of the body.	875
+308	12	16	The Necessity of the Eucharist	De fide	For children before the age of reason the reception of the Eucharist is not necessary for salvation.	937,933,1922
+309	12	16	The Necessity of the Eucharist	Sententia certa	For adults the reception of the Eucharist is necessary for salvation with the necessity of precept (necessitate praecepti).	437,891,2137
+310	12	16	The Necessity of the Eucharist	De fide	Communion under two forms is not necessary for any individual member of the Faithful, either by reason of Divine precept or as a means of salvation.	934,626,930
+311	12	17	The Minister of the Eucharist	De fide	The power of consecration resides in a validly consecrated priest only.	430,424,961,949
+312	12	17	The Minister of the Eucharist		The ordinary minister of the Eucharist is the priest; the extraordinary minister is the deacon (with permission of the local Ordinary or of the parish priest for some weighty reason). CIC 845.	
+313	12	18	The Recipient of the Eucharist	De fide	The Sacrament of the Eucharist can be validly received by every baptised person in the wayfaring state, including young children.	933
+314	12	18	The Recipient of the Eucharist	De fide	For the worthy reception of the Eucharist the state of grace as well as the proper and pious disposition are necessary.	893,880,1312,1985,1988
+315	12	19	The Sacrificial Character of the Eucharist according to the Teaching of the Church	De fide	The Holy Mass is a true and proper Sacrifice.	948,585
+316	12	22	The Relation of the Sacrifice of the Mass to the Sacrifice of the Cross	De fide	In the Sacrifice of the Mass, Christ’s Sacrifice on the Cross is made present, its memory is celebrated, and its saving power is applied.	938,950
+317	12	22	The Relation of the Sacrifice of the Mass to the Sacrifice of the Cross	De fide	In the Sacrifice of the Mass and in the Sacrifice of the Cross the Sacrificial Gift and the Primary Sacrificing Priest are identical; only the nature and mode of the offering are different.	940
+318	12	23	The Physical Nature of the Sacrifice of the Mass	Sententia communis	The essential Sacrificial Action consists in the Transubstantiation alone.	
+319	12	25	The Effects of the Sacrifice of the Mass	De fide	The Sacrifice of the Mass is not merely a sacrifice of praise and thanksgiving, but also a sacrifice of expiation and impetration.	950,941,952
+320	13	2	The Dogma and the Heretical Counter-propositions	De fide	The Church has received from Christ the power of remitting sins committed after Baptism.	894,913,587
+321	13	5	The Church’s Power to Forgive sins as a True Power of Absolution	De fide	By the Church’s Absolution sins are truly and immediately remitted.	919,43
+322	13	6	The Universality of the Church’s Power to Forgive Sins	De fide	The Church’s power to forgive sins extends to all sin without exception.	911
+323	13	7	The Judicial Character of the Church’s Power to Forgive Sins	De fide	The exercise of the Church’s power to forgive sins is a judicial act.	919,899
+324	13	8	The Sacramental Nature of the Church’s Forgiveness of Sins	De fide	The forgiveness of sins which takes place in the Tribunal of Penance is a true and proper Sacrament, which is distinct from the Sacrament of Baptism.	911,699,896,914
+325	13	10	Perfect Contrition	Sententia fidei proxima	Perfect contrition bestows the grace of justification on the mortal sinner even before the actual reception of the Sacrament of Penance.	898,1031,1070,1071
+326	13	10	Perfect Contrition	De fide	Extra-sacramental justification is effected by perfect sorrow only when it is associated with the desire for the Sacrament (votum sacramenti).	898
+327	13	11	Imperfect Contrition	De fide	Contrition springing from the motive of fear is a morally good and supernatural act.	898,915,818,1305,1411
+328	13	11	Imperfect Contrition	Sententia communis	Imperfect contrition suffices for the forgiveness of sins in the Sacrament of Penance.	898,913,903
+329	13	12	The Divine Institution of Confession and the Necessity of Confession for Salvation	De fide	The Sacramental confession of sins is ordained by God and is necessary for salvation.	916,587,670,724,899
+330	13	13	The Object of Confession	De fide	By virtue of Divine ordinance all grievous sins according to kind and number, as well as those circumstances which alter their nature, are subject to the obligation of confession.	899,917,1111
+331	13	13	The Object of Confession	De fide	The confession of venial sins is not necessary but is permitted and is useful.	899,917,1539
+332	13	13	The Object of Confession	Sententia certa	Those sins which are already forgiven directly by the Church’s Power of the Keys are a sufficient object of confession.	470
+333	13	14	Concept and Quality of Sacramental Satisfaction	De fide	All temporal punishments for sin are not always remitted by God with the guilt of sin and the eternal punishment.	922,807,840,904,925,57
+334	13	14	Concept and Quality of Sacramental Satisfaction	De fide	The priest has the right and the duty, according to the nature of the sins and the ability of the penitent, to impose salutary and appropriate works of satisfaction.	905,904,925,728,1306
+335	13	14	Concept and Quality of Sacramental Satisfaction	De fide	Extra-sacramental penitential works, such as the performance of voluntary penitential practices and the patient bearing of trials sent by God, possess satisfactory value.	923,1077
+336	13	15	The Priest’s Absolution as the Form of the Sacrament of Penance	De fide	The form of the Sacrament of Penance consists in the words of Absolution.	896
+337	13	15	The Priest’s Absolution as the Form of the Sacrament of Penance	De fide	Absolution, in association with the acts of the penitent, effects the forgiveness of sins.	919,146
+338	13	16	The Effects of the Sacrament of Penance	De fide	The principal effect of the Sacrament of Penance is the reconciliation of the sinner with God.	896,695
+339	13	16	The Effects of the Sacrament of Penance	Sententia communis	The merits due to good works performed in the state of grace which have been rendered null by grievous sins, that is, have been made inefficacious, revive.	842,2193
+340	13	17	The Necessity of the Sacrament of Penance	De fide	The Sacrament of Penance is necessary for salvation to those who, after Baptism, fall into grievous sin.	895,437,918,2137
+341	13	18	The Minister of the Sacrament of Penance	De fide	The sole possessors of the Church’s Power of Absolution are the bishops and priests.	920,146
+342	13	18	The Minister of the Sacrament of Penance	De fide	Absolution given by deacons, clerics of lower rank, and laymen is not Sacramental Absolution.	
+343	13	19	The Recipient of the Sacrament of Penance	De fide	The Sacrament of Penance can be received by any baptised person, who, after Baptism, has committed a grievous or a venial sin.	911,917
+344	13	20	The Doctrine of Indulgences	De fide	The Church possesses the power to grant Indulgences.	989,998,622,676,740
+345	13	20	The Doctrine of Indulgences	Sententia certa	The source of Indulgences is the Church’s treasury of satisfaction which consists of the superabundant satisfactions of Christ and of the Saints.	
+346	13	20	The Doctrine of Indulgences	De fide	The use of Indulgences is useful and salutary to the Faithful.	989,998,676,740
+347	14	1	Concept and Sacramental Nature of Extreme Unction	De fide	Extreme Unction is a true and proper Sacrament instituted by Christ.	926,2048,908
+348	14	2	The Outward Signs of Extreme Unction	De fide	The remote matter of Extreme Unction is oil.	700,1628
+349	14	2	The Outward Signs of Extreme Unction	De fide	The form consists in the prayer of the priest for the sick person which accompanies the anointing.	700,908
+350	14	3	The Effects of Extreme Unction	De fide	Extreme Unction gives the sick person sanctifying grace in order to arouse and strengthen him.	909
+351	14	3	The Effects of Extreme Unction	De fide	Extreme Unction effects the remission of grievous sins still remaining and of venial sins.	
+352	14	3	The Effects of Extreme Unction	De fide	Extreme Unction sometimes effects the restoration of bodily health, if this be of spiritual advantage.	909
+353	14	4	The Necessity of Extreme Unction	Sententia certa	Extreme Unction is not of itself (per se) necessary for salvation.	910
+354	14	5	The Minister of Extreme Unction	De fide	Only bishops and priests can validly administer Extreme Unction.	929,99
+355	14	6	The Recipient of Extreme Unction	De fide	Extreme Unction can be received only by the Faithful who are seriously ill.	910,907
+356	15	1	Concept and Sacramental Nature of Holy Order	De fide	Holy Order is a true and proper Sacrament which was instituted by Christ.	961,966,963
+357	15	2	The Individual Grades of Ordination	Sententia communior	The four Minor Orders and the Subdiaconate are not Sacraments but merely Sacramentals.	701,45
+358	15	2	The Individual Grades of Ordination	De fide	The consecration of priests is a Sacrament.	963
+359	15	2	The Individual Grades of Ordination	Sententia certa	The consecration of a bishop is a Sacrament.	960,964
+360	15	2	The Individual Grades of Ordination	De fide	Bishops are superior to priests.	498,675,967
+361	15	2	The Individual Grades of Ordination	Sententia certa	The Order of Diaconate is a Sacrament.	964
+362	15	3	The Outward Sign of the Sacrament of Order	Sententia fidei proxima	The matter of the Orders of Diaconate, Priesthood, and Episcopate is the imposition of hands alone.	910,958,150
+363	15	3	The Outward Sign of the Sacrament of Order	Sententia fidei proxima	The handing over (traditio) of the instruments is not necessary for the validity of the consecration of Deacons, Priests, and Bishops.	701,153,150
+364	15	3	The Outward Sign of the Sacrament of Order	Sententia fidei proxima	The form of the Order of Deacon, Priest, and Bishop consists solely in the words which more closely determine the imposition of the hands.	1963
+365	15	4	The Effects of the Sacrament of Holy Order	De fide	The Sacrament of Order confers sanctifying grace on the recipient.	843,2275
+366	15	4	The Effects of the Sacrament of Holy Order	De fide	The Sacrament of Order imprints a character on the recipient.	946
+367	15	4	The Effects of the Sacrament of Holy Order	De fide	The Sacrament of Order confers a permanent spiritual power on the recipient.	960,961
+368	15	5	The Dispenser of the Sacrament of Order	De fide	The ordinary dispenser of all grades of Order, both the sacramental and the non-sacramental, is the validly consecrated bishop alone.	967,855,860
+369	15	5	The Dispenser of the Sacrament of Order	Sententia certa	The extraordinary dispenser of the four Minor Orders and of the Order of Subdiaconate is the presbyter.	
+370	15	6	The Receiver of the Sacrament of Order	Sententia certa	The Sacrament of Order can be validly received by a baptised person of the male sex only.	
+371	16	1	Concept, Origin and Sacramental Nature of Matrimony	Sententia certa	Marriage was not instituted by man, but by God.	2225
+372	16	1	Concept, Origin and Sacramental Nature of Matrimony	De fide	Marriage is a true and proper Sacrament instituted by God.	971,2051,1765
+373	16	2	Purpose and Properties of Marriage	Sententia certa	The primary purpose of Marriage is the generation and bringing-up of offspring. The secondary purpose is mutual help and the morally regulated satisfaction of the sex urge.	2295
+374	16	2	Purpose and Properties of Marriage	Sententia certa	The essential properties of Marriage are unity (monogamy) and indissolubility.	972,969,2231
+375	16	3	The Outward Sign of the Sacrament of Matrimony	Sententia certa	Every valid contract of Marriage between Christians is of itself a sacrament.	702,990,334,404,1854,1640,1766,1773,2237
+376	16	4	The Effects of the Sacrament of Matrimony	De fide	From the sacramental contract of marriage emerges the Bond of Marriage, which binds both marriage partners to a lifelong indivisible community of life.	969,424,455
+377	16	4	The Effects of the Sacrament of Matrimony	De fide	The Sacrament of Matrimony bestows Sanctifying Grace on the contracting parties.	971,2237
+378	16	5	Minister and Recipient of the Sacrament of Matrimony	Sententia certa	The contracting parties in Matrimony minister the Sacrament each to the other.	
+379	16	6	The Church’s Power over Matrimony	Sententia certa	The Church possesses the sole and exclusive right to make laws and administer justice in the matrimonial affairs of baptised persons, in so far as these affect the Sacrament.	973,982,1559,1768,1500
+380	17	1	Death	De fide	In the present order of salvation death is a punishment for sin.	788,101,175
+381	17	1	Death	De fide	All human beings subject to original sin are subject to the law of death.	789
+382	17	1	Death	Sententia certa	With death the possibility of merit or demerit or conversion ceases.	211
+383	17	2	The Particular Judgment	Sententia fidei proxima	Immediately after death the particular judgment takes place, in which, by a Divine Sentence of Judgment, the eternal fate of the deceased person is decided.	1913,464,693,530,457,493
+384	17	3	Heaven	De fide	The souls of the just which in the moment of death are free from all guilt of sin and punishment for sin, enter into Heaven.	6,530,40,86,693,696
+385	17	3	Heaven	Sententia communis	In addition to the essential bliss of Heaven which springs from the immediate Vision of God, there is also an accidental blessedness, which proceeds from the natural knowledge and love of created things.	
+386	17	3	Heaven	De fide	The bliss of Heaven lasts for all eternity.	530
+387	17	3	Heaven	De fide	The degree of perfection of the beatific vision granted to the just is proportioned to each one’s merits.	693,842
+388	17	4	Hell	De fide	The souls of those who die in the condition of personal grievous sin enter Hell.	40,531,429,464,693,835,840
+389	17	4	Hell	De fide	The punishment of Hell lasts for all eternity.	429,40,835,840,211
+390	17	4	Hell	Sententia communis	The punishment of the damned is proportioned to each one’s guilt.	464,693
+391	17	5	Purgatory	De fide	The souls of the just which, in the moment of death, are burdened with venial sins or temporal punishment due to sins, enter Purgatory.	464,693,456,570,777,983,840,998
+392	17	5	Purgatory	Sententia communis	The purifying fire will not continue after the General Judgment.	1143,530,693
+393	17	6	The Second Coming of Christ	De fide	At the end of the world Christ will come again in glory to pronounce judgment.	86,40,54,287,429,2181
+394	17	6	The Second Coming of Christ	Sententia certa	The time of Jesus’ second coming is unknown to men.	
+395	17	7	The Resurrection of the Dead	De fide	All the dead will rise again on the last day with their bodies.	40
+396	17	7	The Resurrection of the Dead	De fide	The dead will rise again with the same bodies as they had on earth.	429,16,40,287,347,427,464,531
+397	17	7	The Resurrection of the Dead	Sententia certa	The bodies of the just will be re-modelled and transfigured to the pattern of the risen Christ.	
+398	17	7	The Resurrection of the Dead	Sententia certa	The bodies of the godless will rise again in incorruption and immortality, but they will not be transfigured.	
+399	17	8	The General Judgment	De fide	Christ, on His second coming, will judge all men.	
+400	17	9	The End of the World	Sententia certa	The present world will be destroyed on the Last Day.	
+401	17	9	The End of the World	Sententia certa	The present world will be restored on the Last Day.	

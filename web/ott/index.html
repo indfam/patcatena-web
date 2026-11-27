@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ott-dogmatika kereső</title>
+<meta name="description" content="Ludwig Ott: A katolikus dogmatika alapjai – a tételek magyarul, teológiai minősítéssel és Denzinger-hivatkozásokkal, téma és szavak szerint kereshetően.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=__VERZIO__">
+<style>
+  /* Tétel felugró ablakban, a keret tetején (a lista a helyén marad) */
+  dialog.ablak { width: min(60rem, calc(100vw - 2rem)); max-height: calc(100vh - 2rem); padding: 0; margin: 1rem auto auto;
+    border: 1px solid var(--vonal); border-radius: 4px; background: var(--lap); color: var(--tinta); }
+  dialog.ablak::backdrop { background: rgba(20, 16, 12, .45); }
+  .ablak .olvaso-fej { padding: .6rem 1rem 0; }
+  .ablak-tartalom { padding: 0 1.5rem 1.25rem; }
+  .ablak-tartalom .egyseg { border-top: 0; padding-top: 0; }
+  .egyseg { border-top: 1px solid var(--vonal); padding: 1.25rem 0; }
+  .szamok { font: 600 .95rem/1.3 var(--sans); color: var(--rubrika); margin: 0 0 .25rem; }
+  .szamok span { color: var(--halvany); font-weight: 400; }
+  .doknev { font-size: 1.05rem; font-variant: small-caps; letter-spacing: .02em; margin: 0 0 .2rem; }
+  .doknev a { color: var(--tinta); text-decoration: none; }
+  .angolcim { font: 400 .9rem/1.4 var(--sans); color: var(--halvany); margin: 0 0 .75rem; }
+  .ket-hasab { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+  .ket-hasab h3 { font: 600 .8rem/1.2 var(--sans); color: var(--halvany); margin: 0 0 .35rem; }
+  .ket-hasab p { margin: 0 0 .6rem; line-height: 1.65; }
+  .ds-jel { font: 700 .75em/1 var(--sans); color: var(--rubrika); margin-right: .25em; }
+  .lapozo { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+  .lapozo button, .lapozo a { font: 600 .9rem/1 var(--sans); background: none; color: var(--tinta); border: 1px solid var(--vonal);
+    border-radius: 3px; padding: .55rem .8rem; text-decoration: none; cursor: pointer; }
+  .lapozo a.gomb { background: var(--rubrika); color: #fff; border-color: var(--rubrika); }
+  .lapozo button:disabled { opacity: .4; cursor: default; }
+  .tszdoboz { margin-top: .75rem; font: 400 .9rem/1.5 var(--sans); }
+  .tszdoboz summary { cursor: pointer; font-weight: 600; color: var(--lazur); }
+  .tszkat h4 { font: 600 .85rem/1.2 var(--sans); color: var(--halvany); margin: .8rem 0 .2rem; }
+  .tszkat p { margin: 0; }
+  .tszfej { font: 400 .9rem/1.45 var(--sans); color: var(--halvany); margin: 0 0 .5rem; }
+  .tszfej b { color: var(--tinta); }
+  .magyar { font: 600 .95rem/1.4 var(--sans); margin: .75rem 0 0; }
+  .forrasjel { font: 400 .8rem/1.4 var(--sans); color: var(--halvany); margin: .5rem 0 0; }
+  .doklista { list-style: none; padding: 0; margin: 1rem 0 0; }
+  .doklista li { padding: .45rem 0; border-bottom: 1px solid var(--vonal); display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; }
+  .doklista .tart { font: 400 .85rem/1.4 var(--sans); color: var(--halvany); }
+  .talalat { padding: .8rem 0; border-bottom: 1px solid var(--vonal); }
+  .talalat h4 { margin: 0 0 .2rem; font-size: 1rem; }
+  .talalat p { margin: 0; font-size: .95rem; line-height: 1.55; }
+  @media (max-width: 640px) { .ket-hasab { grid-template-columns: 1fr; } .doklista li { grid-template-columns: 1fr; gap: .1rem; } }
+  .fa { list-style: none; padding: 0; margin: .75rem 0 0; }
+  .fa > li > details > summary { font: 600 1.05rem/1.4 var(--sans); cursor: pointer; padding: .35rem 0; }
+  .fa .fej { margin: .3rem 0 .3rem 1rem; }
+  .fa .fej > summary { font: 600 .95rem/1.4 var(--sans); color: var(--lazur); cursor: pointer; }
+  .fa .tetelek { margin: .2rem 0 .5rem 1.5rem; padding: 0; list-style: none; font: 400 .92rem/1.6 var(--sans); }
+  .fa .tetelek span { color: var(--halvany); display: inline-block; min-width: 2.6rem; }
+  .kapcs { font: 400 .9rem/1.5 var(--sans); margin: .75rem 0 0; }
+  .lmutato { columns: 3 14rem; font: 400 .9rem/1.6 var(--sans); margin-top: .75rem; }
+  .lmutato a { display: block; break-inside: avoid; }
+  .idezet { padding: .9rem 0; border-top: 1px solid var(--vonal); }
+  .idezet:first-of-type { border-top: 0; }
+  .idezet h4 { margin: 0 0 .3rem; font: 600 1rem/1.3 var(--sans); color: var(--rubrika); }
+  .idezet h4 span { font-weight: 400; color: var(--halvany); font-size: .85rem; }
+  .idezet p { margin: 0 0 .5rem; line-height: 1.65; }
+  .idezet .eszk { display: flex; flex-wrap: wrap; gap: .4rem .9rem; font: 400 .85rem/1.4 var(--sans); }
+  .idezet .eszk button { background: none; border: 0; padding: 0; color: var(--lazur); font: inherit; cursor: pointer; text-decoration: underline; }
+  .idezet .eszk a { color: var(--lazur); }
+  .idezet .konyvtar { color: var(--tinta); border-left: 3px solid var(--rubrika); padding-left: .5rem; }
+  .magyarul { border-left: 3px solid var(--rubrika); padding-left: .75rem; margin: .2rem 0 .6rem; }
+  .magyarul p { margin: 0 0 .4rem; }
+  .magyarul + p, .magyarul ~ p[lang=en] { color: var(--halvany); font-size: .95rem; }
+  .ige { background: var(--mezo); padding: .75rem 1rem; border-radius: 3px; margin: .5rem 0 1rem; }
+  .ige p { margin: 0 0 .35rem; }
+  .ige .lat { font-style: italic; }
+  .szerzolista { columns: 2 18rem; font: 400 .95rem/1.7 var(--sans); margin-top: .75rem; }
+  .szerzolista a { display: block; break-inside: avoid; }
+  .szerzolista span { color: var(--halvany); }
+  .fejlista { display: flex; flex-wrap: wrap; gap: .35rem; margin: .4rem 0 .6rem; }
+  .fejlista a { font: 600 .9rem/1 var(--sans); border: 1px solid var(--vonal); border-radius: 3px; padding: .4rem .55rem; text-decoration: none; color: var(--tinta); }
+  .fejlista a:hover { border-color: var(--rubrika); color: var(--rubrika); }
+  .tetel { padding: .85rem 0; border-top: 1px solid var(--vonal); }
+  .tetel:first-child { border-top: 0; }
+  .tetel .hu { font-size: 1.08rem; line-height: 1.55; margin: .15rem 0 .35rem; }
+  .tetel .en { color: var(--halvany); font-size: .95rem; margin: 0 0 .4rem; }
+  .tetel .fej { font: 600 .82rem/1.3 var(--sans); color: var(--halvany); display: flex; flex-wrap: wrap; gap: .3rem .7rem; align-items: center; }
+  .minos { font: 600 .8rem/1 var(--sans); padding: .25rem .45rem; border-radius: 3px; border: 1px solid var(--vonal); color: var(--tinta); }
+  .minos.de-fide { background: var(--rubrika); border-color: var(--rubrika); color: #fff; }
+  .minos.fidei-proxima { border-color: var(--rubrika); color: var(--rubrika); }
+  .tetel .dlink { font: 400 .85rem/1.5 var(--sans); }
+  .tetel .dlink a { color: var(--lazur); margin-right: .35rem; }
+  .fa details { margin: .2rem 0; }
+  .fa summary { cursor: pointer; font: 600 1rem/1.4 var(--sans); padding: .3rem 0; }
+  .fa .konyv { font: 600 .8rem/1.2 var(--sans); color: var(--halvany); margin: 1rem 0 .2rem; }
+  .fa ul { list-style: none; margin: .1rem 0 .5rem 1rem; padding: 0; }
+  .fa li { margin: .15rem 0; font: 400 .95rem/1.4 var(--sans); }
+  .fa li span { color: var(--halvany); }
+  .minoslista a { display: inline-block; margin: 0 .5rem .5rem 0; }
+</style>
+</head>
+<body>
+<div class="lap">
+  <header class="fej">
+    <h1><a href="#">Ott: A katolikus dogmatika alapjai</a></h1>
+    <p>Ludwig Ott dogmatikai kézikönyvének tételei magyarul, az egyes tanítások teológiai minősítésével
+    (hittétel, teológiailag biztos tétel stb.) és a Denzingerre mutató hivatkozásokkal.</p>
+  </header>
+
+  <nav class="mod" role="tablist" aria-label="Keresés módja">
+    <button role="tab" id="tab-temak" aria-controls="panel-temak" aria-selected="true">Témák</button>
+    <button role="tab" id="tab-szoveg" aria-controls="panel-szoveg" aria-selected="false">Keresés</button>
+    <button role="tab" id="tab-minos" aria-controls="panel-minos" aria-selected="false">Minősítés szerint</button>
+  </nav>
+
+  <section id="panel-temak" role="tabpanel" aria-labelledby="tab-temak">
+    <p class="tipp">A könyv szerkezete: részek és paragrafusok (§). Egy paragrafusra kattintva megjelennek a tételei.</p>
+    <div id="fa" class="fa"></div>
+  </section>
+
+  <section id="panel-szoveg" role="tabpanel" aria-labelledby="tab-szoveg" hidden>
+    <form id="urlap-szoveg" class="urlap">
+      <label class="szeles">Keresett szavak
+        <input id="kerdes" required placeholder="pl. kegyelem, átlényegülés, Mária, csalatkozhatatlan, grace" autocomplete="off">
+      </label>
+      <label>Minősítés
+        <select id="sminos"><option value="">mind</option></select>
+      </label>
+      <button type="submit">Keresés</button>
+    </form>
+    <p class="tipp">A tételek magyar fordításában és angol szövegében keres. Több szó esetén mindegyiknek szerepelnie kell.</p>
+  </section>
+
+  <section id="panel-minos" role="tabpanel" aria-labelledby="tab-minos" hidden>
+    <p class="tipp">Ott minden tételhez megadja, milyen fokú bizonyossággal tanítja az Egyház (a könyv bevezetésének 8. §-a szerint).</p>
+    <div id="minoslista" class="minoslista"></div>
+  </section>
+
+  <main id="eredmeny" aria-live="polite"></main>
+
+  <footer class="lab">
+    <p>Forrás: Ludwig Ott, Grundriss der katholischen Dogmatik (Freiburg: Herder, 1952; 10. kiadás 1981); angolul:
+    Fundamentals of Catholic Dogma, ford. Patrick Lynch, szerk. James Bastible (Cork: Mercier / St. Louis: B. Herder, 1955; a Roman Catholic Books utánnyomásának e-könyve alapján).
+    A könyv szövege jogvédett, ezért itt csak a tételek, a teológiai minősítések és a Denzinger-hivatkozások szerepelnek;
+    a magyar fordítás saját, nem hivatalos. A Denzinger-számok a régi (D)
+    számozást követik, és a Denzinger-keresőben nyílnak meg. Az idézett dogmatikai helyet mindig a könyvben ellenőrizze.</p>
+  </footer>
+</div>
+<script src="ot.js?v=__VERZIO__" type="module"></script>
+</body>
+</html>

@@ -32,6 +32,7 @@ jobs:
           python3 eszkozok/web_denzinger.py _site/denzinger
           python3 eszkozok/web_wuest.py _site/wuest
           python3 eszkozok/web_catena.py _site/catena
+          python3 eszkozok/web_ott.py _site/ott
       - name: Szöveges keresőindexek (Pagefind)
         run: |
           bash eszkozok/web_pagefind.sh _site
@@ -39,6 +40,7 @@ jobs:
           bash eszkozok/web_pagefind.sh _site/denzinger
           bash eszkozok/web_pagefind.sh _site/wuest
           bash eszkozok/web_pagefind.sh _site/catena
+          bash eszkozok/web_pagefind.sh _site/ott
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
