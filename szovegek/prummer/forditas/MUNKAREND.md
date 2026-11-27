@@ -19,3 +19,4 @@
 - Hivatkozások: „CIC 2202. kán. 2. §”, egymás után „2218. kán.”; Szentírás SZIT-rövidítéssel (Róm 3,8); pápák az
   egyházi helyesírási útmutató szerint (X. Szent Piusz, XIII. Leó, XI. Ince); Trentói Zsinat.
 - Állapot: a kész adagok fájlnevei mutatják (001–007: 0–140).
+- Bűnbánat: paenitentia = bűnbánat; contritio (általában) = bánat, contritio stricte dicta/perfecta = tökéletes bánat; attritio = bánkódás (tökéletlen bánat); propositum = (erős) elhatározás; confessio = gyónás (bűnvallomás); satisfactio = elégtétel; absolutio = feloldozás; materia remota/proxima = távoli/közeli anyag; ex opere operato/operantis latinul marad.
