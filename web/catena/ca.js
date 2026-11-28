@@ -44,7 +44,7 @@ function helyez(dlg) {
   dlg.style.marginTop = `${t}px`;
   dlg.style.maxHeight = `${Math.min(kepernyo, innerHeight - t - 16)}px`;
 }
-function ablakNyit() { if (!ABLAK.open) { ABLAK.showModal(); helyez(ABLAK); } ABLAK.scrollTop = 0; }
+function ablakNyit() { if (!ABLAK.open) { helyez(ABLAK); ABLAK.showModal(); } ABLAK.scrollTop = 0; }
 new ResizeObserver(() => ABLAK.open && helyez(ABLAK)).observe(ABLAK);
 $("#ablak-bezar").onclick = () => ABLAK.close();
 ABLAK.addEventListener("click", (e) => { if (e.target === ABLAK) ABLAK.close(); });

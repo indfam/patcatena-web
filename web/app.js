@@ -328,7 +328,7 @@ async function olvaso(m, d, ref, kiemel) {
   $("#elozo").disabled = s.i === 0 && d === 0;
   $("#kovetkezo").disabled = s.i === s.sorok.length - 1 && d === mu.darabok - 1;
   const dlg = $("#olvaso");
-  if (!dlg.open) { dlg.showModal(); helyez(dlg); }
+  if (!dlg.open) { helyez(dlg); dlg.showModal(); }
   sz.scrollTop = 0;
 }
 
